@@ -48,20 +48,20 @@ export default function Features() {
               <div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
                 <div className="text-xs text-gray-500 mb-2 font-medium">DigitalToken.js</div>
                 <div className="text-sm text-green-600 font-mono">
-                  <div>// centralized data</div>
+                  <div>{`// centralized data`}</div>
                   <div>let centralData = {`{`}</div>
-                  <div className="ml-2">value1: 'Data1',</div>
-                  <div className="ml-2">value2: 'Data2'</div>
+                  <div className="ml-2">value1: &apos;Data1&apos;,</div>
+                  <div className="ml-2">value2: &apos;Data2&apos;</div>
                   <div>{`}`}</div>
                 </div>
               </div>
               <div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
                 <div className="text-xs text-gray-500 mb-2 font-medium">DigitalToken.js</div>
                 <div className="text-sm text-green-600 font-mono">
-                  <div>// centralized data</div>
+                  <div>{`// centralized data`}</div>
                   <div>let centralData = {`{`}</div>
-                  <div className="ml-2">value1: 'Data1',</div>
-                  <div className="ml-2">value2: 'Data2'</div>
+                  <div className="ml-2">value1: &apos;Data1&apos;,</div>
+                  <div className="ml-2">value2: &apos;Data2&apos;</div>
                   <div>{`}`}</div>
                 </div>
               </div>

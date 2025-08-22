@@ -1,7 +1,5 @@
 'use client';
 
-import Image from 'next/image';
-
 export default function ESGCompliance() {
   return (
     <section className="py-20 bg-white">
@@ -20,22 +18,27 @@ export default function ESGCompliance() {
           </p>
           
           <p className="text-lg text-blue-600 mt-6 max-w-2xl mx-auto">
-            We simplify your VSME reporting journey, so you can focus on what's important - your business
+            We simplify your VSME reporting journey, so you can focus on what&apos;s important - your business
           </p>
         </div>
 
         {/* Browser Frame with Dashboard */}
         <div className="max-w-6xl mx-auto">
-        <Image
-            src="/product-image.png"
-            alt="Green Dash Dashboard Preview"
-            width={600}
-            height={400}
-            className="w-full h-auto rounded-2xl shadow-2xl"
-            priority
-        />
+          <div className="bg-gray-800 rounded-t-xl p-4">
+            {/* Browser Controls */}
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+              <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+            </div>
+          </div>
           
-
+          <div className="bg-white rounded-b-xl shadow-2xl overflow-hidden">
+            {/* Dashboard content would go here */}
+            <div className="p-8 text-center text-gray-500">
+              Dashboard Preview Content
+            </div>
+          </div>
         </div>
       </div>
     </section>
