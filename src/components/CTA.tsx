@@ -22,7 +22,7 @@ export default function CTA() {
         {/* Call-to-Action Buttons */}
         <div className="flex justify-center mb-12">
           <div className="border p-2 border-gray-200 rounded-xl">
-            <div className="flex flex-col lg:flex-row  gap-6 justify-center items-center max-w-5xl mx-auto">
+            <div className="flex flex-col lg:flex-row  gap-5 justify-center items-center max-w-5xl mx-auto">
               {/* Left Button - Assessment */}
               <button className="w-full lg:w-auto bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-medium text-[16px] transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
                 <span>Take your FREE Compliance CSRD/VSME Assessment now</span>
@@ -32,7 +32,7 @@ export default function CTA() {
               </button>
               
               {/* Right Button - Download Kit */}
-              <button className="w-full lg:w-auto bg-gray-900  text-white px-8 py-4 rounded-lg font-medium text-[16px] transition-all duration-200 hover:bg-gray-900 transform flex items-center justify-center gap-3">
+              <button className="w-full lg:w-auto bg-gray-900  text-white px-8 py-4 rounded-lg font-medium text-[16px] transition-all duration-200 hover:bg-gray-900 transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
                 <span>Download your FREE CSRD Essentials Kit</span>
                 <svg className="w-5 h-5 text-white group-hover:text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />

@@ -1,19 +1,21 @@
 'use client';
 
+import Image from "next/image";
+
 export default function Partners() {
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         {/* Top Badge */}
         <div className="text-center mb-8">
-          <div className="inline-block bg-gray-100 border border-gray-300 rounded-lg px-4 py-2">
+          <div className="inline-block bg-white rounded-[10px] px-10 py-1 mb-6 border border-[rgba(34, 34, 34, 0.1)] shadow-sm">
             <span className="text-sm font-medium text-black">Partners</span>
           </div>
         </div>
         
         {/* Main Headline */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold text-blue-900 mb-6 leading-tight">
+          <h2 className="mx-auto text-4xl lg:text-[54px] font-[700] text-[#001354] mb-6 leading-[60px]">
             We are Collaborating with the Best in Town
           </h2>
         </div>
@@ -33,43 +35,61 @@ export default function Partners() {
               {/* Logo 1: CASA DO IMPACTO */}
               <div className="text-center min-w-[200px]">
                 <div className="mb-3">
-                  <div className="w-24 h-24 bg-gray-200 rounded-lg flex items-center justify-center mx-auto">
-                    <span className="text-gray-400 text-sm">Logo 1</span>
+                  <div className="w-54 h-54 flex items-center justify-center mx-auto">
+                    <Image
+                      src="/casa-do-impacto-logo.svg"
+                      alt="Casa do Impacto Logo"
+                      width={160}
+                      height={60}
+                      className="h-28 w-auto"
+                    />
                   </div>
                 </div>
-                <div className="font-bold text-gray-700 text-sm">CASA DO IMPACTO</div>
-                <div className="text-gray-500 text-xs">Santa Casa da Misericórdia de Lisboa</div>
               </div>
               
               {/* Logo 2: unicorn Factory Lisboa */}
               <div className="text-center min-w-[200px]">
                 <div className="mb-3">
-                  <div className="w-24 h-24 bg-gray-200 rounded-lg flex items-center justify-center mx-auto">
-                    <span className="text-gray-400 text-sm">Logo 2</span>
+                  <div className="w-60 h-60 flex items-center justify-center mx-auto">
+                    <Image
+                      src="/unicorn-logo.svg"
+                      alt="Unicorn Factory Lisboa Logo"
+                      width={160}
+                      height={60}
+                      className="h-28 w-auto"
+                    />
                   </div>
                 </div>
-                <div className="font-bold text-gray-700 text-sm">unicorn Factory Lisboa</div>
               </div>
               
               {/* Logo 3: Junitec */}
               <div className="text-center min-w-[200px]">
                 <div className="mb-3">
-                  <div className="w-24 h-24 bg-gray-200 rounded-lg flex items-center justify-center mx-auto">
-                    <span className="text-gray-400 text-sm">Logo 3</span>
+                  <div className="w-54 h-54 flex items-center justify-center mx-auto">
+                    <Image
+                      src="/junitec-logo.svg"
+                      alt="Junitec Logo"
+                      width={120}
+                      height={40}
+                      className="h-28 w-auto"
+                    />
                   </div>
                 </div>
-                <div className="font-bold text-gray-700 text-sm">Junitec</div>
-                <div className="text-gray-500 text-xs">Júnior Empresas do Instituto Superior Técnico</div>
               </div>
               
               {/* Logo 4: European Institute of Innovation & Technology */}
               <div className="text-center min-w-[200px]">
                 <div className="mb-3">
-                  <div className="w-24 h-24 bg-gray-200 rounded-lg flex items-center justify-center mx-auto">
-                    <span className="text-gray-400 text-sm">Logo 4</span>
+                  <div className="w-54 h-54 flex items-center justify-center mx-auto">
+                    <Image
+                      src="/eit-logo.svg"
+                      alt="European Institute of Innovation & Technology Logo"
+                      width={160}
+                      height={60}
+                      className="h-28 w-auto"
+                    />
                   </div>
                 </div>
-                <div className="font-bold text-blue-600 text-sm">European Institute of Innovation & Technology</div>
               </div>
             </div>
             
@@ -78,43 +98,61 @@ export default function Partners() {
               {/* Logo 1: CASA DO IMPACTO */}
               <div className="text-center min-w-[200px]">
                 <div className="mb-3">
-                  <div className="w-24 h-24 bg-gray-200 rounded-lg flex items-center justify-center mx-auto">
-                    <span className="text-gray-400 text-sm">Logo 1</span>
+                  <div className="w-54 h-54 flex items-center justify-center mx-auto">
+                    <Image
+                      src="/casa-do-impacto-logo.svg"
+                      alt="Casa do Impacto Logo"
+                      width={160}
+                      height={60}
+                      className="h-28 w-auto"
+                    />
                   </div>
                 </div>
-                <div className="font-bold text-gray-700 text-sm">CASA DO IMPACTO</div>
-                <div className="text-gray-500 text-xs">Santa Casa da Misericórdia de Lisboa</div>
               </div>
               
               {/* Logo 2: unicorn Factory Lisboa */}
               <div className="text-center min-w-[200px]">
                 <div className="mb-3">
-                  <div className="w-24 h-24 bg-gray-200 rounded-lg flex items-center justify-center mx-auto">
-                    <span className="text-gray-400 text-sm">Logo 2</span>
+                  <div className="w-60 h-60 flex items-center justify-center mx-auto">
+                    <Image
+                      src="/unicorn-logo.svg"
+                      alt="Unicorn Factory Lisboa Logo"
+                      width={160}
+                      height={60}
+                      className="h-28 w-auto"
+                    />
                   </div>
                 </div>
-                <div className="font-bold text-gray-700 text-sm">unicorn Factory Lisboa</div>
               </div>
               
               {/* Logo 3: Junitec */}
               <div className="text-center min-w-[200px]">
                 <div className="mb-3">
-                  <div className="w-24 h-24 bg-gray-200 rounded-lg flex items-center justify-center mx-auto">
-                    <span className="text-gray-400 text-sm">Logo 3</span>
+                  <div className="w-54 h-54 flex items-center justify-center mx-auto">
+                    <Image
+                      src="/junitec-logo.svg"
+                      alt="Junitec Logo"
+                      width={120}
+                      height={40}
+                      className="h-28 w-auto"
+                    />
                   </div>
                 </div>
-                <div className="font-bold text-gray-700 text-sm">Junitec</div>
-                <div className="text-gray-500 text-xs">Júnior Empresas do Instituto Superior Técnico</div>
               </div>
               
               {/* Logo 4: European Institute of Innovation & Technology */}
               <div className="text-center min-w-[200px]">
                 <div className="mb-3">
-                  <div className="w-24 h-24 bg-gray-200 rounded-lg flex items-center justify-center mx-auto">
-                    <span className="text-gray-400 text-sm">Logo 4</span>
+                  <div className="w-54 h-54 flex items-center justify-center mx-auto">
+                    <Image
+                      src="/eit-logo.svg"
+                      alt="European Institute of Innovation & Technology Logo"
+                      width={160}
+                      height={60}
+                      className="h-28 w-auto"
+                    />
                   </div>
                 </div>
-                <div className="font-bold text-blue-600 text-sm">European Institute of Innovation & Technology</div>
               </div>
             </div>
           </div>

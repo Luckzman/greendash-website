@@ -1,26 +1,30 @@
 'use client';
 
+import Image from "next/image";
+
 export default function Footer() {
   return (
     <footer className="bg-[#242424] text-white">
       {/* Top Section */}
       <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid md:grid-cols-3 gap-12">
-          {/* Left Column - Company Information */}
-          <div>
+        <div className="grid grid-cols-12 gap-12">
+          {/* Left Column - Company Information (7 columns) */}
+          <div className="col-span-7">
             {/* Logo */}
-            <div className="mb-6">
-              <div className="w-16 h-16 bg-green-500 rounded-lg flex items-center justify-center">
-                <div className="relative w-10 h-10">
-                  <div className="absolute top-0 left-0 w-6 h-8 bg-green-300 rounded transform rotate-12"></div>
-                  <div className="absolute top-1 left-1 w-6 h-8 bg-green-200 rounded transform -rotate-6"></div>
-                  <div className="absolute top-2 left-2 w-6 h-8 bg-green-100 rounded transform rotate-3"></div>
-                </div>
+            <div className="mb-2">
+              <div className="w-16 h-16 flex items-center justify-center">
+                <Image
+                  src="/green-dash-small-logo.svg"
+                  alt="Green Dash Logo"
+                  width={120}
+                  height={40}
+                  className="h-28 w-auto"
+                />
               </div>
             </div>
             
             {/* Tagline */}
-            <p className="text-white text-lg mb-6">
+            <p className="text-[#F2FFED] text-sm mb-10">
               Sustainability Made Simple for SME
             </p>
             
@@ -43,25 +47,29 @@ export default function Footer() {
               </a>
             </div>
           </div>
-          
-          {/* Middle Column - Solutions */}
-          <div>
-            <h3 className="text-white font-bold text-lg mb-6">Solutions</h3>
-            <ul className="space-y-3">
-              <li><a href="#" className="text-white hover:text-gray-300 transition-colors">Platform</a></li>
-              <li><a href="#" className="text-white hover:text-gray-300 transition-colors">Certification</a></li>
-              <li><a href="#" className="text-white hover:text-gray-300 transition-colors">Academy</a></li>
-            </ul>
-          </div>
-          
-          {/* Right Column - Quick Links */}
-          <div>
-            <h3 className="text-white font-bold text-lg mb-6">Quick Links</h3>
-            <ul className="space-y-3">
-              <li><a href="#" className="text-white hover:text-gray-300 transition-colors">For Professionals</a></li>
-              <li><a href="#" className="text-white hover:text-gray-300 transition-colors">Contact Us</a></li>
-              <li><a href="#" className="text-white hover:text-gray-300 transition-colors">Join Waiting List</a></li>
-            </ul>
+
+          {/* Right Column - Solutions & Quick Links (5 columns) */}
+          <div className="col-span-5">
+            <div className="flex flex-col md:flex-row  items-start space-y-6 md:space-y-0 md:space-x-8">
+              <div className="lg:w-52">
+                <h3 className="text-white font-bold text-sm mb-6">Solutions</h3>
+                <ul className="space-y-3">
+                  <li><a href="#" className="text-[#7B7B7B] hover:text-white transition-colors text-sm">Platform</a></li>
+                  <li><a href="#" className="text-[#7B7B7B] hover:text-white transition-colors text-sm">Certification</a></li>
+                  <li><a href="#" className="text-[#7B7B7B] hover:text-white transition-colors text-sm">Academy</a></li>
+                </ul>
+              </div>
+              
+              {/* Right Column - Quick Links */}
+              <div>
+                <h3 className="text-white font-bold text-sm mb-6">Quick Links</h3>
+                <ul className="space-y-3">
+                  <li><a href="#" className="text-[#7B7B7B] hover:text-white transition-colors text-sm">For Professionals</a></li>
+                  <li><a href="#" className="text-[#7B7B7B] hover:text-white transition-colors text-sm">Contact Us</a></li>
+                  <li><a href="#" className="text-[#7B7B7B] hover:text-white transition-colors text-sm">Join Waiting List</a></li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -71,21 +79,21 @@ export default function Footer() {
       
       {/* Bottom Section */}
       <div className="max-w-7xl mx-auto px-6 py-8">
-        <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          {/* Left Side - Copyright */}
-          <div className="text-white text-sm">
+        <div className="grid grid-cols-12 gap-12">
+          {/* Left Side - Copyright (7 columns) */}
+          <div className="col-span-7 text-white text-sm">
             © Copyright 2025. Greendash, LDA. All rights reserved.
           </div>
           
-          {/* Right Side - Legal Links */}
-          <div className="flex items-center space-x-4 text-sm">
-            <a href="#" className="text-white hover:text-gray-300 transition-colors">Cookie policy</a>
+          {/* Right Side - Legal Links (5 columns) */}
+          <div className="col-span-5 flex items-center space-x-4 text-sm">
+            <a href="#" className="text-white hover:text-[#7B7B7B] transition-colors">Cookie policy</a>
             <span className="text-gray-600">|</span>
-            <a href="#" className="text-white hover:text-gray-300 transition-colors">Privacy policy</a>
+            <a href="#" className="text-white hover:text-[#7B7B7B] transition-colors">Privacy policy</a>
             <span className="text-gray-600">|</span>
-            <a href="#" className="text-white hover:text-gray-300 transition-colors">Subprocessors</a>
+            <a href="#" className="text-white hover:text-[#7B7B7B] transition-colors">Subprocessors</a>
             <span className="text-gray-600">|</span>
-            <a href="#" className="text-white hover:text-gray-300 transition-colors">Legal</a>
+            <a href="#" className="text-white hover:text-[#7B7B7B] transition-colors">Legal</a>
           </div>
         </div>
       </div>

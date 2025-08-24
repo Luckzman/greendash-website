@@ -2,7 +2,7 @@
 
 export default function WhyReporting() {
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-[#7FFF6BCC] to-80%">
+    <section className="py-20 bg-gradient-to-b from-white from-30% to-[#7FFF6BCC] to-80%">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-12">
           <div className="inline-block bg-white rounded-[10px] px-10 py-1 mb-6 border border-[rgba(34, 34, 34, 0.1)] shadow-sm">
