@@ -1,5 +1,7 @@
 'use client';
 
+import Image from "next/image";
+
 export default function Features() {
   return (
     <section className="py-20 bg-white">
@@ -9,7 +11,7 @@ export default function Features() {
           <div className="inline-block bg-white rounded-[10px] px-10 py-1 mb-6 border border-[rgba(34, 34, 34, 0.1)] shadow-sm">
             <span className="text-sm font-medium text-black">All-in-One</span>
           </div>
-          
+
           <h2 className="lg:w-10/12 mx-auto text-4xl lg:text-[54px] font-[700] text-[#001354] mb-6 leading-[60px]">
             The most complete ESG/VSME reporting tool, tailored for SME
           </h2>
@@ -36,12 +38,12 @@ export default function Features() {
                 Centralized, Collaborative & Automated Data Collection
               </h3>
               <p className="text-[#ECECEC] font-[16px] leading-relaxed ">
-              Forget the spreadsheets and scattered files. 
-              Gather ESG data effortlessly from your team and stakeholders everything centralized in one single place, so you can track, analyze, and report with confidence.<br/>
-              We automate data collection process with smart integrations and full-document uploads, minimizing manual work              </p>
+                Forget the spreadsheets and scattered files. 
+                Gather ESG data effortlessly from your team and stakeholders everything centralized in one single place, so you can track, analyze, and report with confidence.<br/>
+                We automate data collection process with smart integrations and full-document uploads, minimizing manual work              </p>
             </div>
           </div>
-          
+
           {/* Code Snippets */}
           <div className="flex-1 grid grid-cols-2 gap-3">
             <div className="bg-[#111111E5] rounded-lg p-3 z-0 overflow-hidden shadow shadow-[#919191]">
@@ -84,7 +86,7 @@ export default function Features() {
                 <h3 className="text-[32px] font-medium text-[#ECECEC] mb-4 leading-[40px]">
                   Smart ESG Analytics
                 </h3>
-                <p className="text-gray-300 leading-relaxed text-lg">
+                <p className="text-[#ECECEC] font-[16px] leading-relaxed">
                   Our Analytics Dashboard provides a clear and intuitive interface for you to easily analyze your data. From clear graphs to real-time data updates, our dashboard offers everything you need to gain valuable insights
                 </p>
               </div>
@@ -159,21 +161,30 @@ export default function Features() {
         </div>
 
         {/* Card 6: Full Customer Support */}
-        <div className="bg-gradient-to-tr from-[#111111E5] from-10% via-[#232323F1] via-80% to-[#4C4C4C] to-90% rounded-xl p-12 hover:shadow-xl shadow-lg">
-          <div className="flex-col items-start gap-4 mb-4">
+        <div className="flex gap-12 bg-gradient-to-tr from-[#111111E5] from-10% via-[#232323F1] via-80% to-[#4C4C4C] to-90% rounded-xl p-12 hover:shadow-xl shadow-lg">
+          <div className="flex-1 flex-col items-start gap-4 mb-4">
             <div className="w-12 h-12 mb-5 bg-[#EA3C30] rounded-lg flex items-center justify-center flex-shrink-0">
               <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 2.25a9.75 9.75 0 100 19.5 9.75 9.75 0 000-19.5z" />
               </svg>
             </div>
             <div>
-              <h3 className="text-[32px] w-6/12 font-medium text-[#ECECEC] mb-4 leading-[40px]">
+              <h3 className="text-[32px] lg:w-9/12 font-medium text-[#ECECEC] mb-4 leading-[40px]">
                 Full-Customer Support from our Sustainability Experts
               </h3>
-              <p className="text-gray-300 w-6/12 font-[16px] leading-relaxed">
-              Our dedicated team provides you full-guidance, from helping you navigate our platform, understanding the CSRD/VSME, to helping you reporting on all the data points required.
+              <p className="text-gray-300 lg:w-9/12 font-[16px] leading-relaxed">
+                Our dedicated team provides you full-guidance, from helping you navigate our platform, understanding the CSRD/VSME, to helping you reporting on all the data points required.
               </p>
             </div>
+          </div>
+          <div>
+            <Image 
+              src="/green-dash-expert.png" 
+              alt="Green Dash Expert" 
+              width={400} 
+              height={400}
+              className="w-full h-auto rounded-lg"
+            />
           </div>
         </div>
         <div className="flex items-center justify-center gap-6 mt-10">

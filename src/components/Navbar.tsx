@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Navbar() {
   const [isPlatformOpen, setIsPlatformOpen] = useState(false);
@@ -20,18 +21,20 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-[#EEFFEC] z-30">
+    <nav className="fixed top-0 left-0 right-0 bg-[#EEFFEC] z-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Image
-              src="/green-dash-logo.png"
-              alt="Green Dash Logo"
-              width={120}
-              height={40}
-              className="h-10 w-auto"
-            />
+            <Link href="/">
+              <Image
+                src="/green-dash-logo.png"
+                alt="Green Dash Logo"
+                width={120}
+                height={40}
+                className="h-10 w-auto"
+              />
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
@@ -42,7 +45,7 @@ export default function Navbar() {
                 onClick={() => setIsPlatformOpen(!isPlatformOpen)}
                 className="flex items-center space-x-1 text-[rgba(0, 0, 0, 0.6)] hover:text-gray-900 font-regular transition-colors"
               >
-                <span className="t ext-[rgba(0, 0, 0, 0.6)]">Platform</span>
+                <span className="text-[rgba(0, 0, 0, 0.6)]">Platform</span>
                 <svg
                   className={`w-4 h-4 transition-transform ${isPlatformOpen ? "rotate-180" : ""}`}
                   fill="none"
@@ -69,24 +72,31 @@ export default function Navbar() {
             </div>
 
             {/* Navigation Links */}
+            <Link href="/pricing" className="text-[rgba(0, 0, 0, 0.6)] hover:text-gray-900 font-regular transition-colors">
+              Pricing
+            </Link>
             <a href="#" className="text-[rgba(0, 0, 0, 0.6)] hover:text-gray-900 font-regular transition-colors">
               Academy
             </a>
-            <a href="#" className="text-[rgba(0, 0, 0, 0.6)] hover:text-gray-900 font-regular transition-colors">
+            <Link href="/certification" className="text-[rgba(0,0, 0, 0.6)] hover:text-gray-900 font-regular transition-colors">
               Certification
-            </a>
+            </Link>
             <a href="#" className="text-[rgba(0, 0, 0, 0.6)] hover:text-gray-900 font-regular transition-colors">
               For Consultants
             </a>
 
             {/* CTA Buttons */}
             <div className="flex items-center space-x-4">
-              <button className="bg-[#6FE451] text-white px-6 py-2 rounded-lg font-semibold hover:bg-lime-600 transition-colors">
-                Contact Us
-              </button>
-              <button className="text-white bg-black px-6 py-2 rounded-lg font-semibold hover:bg-gray-500 hover:text-white transition-colors">
-                Join Our Waiting List
-              </button>
+              <Link href="/contact-us">
+                <button className="bg-[#6FE451] text-white px-6 py-2 rounded-lg font-semibold hover:bg-lime-600 transition-colors">
+                  Contact Us
+                </button>
+              </Link>
+              <Link href="/join-waiting-list">
+                <button className="text-white bg-black px-6 py-2 rounded-lg font-semibold hover:bg-gray-500 hover:text-white transition-colors">
+                  Join Our Waiting List
+                </button>
+              </Link>
             </div>
           </div>
 
@@ -106,6 +116,18 @@ export default function Navbar() {
         {/* Mobile Navigation */}
         {isMobileOpen && (
           <div className="md:hidden py-4 border-t border-gray-200">
+            {/* Mobile Logo */}
+            <div className="mb-4">
+              <Link href="/">
+                <Image
+                  src="/green-dash-logo.png"
+                  alt="Green Dash Logo"
+                  width={100}
+                  height={32}
+                  className="h-8 w-auto"
+                />
+              </Link>
+            </div>
 
             {/* Mobile Platform Dropdown */}
             <div className="mb-4">
@@ -115,7 +137,7 @@ export default function Navbar() {
               >
                 <span>Platform</span>
                 <svg
-                  className={`w-4 h-4 transition-transform ${isPlatformOpen ? "rotate-180" : "rotate-0"}`}
+                  className={`w-4 h-4 transition-transform ${isPlatformOpen ? "rotate-180" : ""}`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -141,29 +163,36 @@ export default function Navbar() {
 
             {/* Mobile Navigation Links */}
             <div className="space-y-2 mb-4">
+              <Link href="/pricing" className="block text-gray-700 hover:text-gray-900 font-medium py-2">
+                Pricing
+              </Link>
               <a href="#" className="block text-gray-700 hover:text-gray-900 font-medium py-2">
                 Academy
               </a>
-              <a href="#" className="block text-gray-700 hover:text-gray-900 font-medium py-2">
+              <Link href="/certification" className="block text-gray-700 hover:text-gray-900 font-medium py-2">
                 Certification
-              </a>
+              </Link>
               <a href="#" className="block text-gray-700 hover:text-gray-900 font-medium py-2">
                 For Consultants
               </a>
             </div>
 
-              {/* Mobile Call-to-Action Buttons */}
-              <div className="pt-4 space-y-3">
+            {/* Mobile Call-to-Action Buttons */}
+            <div className="pt-4 space-y-3">
+              <Link href="/contact-us">
                 <button className="w-full bg-lime-500 hover:bg-lime-600 text-white px-6 py-3 rounded-lg font-medium transition-colors shadow-md">
                   Contact Us
                 </button>
+              </Link>
+              <Link href="/join-waiting-list">
                 <button className="w-full bg-black hover:bg-gray-800 text-white px-6 py-3 rounded-lg font-medium transition-colors shadow-md">
                   Join Waiting List
                 </button>
-              </div>
+              </Link>
             </div>
-          )}
-        </div>
+          </div>
+        )}
+      </div>
     </nav>
   );
 }
