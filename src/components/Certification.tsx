@@ -4,7 +4,9 @@ import Link from 'next/link';
 
 export default function Certification() {
   return (
-    <section className="py-20 bg-gradient-to-b from-[#7FFF6B] via-[#EEFFEC] to-[#7FFF6B]">
+    <section className="py-20" style={{
+      background: 'linear-gradient(to bottom, #7FFF6B 0%, #ADFFA0 20%, #ADFFA0 40%, #FFFFFF 60%, #FFFFFF 85%, #7FFF6B 100%)'
+    }}>
       <div className="max-w-7xl mx-auto px-6">
         {/* Header Section */}
         <div className="text-center mb-16">
@@ -96,7 +98,7 @@ export default function Certification() {
             
             {/* Button */}
             <div className="mb-6">
-              <Link href="/contact-us" className="block">
+              <Link href="/csrd-vsme-certification" className="block">
                 <button className="w-full bg-white border-2 border-gray-300 text-[#001354] hover:bg-gray-100 px-6 py-3 rounded-lg font-medium transition-all duration-200 flex items-center justify-center gap-2">
                   <span>Get started</span>
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

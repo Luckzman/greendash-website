@@ -59,22 +59,16 @@ export default function Navbar() {
               {isPlatformOpen && (
                 <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200 py-2 z-50">
                   <a href="#" className="block px-4 py-2 text-sm text-[rgba(0, 0, 0, 0.6)] hover:bg-gray-100 font-regular">
-                    Dashboard
+                    Features
                   </a>
-                  <a href="#" className="block px-4 py-2 text-sm text-[rgba(0, 0, 0, 0.6)] hover:bg-gray-100 font-regular">
-                    Reporting
-                  </a>
-                  <a href="#" className="block px-4 py-2 text-sm text-[rgba(0, 0, 0, 0.6)] hover:bg-gray-100 font-regular">
-                    Analytics
+                  <a href="/pricing" className="block px-4 py-2 text-sm text-[rgba(0, 0, 0, 0.6)] hover:bg-gray-100 font-regular">
+                    Pricing
                   </a>
                 </div>
               )}
             </div>
 
             {/* Navigation Links */}
-            <Link href="/pricing" className="text-[rgba(0, 0, 0, 0.6)] hover:text-gray-900 font-regular transition-colors">
-              Pricing
-            </Link>
             <a href="#" className="text-[rgba(0, 0, 0, 0.6)] hover:text-gray-900 font-regular transition-colors">
               Academy
             </a>
@@ -82,7 +76,7 @@ export default function Navbar() {
               Certification
             </Link>
             <a href="#" className="text-[rgba(0, 0, 0, 0.6)] hover:text-gray-900 font-regular transition-colors">
-              For Consultants
+              For Professionals
             </a>
 
             {/* CTA Buttons */}
@@ -147,15 +141,12 @@ export default function Navbar() {
               </button>
 
               {isPlatformOpen && (
-                <div className="ml-4 mt-2 space-y-2">
+                <div className="ml-4 mt-2 space-y-2">]
                   <a href="#" className="block text-sm text-gray-600 hover:text-gray-900">
-                    Dashboard
+                    Features
                   </a>
-                  <a href="#" className="block text-sm text-gray-600 hover:text-gray-900">
-                    Reporting
-                  </a>
-                  <a href="#" className="block text-sm text-gray-600 hover:text-gray-900">
-                    Analytics
+                  <a href="/pricing" className="block text-sm text-gray-600 hover:text-gray-900">
+                    Pricing
                   </a>
                 </div>
               )}
@@ -163,9 +154,6 @@ export default function Navbar() {
 
             {/* Mobile Navigation Links */}
             <div className="space-y-2 mb-4">
-              <Link href="/pricing" className="block text-gray-700 hover:text-gray-900 font-medium py-2">
-                Pricing
-              </Link>
               <a href="#" className="block text-gray-700 hover:text-gray-900 font-medium py-2">
                 Academy
               </a>
@@ -173,7 +161,7 @@ export default function Navbar() {
                 Certification
               </Link>
               <a href="#" className="block text-gray-700 hover:text-gray-900 font-medium py-2">
-                For Consultants
+                For Professionals
               </a>
             </div>
 

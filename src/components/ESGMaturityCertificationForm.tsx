@@ -1,9 +1,11 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import PhoneNumberInput from './PhoneNumberInput';
 
 export default function ESGMaturityCertificationForm() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -36,7 +38,8 @@ export default function ESGMaturityCertificationForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('ESG Maturity Certification form submitted:', formData);
-    // Handle form submission here
+    // Navigate to the booking page
+    router.push('/esg-maturity-certification/booking');
   };
 
   return (
@@ -75,7 +78,7 @@ export default function ESGMaturityCertificationForm() {
                   name="firstName"
                   value={formData.firstName}
                   onChange={handleInputChange}
-                  required
+  
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                 />
               </div>
@@ -90,7 +93,7 @@ export default function ESGMaturityCertificationForm() {
                   name="lastName"
                   value={formData.lastName}
                   onChange={handleInputChange}
-                  required
+  
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                 />
               </div>
@@ -107,7 +110,7 @@ export default function ESGMaturityCertificationForm() {
                 name="company"
                 value={formData.company}
                 onChange={handleInputChange}
-                required
+
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
               />
             </div>
@@ -123,7 +126,7 @@ export default function ESGMaturityCertificationForm() {
                 name="companyEmail"
                 value={formData.companyEmail}
                 onChange={handleInputChange}
-                required
+
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
               />
             </div>
@@ -134,7 +137,6 @@ export default function ESGMaturityCertificationForm() {
               onChange={(value) => setFormData(prev => ({ ...prev, phoneNumber: value }))}
               countryCode={formData.phoneCountry}
               onCountryChange={(countryCode) => setFormData(prev => ({ ...prev, phoneCountry: countryCode }))}
-              required
             />
 
             {/* Job Title */}
@@ -197,7 +199,6 @@ export default function ESGMaturityCertificationForm() {
                 name="consent"
                 checked={formData.consent}
                 onChange={handleInputChange}
-                required
                 className="mt-1 w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500"
               />
               <label htmlFor="consent" className="text-sm text-gray-700">

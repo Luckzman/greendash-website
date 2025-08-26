@@ -1,9 +1,11 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import PhoneNumberInput from './PhoneNumberInput';
 
-export default function JoinWaitingListForm({ essentialKit }: { essentialKit?: boolean }) {
+export default function CSRDVSMECertificationForm() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -35,8 +37,9 @@ export default function JoinWaitingListForm({ essentialKit }: { essentialKit?: b
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Handle form submission here
+    console.log('CSRD/VSME Certification form submitted:', formData);
+    // Navigate to the booking page
+    router.push('/csrd-vsme-certification/booking');
   };
 
   return (
@@ -46,17 +49,17 @@ export default function JoinWaitingListForm({ essentialKit }: { essentialKit?: b
         <div className="text-center mb-12">
           {/* Top Badge */}
           <div className="inline-block bg-white rounded-[10px] px-10 py-1 mb-6 border border-[rgba(34, 34, 34, 0.1)] shadow-sm">
-            <span className="text-sm font-medium text-black">{essentialKit ? 'CSRD/VSME Essentials Kit' : 'Join the Waiting List'}</span>
+            <span className="text-sm font-medium text-black">Certification</span>
           </div>
           
           {/* Main Headline */}
-          <h1 className="text-4xl lg:text-5xl font-bold bg-gradient-to-b from-[#000000] to-[#001354] bg-clip-text text-transparent pb-6 leading-[70px]">
-            {essentialKit ? 'Get your free CSRD/VSME Essentials Now!' : 'Hold Tight, GreenDash is Coming Soon'}
+          <h1 className="text-4xl lg:text-5xl font-bold text-[#001354] pb-6 leading-[70px]">
+          Let&apos;s start your CSRD/VSME Certification journey
           </h1>
           
           {/* Description */}
           <p className="text-xl text-[#010D3E] max-w-3xl mx-auto leading-relaxed">
-            {essentialKit ? 'Answer to the questions below and download your FREE CSRD/VSME Essentials Kit, so you can start your reporting journey!' : "We're preparing for a launch that will make a real impact. By joining the waiting list, you'll secure your spot, receive early updates, and be the first to experience our platform"}
+            Please provide us some initial information and book your first call with us!
           </p>
         </div>
 
@@ -75,7 +78,7 @@ export default function JoinWaitingListForm({ essentialKit }: { essentialKit?: b
                   name="firstName"
                   value={formData.firstName}
                   onChange={handleInputChange}
-                  required
+  
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                 />
               </div>
@@ -90,7 +93,7 @@ export default function JoinWaitingListForm({ essentialKit }: { essentialKit?: b
                   name="lastName"
                   value={formData.lastName}
                   onChange={handleInputChange}
-                  required
+  
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                 />
               </div>
@@ -107,7 +110,7 @@ export default function JoinWaitingListForm({ essentialKit }: { essentialKit?: b
                 name="company"
                 value={formData.company}
                 onChange={handleInputChange}
-                required
+
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
               />
             </div>
@@ -123,7 +126,7 @@ export default function JoinWaitingListForm({ essentialKit }: { essentialKit?: b
                 name="companyEmail"
                 value={formData.companyEmail}
                 onChange={handleInputChange}
-                required
+
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
               />
             </div>
@@ -134,7 +137,6 @@ export default function JoinWaitingListForm({ essentialKit }: { essentialKit?: b
               onChange={(value) => setFormData(prev => ({ ...prev, phoneNumber: value }))}
               countryCode={formData.phoneCountry}
               onCountryChange={(countryCode) => setFormData(prev => ({ ...prev, phoneCountry: countryCode }))}
-              required
             />
 
             {/* Job Title */}
@@ -177,7 +179,7 @@ export default function JoinWaitingListForm({ essentialKit }: { essentialKit?: b
                 name="employeeCount"
                 value={formData.employeeCount}
                 onChange={handleInputChange}
-                className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
               >
                 <option value="">Select</option>
                 <option value="0-1">0-1 employees</option>
@@ -185,6 +187,7 @@ export default function JoinWaitingListForm({ essentialKit }: { essentialKit?: b
                 <option value="11-250">11-250 employees</option>
                 <option value="251-500">251-500 employees</option>
                 <option value="501-1000">501-1000 employees</option>
+                <option value="1000+">1000+ employees</option>
               </select>
             </div>
 
@@ -196,7 +199,6 @@ export default function JoinWaitingListForm({ essentialKit }: { essentialKit?: b
                 name="consent"
                 checked={formData.consent}
                 onChange={handleInputChange}
-                required
                 className="mt-1 w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500"
               />
               <label htmlFor="consent" className="text-sm text-gray-700">
@@ -212,9 +214,9 @@ export default function JoinWaitingListForm({ essentialKit }: { essentialKit?: b
             <div className="pt-4 text-center">
               <button
                 type="submit"
-                className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg font-semibold text-lg transition-all duration-200 transform hover:-translate-y-0.5"
+                className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold text-lg transition-all duration-200 transform hover:-translate-y-0.5"
               >
-                {essentialKit ? 'Download your CSRD/VSME Essentials PDF' : 'Join Waiting List'}
+                And now book your call to start the journey!
               </button>
             </div>
           </form>
