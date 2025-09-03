@@ -7,6 +7,7 @@ interface CountryCode {
   flag: string;
   name: string;
   dialCode: string;
+  maxLength: number; // Maximum number of digits after country code
 }
 
 interface PhoneNumberInputProps {
@@ -17,15 +18,30 @@ interface PhoneNumberInputProps {
   required?: boolean;
   className?: string;
   label?: string;
+  error?: string;
 }
 
 const countries: CountryCode[] = [
-  { code: 'US', flag: '🇺🇸', name: 'United States', dialCode: '+1' },
-  { code: 'UK', flag: '🇬🇧', name: 'United Kingdom', dialCode: '+44' },
-  { code: 'CA', flag: '🇨🇦', name: 'Canada', dialCode: '+1' },
-  { code: 'AU', flag: '🇦🇺', name: 'Australia', dialCode: '+61' },
-  { code: 'DE', flag: '🇩🇪', name: 'Germany', dialCode: '+49' },
-  { code: 'FR', flag: '🇫🇷', name: 'France', dialCode: '+33' },
+  { code: 'US', flag: '🇺🇸', name: 'United States', dialCode: '+1', maxLength: 10 },
+  { code: 'UK', flag: '🇬🇧', name: 'United Kingdom', dialCode: '+44', maxLength: 10 },
+  { code: 'CA', flag: '🇨🇦', name: 'Canada', dialCode: '+1', maxLength: 10 },
+  { code: 'AU', flag: '🇦🇺', name: 'Australia', dialCode: '+61', maxLength: 9 },
+  { code: 'DE', flag: '🇩🇪', name: 'Germany', dialCode: '+49', maxLength: 11 },
+  { code: 'FR', flag: '🇫🇷', name: 'France', dialCode: '+33', maxLength: 9 },
+  { code: 'PT', flag: '🇵🇹', name: 'Portugal', dialCode: '+351', maxLength: 9 },
+  { code: 'ES', flag: '🇪🇸', name: 'Spain', dialCode: '+34', maxLength: 9 },
+  { code: 'IT', flag: '🇮🇹', name: 'Italy', dialCode: '+39', maxLength: 9 },
+  { code: 'NL', flag: '🇳🇱', name: 'Netherlands', dialCode: '+31', maxLength: 9 },
+  { code: 'BE', flag: '🇧🇪', name: 'Belgium', dialCode: '+32', maxLength: 9 },
+  { code: 'CH', flag: '🇨🇭', name: 'Switzerland', dialCode: '+41', maxLength: 9 },
+  { code: 'AT', flag: '🇦🇹', name: 'Austria', dialCode: '+43', maxLength: 9 },
+  { code: 'SE', flag: '🇸🇪', name: 'Sweden', dialCode: '+46', maxLength: 9 },
+  { code: 'NO', flag: '🇳🇴', name: 'Norway', dialCode: '+47', maxLength: 9 },
+  { code: 'DK', flag: '🇩🇰', name: 'Denmark', dialCode: '+45', maxLength: 9 },
+  { code: 'FI', flag: '🇫🇮', name: 'Finland', dialCode: '+358', maxLength: 9 },
+  { code: 'EE', flag: '🇪🇪', name: 'Estonia', dialCode: '+372', maxLength: 9 },
+  { code: 'LT', flag: '🇱🇹', name: 'Lithuania', dialCode: '+370', maxLength: 9 },
+  { code: 'LV', flag: '🇱🇻', name: 'Latvia', dialCode: '+371', maxLength: 9 },
 ];
 
 export default function PhoneNumberInput({
@@ -35,17 +51,22 @@ export default function PhoneNumberInput({
   onCountryChange,
   required = false,
   className = '',
-  label = 'Phone number'
+  label = 'Phone number',
+  error
 }: PhoneNumberInputProps) {
   const [localValue, setLocalValue] = useState(value);
 
   // Get current country info
   const currentCountry = countries.find(c => c.code === countryCode) || countries[0];
 
-  // Update local value when country changes
+  // Update local value when country changes (but not when value changes from user input)
   useEffect(() => {
-    const newValue = currentCountry.dialCode + (value.replace(/^\+\d+/, '') || '');
-    setLocalValue(newValue);
+    // Only update if the country code actually changed, not when user is typing
+    if (value && !value.startsWith(currentCountry.dialCode)) {
+      const numberPart = value.replace(/^\+\d+/, '');
+      const newValue = currentCountry.dialCode + numberPart;
+      setLocalValue(newValue);
+    }
   }, [countryCode, currentCountry.dialCode, value]);
 
   // Handle country change
@@ -58,6 +79,7 @@ export default function PhoneNumberInput({
       const numberPart = localValue.replace(/^\+\d+/, '');
       const newValue = newCountry.dialCode + numberPart;
       
+      console.log('Country changed to:', newCountryCode, 'Dial code:', newCountry.dialCode, 'New value:', newValue);
       setLocalValue(newValue);
       onCountryChange(newCountryCode);
       // Don't call onChange here to avoid loops
@@ -82,8 +104,17 @@ export default function PhoneNumberInput({
       return;
     }
     
-    setLocalValue(inputValue);
-    onChange(inputValue);
+    // Extract the number part (after country code) and filter out non-numeric characters
+    const numberPart = inputValue.substring(currentCountry.dialCode.length);
+    const filteredNumberPart = numberPart.replace(/[^\d]/g, ''); // Only allow digits
+    
+    // Limit the number of digits based on country's max length
+    const limitedNumberPart = filteredNumberPart.substring(0, currentCountry.maxLength);
+    const finalValue = currentCountry.dialCode + limitedNumberPart;
+    
+    console.log('Phone input - Input:', inputValue, 'Country:', currentCountry.dialCode, 'Number part:', numberPart, 'Filtered:', filteredNumberPart, 'Final:', finalValue);
+    setLocalValue(finalValue);
+    onChange(finalValue);
   };
 
   // Handle focus to maintain cursor position
@@ -138,11 +169,16 @@ export default function PhoneNumberInput({
           onFocus={handleFocus}
           onClick={handleClick}
           onKeyDown={handleKeyDown}
-          required={required}
-          className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+          pattern="\+\d+.*"
+          className={`flex-1 px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent ${
+            error ? 'border-red-500' : 'border-gray-300'
+          }`}
           placeholder={currentCountry.dialCode}
         />
       </div>
+      {error && (
+        <p className="mt-1 text-sm text-red-600">{error}</p>
+      )}
     </div>
   );
 }

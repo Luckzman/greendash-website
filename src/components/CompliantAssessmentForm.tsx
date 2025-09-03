@@ -9,14 +9,14 @@ export default function CompliantAssessmentForm() {
     lastName: '',
     company: '',
     companyEmail: '',
-    phoneCountry: 'US',
-    phoneNumber: '+1',
+    phoneNumber: '',
+    phoneCountry: '+1',
     jobTitle: '',
-    companyIndustry: '',
-    employeeCount: '',
-    isBasedInEU: '',
-    hasLargeClients: '',
-    largeEUClientsCount: '',
+    industry: '',
+    numberofemployees: '',
+    euBase: '',
+    largeClients: '',
+    largeEuClients: '',
     consent: false
   });
 
@@ -170,7 +170,7 @@ export default function CompliantAssessmentForm() {
               <select
                 id="companyIndustry"
                 name="companyIndustry"
-                value={formData.companyIndustry}
+                value={formData.industry}
                 onChange={handleInputChange}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
               >
@@ -188,13 +188,13 @@ export default function CompliantAssessmentForm() {
 
             {/* Employee Count */}
             <div>
-              <label htmlFor="employeeCount" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="numberofemployees" className="block text-sm font-medium text-gray-700 mb-2">
                 How many employees does your organization have?
               </label>
               <select
-                id="employeeCount"
-                name="employeeCount"
-                value={formData.employeeCount}
+                id="numberofemployees"
+                name="numberofemployees"
+                value={formData.numberofemployees}
                 onChange={handleInputChange}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
               >
@@ -217,10 +217,10 @@ export default function CompliantAssessmentForm() {
                 <label className="flex items-center">
                   <input
                     type="radio"
-                    name="isBasedInEU"
+                    name="euBase"
                     value="yes"
-                    checked={formData.isBasedInEU === 'yes'}
-                    onChange={() => handleRadioChange('isBasedInEU', 'yes')}
+                    checked={formData.euBase === 'yes'}
+                    onChange={() => handleRadioChange('euBase', 'yes')}
                     className="mr-2 text-green-600 border-gray-300 focus:ring-green-500"
                   />
                   <span className="text-gray-700">Yes</span>
@@ -228,10 +228,10 @@ export default function CompliantAssessmentForm() {
                 <label className="flex items-center">
                   <input
                     type="radio"
-                    name="isBasedInEU"
+                    name="euBase"
                     value="no"
-                    checked={formData.isBasedInEU === 'no'}
-                    onChange={() => handleRadioChange('isBasedInEU', 'no')}
+                    checked={formData.euBase === 'no'}
+                    onChange={() => handleRadioChange('euBase', 'no')}
                     className="mr-2 text-green-600 border-gray-300 focus:ring-green-500"
                   />
                   <span className="text-gray-700">No</span>
@@ -248,10 +248,10 @@ export default function CompliantAssessmentForm() {
                 <label className="flex items-center">
                   <input
                     type="radio"
-                    name="hasLargeClients"
+                    name="largeClients"
                     value="yes"
-                    checked={formData.hasLargeClients === 'yes'}
-                    onChange={() => handleRadioChange('hasLargeClients', 'yes')}
+                    checked={formData.largeClients === 'yes'}
+                    onChange={() => handleRadioChange('largeClients', 'yes')}
                     className="mr-2 text-green-600 border-gray-300 focus:ring-green-500"
                   />
                   <span className="text-gray-700">Yes</span>
@@ -259,10 +259,10 @@ export default function CompliantAssessmentForm() {
                 <label className="flex items-center">
                   <input
                     type="radio"
-                    name="hasLargeClients"
+                    name="largeClients"
                     value="no"
-                    checked={formData.hasLargeClients === 'no'}
-                    onChange={() => handleRadioChange('hasLargeClients', 'no')}
+                    checked={formData.largeClients === 'no'}
+                    onChange={() => handleRadioChange('largeClients', 'no')}
                     className="mr-2 text-green-600 border-gray-300 focus:ring-green-500"
                   />
                   <span className="text-gray-700">No</span>
@@ -277,8 +277,8 @@ export default function CompliantAssessmentForm() {
               </label>
               <select
                 id="largeEUClientsCount"
-                name="largeEUClientsCount"
-                value={formData.largeEUClientsCount}
+                name="largeEuClients"
+                value={formData.largeEuClients}
                 onChange={handleInputChange}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
               >

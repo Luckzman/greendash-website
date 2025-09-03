@@ -1,11 +1,11 @@
-import ESGMaturityCertificationForm from "../../components/ESGMaturityCertificationForm";
+import JoinWaitingListForm from "@/components/JoinWaitingListForm";
 import Hero from "../../components/Hero";
 
 export default function ESGMaturityCertificationPage() {
   return (
     <>
       <Hero />
-      <ESGMaturityCertificationForm />
+      <JoinWaitingListForm esgMaturityCertification={true}/>
     </>
   );
 }

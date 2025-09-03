@@ -1,11 +1,11 @@
-import CSRDVSMECertificationForm from "../../components/CSRDVSMECertificationForm";
+import JoinWaitingListForm from "@/components/JoinWaitingListForm";
 import Hero from "../../components/Hero";
 
 export default function CSRDVSMECertificationPage() {
   return (
     <>
       <Hero />
-      <CSRDVSMECertificationForm />
+      <JoinWaitingListForm csrdVsmeCertification={true}/>
     </>
   );
 }

@@ -3,11 +3,16 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [isPlatformOpen, setIsPlatformOpen] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+  
+  // Determine if we're on the for-professionals page
+  const isForProfessionalsPage = pathname === '/for-professionals';
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -21,14 +26,14 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-[#EEFFEC] z-50">
+    <nav className={`fixed top-0 left-0 right-0 z-50 ${isForProfessionalsPage ? 'bg-black' : 'bg-[#EEFFEC]'}`}>
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/">
               <Image
-                src="/green-dash-logo.png"
+                src={isForProfessionalsPage ? "/green-dash-light-logo.svg" : "/green-dash-logo.png"}
                 alt="Green Dash Logo"
                 width={120}
                 height={40}
@@ -43,9 +48,13 @@ export default function Navbar() {
             <div className="relative" ref={dropdownRef}>
               <button
                 onClick={() => setIsPlatformOpen(!isPlatformOpen)}
-                className="flex items-center space-x-1 text-[rgba(0, 0, 0, 0.6)] hover:text-gray-900 font-regular transition-colors"
+                className={`flex items-center space-x-1 font-regular transition-colors ${
+                  isForProfessionalsPage 
+                    ? 'text-white hover:text-gray-300' 
+                    : 'text-[rgba(0, 0, 0, 0.6)] hover:text-gray-900'
+                }`}
               >
-                <span className="text-[rgba(0, 0, 0, 0.6)]">Platform</span>
+                <span className={isForProfessionalsPage ? 'text-white' : 'text-[rgba(0, 0, 0, 0.6)]'}>Platform</span>
                 <svg
                   className={`w-4 h-4 transition-transform ${isPlatformOpen ? "rotate-180" : ""}`}
                   fill="none"
@@ -69,15 +78,30 @@ export default function Navbar() {
             </div>
 
             {/* Navigation Links */}
-            <a href="#" className="text-[rgba(0, 0, 0, 0.6)] hover:text-gray-900 font-regular transition-colors">
+            <a href="#" className={`font-regular transition-colors ${
+              isForProfessionalsPage 
+                ? 'text-white hover:text-gray-300' 
+                : 'text-[rgba(0, 0, 0, 0.6)] hover:text-gray-900'
+            }`}>
               Academy
             </a>
-            <Link href="/certification" className="text-[rgba(0,0, 0, 0.6)] hover:text-gray-900 font-regular transition-colors">
+            <Link href="/certification" className={`font-regular transition-colors ${
+              isForProfessionalsPage 
+                ? 'text-white hover:text-gray-300' 
+                : 'text-[rgba(0,0, 0, 0.6)] hover:text-gray-900'
+            }`}>
               Certification
             </Link>
-            <a href="#" className="text-[rgba(0, 0, 0, 0.6)] hover:text-gray-900 font-regular transition-colors">
-              For Professionals
-            </a>
+            <Link 
+              href={isForProfessionalsPage ? "/" : "/for-professionals"} 
+              className={`font-regular transition-colors ${
+                isForProfessionalsPage 
+                  ? 'text-white hover:text-gray-300' 
+                  : 'text-[rgba(0, 0, 0, 0.6)] hover:text-gray-900'
+              }`}
+            >
+              {isForProfessionalsPage ? "For SMEs" : "For Professionals"}
+            </Link>
 
             {/* CTA Buttons */}
             <div className="flex items-center space-x-4">
@@ -87,8 +111,12 @@ export default function Navbar() {
                 </button>
               </Link>
               <Link href="/join-waiting-list">
-                <button className="text-white bg-black px-6 py-2 rounded-lg font-semibold hover:bg-gray-500 hover:text-white transition-colors">
-                  Join Our Waiting List
+                <button className={`px-6 py-2 rounded-lg font-semibold transition-colors ${
+                  isForProfessionalsPage 
+                    ? 'bg-white text-black hover:bg-gray-200' 
+                    : 'bg-black text-white hover:bg-gray-500'
+                }`}>
+                  Get Started
                 </button>
               </Link>
             </div>
@@ -98,7 +126,7 @@ export default function Navbar() {
           <div className="md:hidden">
             <button
               onClick={() => setIsMobileOpen(!isMobileOpen)}
-              className="text-gray-700 hover:text-gray-900"
+              className={isForProfessionalsPage ? "text-white hover:text-gray-300" : "text-gray-700 hover:text-gray-900"}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -114,7 +142,7 @@ export default function Navbar() {
             <div className="mb-4">
               <Link href="/">
                 <Image
-                  src="/green-dash-logo.png"
+                  src={isForProfessionalsPage ? "/green-dash-light-logo.svg" : "/green-dash-logo.png"}
                   alt="Green Dash Logo"
                   width={100}
                   height={32}
@@ -127,7 +155,11 @@ export default function Navbar() {
             <div className="mb-4">
               <button
                 onClick={() => setIsPlatformOpen(!isPlatformOpen)}
-                className="flex items-center justify-between w-full text-left text-gray-700 hover:text-gray-900 font-medium py-2"
+                className={`flex items-center justify-between w-full text-left font-medium py-2 ${
+                  isForProfessionalsPage 
+                    ? 'text-white hover:text-gray-300' 
+                    : 'text-gray-700 hover:text-gray-900'
+                }`}
               >
                 <span>Platform</span>
                 <svg
@@ -154,15 +186,30 @@ export default function Navbar() {
 
             {/* Mobile Navigation Links */}
             <div className="space-y-2 mb-4">
-              <a href="#" className="block text-gray-700 hover:text-gray-900 font-medium py-2">
+              <a href="#" className={`block font-medium py-2 ${
+                isForProfessionalsPage 
+                  ? 'text-white hover:text-gray-300' 
+                  : 'text-gray-700 hover:text-gray-900'
+              }`}>
                 Academy
               </a>
-              <Link href="/certification" className="block text-gray-700 hover:text-gray-900 font-medium py-2">
+              <Link href="/certification" className={`block font-medium py-2 ${
+                isForProfessionalsPage 
+                  ? 'text-white hover:text-gray-300' 
+                  : 'text-gray-700 hover:text-gray-900'
+              }`}>
                 Certification
               </Link>
-              <a href="#" className="block text-gray-700 hover:text-gray-900 font-medium py-2">
-                For Professionals
-              </a>
+              <Link 
+                href={isForProfessionalsPage ? "/" : "/for-professionals"} 
+                className={`block font-medium py-2 ${
+                  isForProfessionalsPage 
+                    ? 'text-white hover:text-gray-300' 
+                    : 'text-gray-700 hover:text-gray-900'
+                }`}
+              >
+                {isForProfessionalsPage ? "For SMEs" : "For Professionals"}
+              </Link>
             </div>
 
             {/* Mobile Call-to-Action Buttons */}
@@ -173,8 +220,12 @@ export default function Navbar() {
                 </button>
               </Link>
               <Link href="/join-waiting-list">
-                <button className="w-full bg-black hover:bg-gray-800 text-white px-6 py-3 rounded-lg font-medium transition-colors shadow-md">
-                  Join Waiting List
+                <button className={`w-full px-6 py-3 rounded-lg font-medium transition-colors shadow-md ${
+                  isForProfessionalsPage 
+                    ? 'bg-white text-black hover:bg-gray-200' 
+                    : 'bg-black text-white hover:bg-gray-800'
+                }`}>
+                  Get Started
                 </button>
               </Link>
             </div>

@@ -1,0 +1,15 @@
+# HubSpot API Configuration
+# Copy these variables to your .env.local file and fill in your actual values
+
+# Your HubSpot API Key (Private App Access Token)
+HUBSPOT_API_KEY=your_hubspot_api_key_here
+
+# Your HubSpot Portal ID (found in your HubSpot account settings)
+HUBSPOT_PORTAL_ID=your_portal_id_here
+
+# Your HubSpot Form IDs (for form tracking)
+JOIN_WAITING_LIST_FORM_ID=your_join_waiting_list_form_id_here
+CONTACT_US_FORM_ID=your_contact_us_form_id_here
+
+# Your website domain (for form context)
+WEBSITE_DOMAIN=https://yourdomain.com

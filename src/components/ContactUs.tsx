@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import PhoneNumberInput from './PhoneNumberInput';
+import Toast from './Toast';
+import { handleFormSubmission } from '../lib/hubspot';
 
 export default function ContactUsForm() {
   const [formData, setFormData] = useState({
@@ -9,14 +11,99 @@ export default function ContactUsForm() {
     lastName: '',
     company: '',
     companyEmail: '',
-    phoneCountry: 'US',
-    phoneNumber: '+1',
+    phoneNumber: '',
+    phoneCountry: '+1',
     jobTitle: '',
     industry: '',
-    employeeCount: '',
+    numberofemployees: '',
     message: '',
     consent: false
   });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [toast, setToast] = useState<{
+    type: 'success' | 'error';
+    message: string;
+    isVisible: boolean;
+  }>({
+    type: 'success',
+    message: '',
+    isVisible: false
+  });
+
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
+  const validateForm = () => {
+    console.log('Validating contact form with data:', formData);
+    const newErrors: Record<string, string> = {};
+
+    // Required field validation
+    if (!formData.firstName.trim()) {
+      newErrors.firstName = 'First name is required';
+    }
+    if (!formData.lastName.trim()) {
+      newErrors.lastName = 'Last name is required';
+    }
+    if (!formData.company.trim()) {
+      newErrors.company = 'Company is required';
+    }
+    if (!formData.companyEmail.trim()) {
+      newErrors.companyEmail = 'Company email is required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.companyEmail)) {
+      newErrors.companyEmail = 'Please enter a valid email address';
+    }
+    if (!formData.phoneNumber.trim()) {
+      newErrors.phoneNumber = 'Phone number is required';
+    } else {
+      // Extract the number part (after country code) for length validation
+      // Find the country code that matches the beginning of the phone number
+      const phoneNumber = formData.phoneNumber;
+      let numberPart = '';
+      
+      // Try to match with the stored country code first
+      if (formData.phoneCountry && phoneNumber.startsWith(formData.phoneCountry)) {
+        numberPart = phoneNumber.substring(formData.phoneCountry.length);
+      } else {
+        // Fallback: try to extract using regex for common country codes
+        const match = phoneNumber.match(/^(\+\d{1,4})(\d+)$/);
+        if (match) {
+          numberPart = match[2];
+        } else {
+          // Last resort: remove the + and first few digits
+          numberPart = phoneNumber.replace(/^\+\d{1,4}/, '');
+        }
+      }
+      
+      console.log('Phone validation - Full number:', phoneNumber, 'Country code:', formData.phoneCountry, 'Number part:', numberPart, 'Length:', numberPart.length);
+      if (numberPart.length < 7) {
+        newErrors.phoneNumber = 'Phone number must be at least 7 digits';
+      }
+    }
+    if (!formData.message.trim()) {
+      newErrors.message = 'Message is required';
+    }
+    if (!formData.consent) {
+      newErrors.consent = 'You must agree to the privacy policy';
+    }
+
+    console.log('Contact form validation errors:', newErrors);
+    setErrors(newErrors);
+    const isValid = Object.keys(newErrors).length === 0;
+    console.log('Contact form validation result:', isValid);
+    return isValid;
+  };
+
+  const showToast = (type: 'success' | 'error', message: string) => {
+    setToast({
+      type,
+      message,
+      isVisible: true
+    });
+  };
+
+  const hideToast = () => {
+    setToast(prev => ({ ...prev, isVisible: false }));
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target;
@@ -32,17 +119,71 @@ export default function ContactUsForm() {
         [name]: value
       }));
     }
+
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: '' }));
+    }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Contact form submitted:', formData);
-    // Handle form submission here
+    console.log('Contact form submission intercepted!', { formData, errors });
+    
+    if (!validateForm()) {
+      console.log('Validation failed, showing error toast');
+      showToast('error', 'Please fix the errors in the form');
+      return;
+    }
+
+    console.log('Validation passed, submitting to HubSpot...');
+    setIsSubmitting(true);
+
+    try {
+      await handleFormSubmission(
+        'contact-us',
+        formData,
+        () => {
+          showToast('success', 'Thank you! Your message has been sent successfully. We\'ll get back to you within 24 hours.');
+          
+          // Reset form on success
+          setFormData({
+            firstName: '',
+            lastName: '',
+            company: '',
+            companyEmail: '',
+            phoneNumber: '',
+            phoneCountry: '+1',
+            jobTitle: '',
+            industry: '',
+            numberofemployees: '',
+            message: '',
+            consent: false
+          });
+        },
+        (error) => {
+          showToast('error', `Submission failed: ${error}`);
+        },
+        setIsSubmitting
+      );
+    } catch {
+      showToast('error', 'An unexpected error occurred. Please try again.');
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <section className="py-20 bg-gradient-to-b from-[#7FFF6B] via-[#EEFFEC] to-[#7FFF6B]">
-      <div className="max-w-5xl mx-auto px-6">
+    <>
+      <Toast
+        type={toast.type}
+        message={toast.message}
+        isVisible={toast.isVisible}
+        onClose={hideToast}
+        duration={5000}
+      />
+
+      <section className="py-20 bg-gradient-to-b from-[#7FFF6B] via-[#EEFFEC] to-[#7FFF6B]">
+        <div className="max-w-5xl mx-auto px-6">
         {/* Header Section */}
         <div className="text-center mb-12">
           {/* Top Badge */}
@@ -63,7 +204,7 @@ export default function ContactUsForm() {
 
         {/* Form Section */}
         <div className="md:max-w-2xl lg:max-w-xl mx-auto bg-white rounded-xl p-8 shadow-lg">
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} method="POST" action="#" className="space-y-6">
             {/* First Row - First Name and Last Name */}
             <div className="grid md:grid-cols-2 gap-6">
               <div>
@@ -76,9 +217,13 @@ export default function ContactUsForm() {
                   name="firstName"
                   value={formData.firstName}
                   onChange={handleInputChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent ${
+                    errors.firstName ? 'border-red-500' : 'border-gray-300'
+                  }`}
                 />
+                {errors.firstName && (
+                  <p className="mt-1 text-sm text-red-600">{errors.firstName}</p>
+                )}
               </div>
 
               <div>
@@ -91,9 +236,13 @@ export default function ContactUsForm() {
                   name="lastName"
                   value={formData.lastName}
                   onChange={handleInputChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent ${
+                    errors.lastName ? 'border-red-500' : 'border-gray-300'
+                  }`}
                 />
+                {errors.lastName && (
+                  <p className="mt-1 text-sm text-red-600">{errors.lastName}</p>
+                )}
               </div>
             </div>
 
@@ -108,9 +257,13 @@ export default function ContactUsForm() {
                 name="company"
                 value={formData.company}
                 onChange={handleInputChange}
-                required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent ${
+                  errors.company ? 'border-red-500' : 'border-gray-300'
+                }`}
               />
+              {errors.company && (
+                <p className="mt-1 text-sm text-red-600">{errors.company}</p>
+              )}
             </div>
 
             {/* Company Email */}
@@ -124,18 +277,28 @@ export default function ContactUsForm() {
                 name="companyEmail"
                 value={formData.companyEmail}
                 onChange={handleInputChange}
-                required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent ${
+                  errors.companyEmail ? 'border-red-500' : 'border-gray-300'
+                }`}
               />
+              {errors.companyEmail && (
+                <p className="mt-1 text-sm text-red-600">{errors.companyEmail}</p>
+              )}
             </div>
 
             {/* Phone Number */}
             <PhoneNumberInput
               value={formData.phoneNumber}
-              onChange={(value) => setFormData(prev => ({ ...prev, phoneNumber: value }))}
+              onChange={(value) => {
+                setFormData(prev => ({ ...prev, phoneNumber: value }));
+                if (errors.phoneNumber) {
+                  setErrors(prev => ({ ...prev, phoneNumber: '' }));
+                }
+              }}
               countryCode={formData.phoneCountry}
               onCountryChange={(countryCode) => setFormData(prev => ({ ...prev, phoneCountry: countryCode }))}
-              required
+              required={true}
+              error={errors.phoneNumber}
             />
 
             {/* Job Title */}
@@ -170,13 +333,13 @@ export default function ContactUsForm() {
 
             {/* Employee Count */}
             <div>
-              <label htmlFor="employeeCount" className="block text-sm font-medium text-gray-700 mb-2">
-                How many employees does your organization have?
+              <label htmlFor="numberofemployees" className="block text-sm font-medium text-gray-700 mb-2">
+                Number of Employees
               </label>
               <select
-                id="employeeCount"
-                name="employeeCount"
-                value={formData.employeeCount}
+                id="numberofemployees"
+                name="numberofemployees"
+                value={formData.numberofemployees}
                 onChange={handleInputChange}
                 className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
               >
@@ -192,7 +355,7 @@ export default function ContactUsForm() {
             {/* Message */}
             <div>
               <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                Write here your question, please
+                Write here your question, please <span className="text-red-500">*</span>
               </label>
               <textarea
                 id="message"
@@ -200,9 +363,14 @@ export default function ContactUsForm() {
                 value={formData.message}
                 onChange={handleInputChange}
                 rows={4}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent resize-none"
+                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent resize-none ${
+                  errors.message ? 'border-red-500' : 'border-gray-300'
+                }`}
                 placeholder="Tell us how we can help you..."
               />
+              {errors.message && (
+                <p className="mt-1 text-sm text-red-600">{errors.message}</p>
+              )}
             </div>
 
             {/* Consent Checkbox */}
@@ -213,7 +381,6 @@ export default function ContactUsForm() {
                 name="consent"
                 checked={formData.consent}
                 onChange={handleInputChange}
-                required
                 className="mt-1 w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500"
               />
               <label htmlFor="consent" className="text-sm text-gray-700">
@@ -224,19 +391,38 @@ export default function ContactUsForm() {
                 .
               </label>
             </div>
+            {errors.consent && (
+              <p className="text-sm text-red-600">{errors.consent}</p>
+            )}
 
             {/* Submit Button */}
             <div className="pt-4 text-center">
               <button
                 type="submit"
-                className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg font-semibold text-lg transition-all duration-200 transform hover:-translate-y-0.5"
+                disabled={isSubmitting}
+                className={`px-6 py-2 rounded-lg font-semibold text-lg transition-all duration-200 transform hover:-translate-y-0.5 ${
+                  isSubmitting
+                    ? 'bg-gray-400 cursor-not-allowed'
+                    : 'bg-green-500 hover:bg-green-600 text-white'
+                }`}
               >
-                Send
+                {isSubmitting ? (
+                  <span className="flex items-center justify-center">
+                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    {isSubmitting ? 'Sending...' : 'Processing...'}
+                  </span>
+                ) : (
+                  'Send'
+                )}
               </button>
             </div>
           </form>
         </div>
       </div>
     </section>
+    </>
   );
 }
