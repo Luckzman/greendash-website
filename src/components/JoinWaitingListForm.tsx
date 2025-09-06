@@ -235,7 +235,7 @@ export default function JoinWaitingListForm({ essentialKit, esgMaturityCertifica
         duration={5000}
       />
 
-      <section className={`py-20 bg-gradient-to-b from-[#7FFF6B] via-[#EEFFEC] to-[#7FFF6B] ${isForProfessionalsPage ? 'bg-gradient-to-b from-[#131313] via-[#202120] to-[#6FE451]' : ''}`}>
+      <section className={`py-20 ${isForProfessionalsPage ? 'bg-gradient-to-b from-[#131313] via-[#202120] to-[#6FE451]' : 'bg-gradient-to-b from-[#7FFF6B] via-[#EEFFEC] to-[#7FFF6B] '}`}>
         <div className="max-w-5xl mx-auto px-6">
           {/* Header Section */}
           <div className="text-center mb-12">
@@ -245,7 +245,7 @@ export default function JoinWaitingListForm({ essentialKit, esgMaturityCertifica
             </div>
             
             {/* Main Headline */}
-            <h1 className={`text-4xl lg:text-5xl font-bold text-black text-transparent pb-6 leading-[70px]  ${isForProfessionalsPage ? 'text-[#6FE451]' : ''}`}>
+            <h1 className={`text-4xl lg:text-5xl font-bold pb-6 leading-[70px]  ${isForProfessionalsPage ? 'text-[#6FE451]' : 'text-black'}`}>
               {essentialKit ? 'Get your free CSRD/VSME Essentials Now!' : 
               esgMaturityCertification ? 'Let\'s start your ESG Maturity Certification journey' :
               csrdVsmeCertification ? 'Let\'s start your CSRD/VSME Certification journey' :
@@ -253,7 +253,7 @@ export default function JoinWaitingListForm({ essentialKit, esgMaturityCertifica
             </h1>
             
             {/* Description */}
-            <p className="text-xl text-[#010D3E] max-w-3xl mx-auto leading-relaxed">
+            <p className={`text-xl ${isForProfessionalsPage ? 'text-white' : 'text-[#010D3E]'}  max-w-3xl mx-auto leading-relaxed`}>
               {essentialKit ? 
               'Answer to the questions below and download your FREE CSRD/VSME Essentials Kit, so you can start your reporting journey!' : 
               esgMaturityCertification || csrdVsmeCertification ? 'Please provide us some initial information and book your first call with us!' :
