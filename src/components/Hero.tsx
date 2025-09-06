@@ -10,7 +10,7 @@ export default function Hero({ isForProfessionalsPage = false }: HeroProps) {
   return (
     <section className={`min-h-screen ${
       isForProfessionalsPage 
-        ? 'bg-black' 
+        ? 'bg-[#131313]' 
         : 'bg-gradient-to-b from-[#EEFFEC] to-[#7FFF6B]'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">

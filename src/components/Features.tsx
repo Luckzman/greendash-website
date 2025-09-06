@@ -8,11 +8,11 @@ interface FeaturesProps {
 
 export default function Features({ isForProfessionalsPage = false }: FeaturesProps) {
   return (
-    <section className={`py-12 sm:py-20 ${
-      isForProfessionalsPage 
-        ? 'bg-gradient-to-b from-[#7FFF6B] to-[#6FE451]' 
-        : 'bg-white'
-    }`}>
+    <section className={`py-12 sm:py-20`} style={{
+      background: isForProfessionalsPage 
+        ? 'linear-gradient(to bottom, #131313 5%, #202120 10%, #2C2D2B 25%, #6FE451 60%, #7FFF6B 100%)'
+        : 'linear-gradient(to bottom, #7FFF6B 0%, #ADFFA0 20%, #ADFFA0 40%, #FFFFFF 60%, #FFFFFF 100%)'
+    }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Top Section */}
         <div className="text-center mb-12 sm:mb-16">
@@ -26,7 +26,7 @@ export default function Features({ isForProfessionalsPage = false }: FeaturesPro
 
           <h2 className={`w-full lg:w-10/12 mx-auto text-2xl sm:text-4xl lg:text-[54px] font-[700] mb-4 sm:mb-6 leading-tight lg:leading-[60px] ${
             isForProfessionalsPage 
-              ? 'text-[#001354]' 
+              ? 'text-[#6FE451]' 
               : 'text-[#001354]'
           }`}>
             {isForProfessionalsPage 
@@ -37,7 +37,7 @@ export default function Features({ isForProfessionalsPage = false }: FeaturesPro
           
           <p className={`w-full lg:w-6/12 mx-auto text-sm sm:text-[16px] max-w-3xl leading-relaxed mb-6 sm:mb-8 px-4 ${
             isForProfessionalsPage 
-              ? 'text-[#001354]' 
+              ? 'text-[#F8F8F8]' 
               : 'text-[#010D3E]'
           }`}>
             {isForProfessionalsPage 
@@ -55,7 +55,7 @@ export default function Features({ isForProfessionalsPage = false }: FeaturesPro
               {isForProfessionalsPage ? 'Get Started' : 'Contact Us'}
             </button>
             {isForProfessionalsPage && (
-              <a href="#" className="text-[#001354] hover:text-gray-700 font-medium text-lg transition-colors">
+              <a href="#" className="text-[#F8F8F8] hover:text-gray-700 font-medium text-lg transition-colors">
                 Contact Us →
               </a>
             )}
@@ -64,7 +64,51 @@ export default function Features({ isForProfessionalsPage = false }: FeaturesPro
 
         {/* Feature Cards - Conditional Layout */}
         {isForProfessionalsPage ? (
-          /* Professionals Page - 2x2 Grid Layout */
+          <>
+          {/* Card 1: Centralized Data Collection */}
+          <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 bg-gradient-to-tr from-[#111111E5] from-10% via-[#232323F1] via-80% to-[#4C4C4C] to-90% rounded-xl p-6 sm:p-8 lg:p-12 mb-6 sm:mb-[31px] shadow-lg">
+          <div className="flex-col flex-1 items-start gap-4 mb-4">
+            <div className="w-12 h-12 bg-red-500 mb-4 sm:mb-5 rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+              </svg>
+            </div>
+            <div>
+              <h3 className="text-xl sm:text-2xl lg:text-[32px] w-full lg:w-9/12 font-medium text-[#ECECEC] mb-3 sm:mb-4 leading-tight lg:leading-[40px]">
+                Centralized, Collaborative & Automated Data Collection
+              </h3>
+              <p className="text-[#ECECEC] font-[16px] leading-relaxed text-sm sm:text-base">
+                Forget the spreadsheets and scattered files. 
+                Gather ESG data effortlessly from your team and stakeholders everything centralized in one single place, so you can track, analyze, and report with confidence.<br/>
+                We automate data collection process with smart integrations and full-document uploads, minimizing manual work              </p>
+            </div>
+          </div>
+
+          {/* Code Snippets */}
+          <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="bg-[#111111E5] rounded-lg p-3 z-0 overflow-hidden shadow shadow-[#919191]">
+              <div className="text-xs text-gray-500 mb-2 font-medium">DigitalToken.js</div>
+              <div className="text-sm font-mono">
+                <div className="text-gray-400">{`// centralized data`}</div>
+                <div className="text-purple-400">let <span className="text-white">centralData</span> = <span className="text-white">{`{`}</span></div>
+                <div className="ml-2 text-white"><span className="text-white">value1</span>: <span className="text-orange-400">&apos;Data1&apos;</span>,</div>
+                <div className="ml-2 text-white"><span className="text-white">value2</span>: <span className="text-orange-400">&apos;Data2&apos;</span>,</div>
+                <div className="text-white">{`}`}</div>
+              </div>
+            </div>
+            <div className="bg-[#111111] rounded-lg p-3 z-10 lg:ml-[-30px] shadow shadow-[#919191]">
+              <div className="text-xs text-gray-500 mb-2 font-medium">DigitalToken.js</div>
+              <div className="text-sm font-mono">
+                <div className="text-gray-400">{`// centralized data`}</div>
+                <div className="text-purple-400">let <span className="text-white">centralData</span> = <span className="text-white">{`{`}</span></div>
+                <div className="ml-2 text-white"><span className="text-white">value1</span>: <span className="text-orange-400">&apos;Data1&apos;</span>,</div>
+                <div className="ml-2 text-white"><span className="text-white">value2</span>: <span className="text-orange-400">&apos;Data2&apos;</span>,</div>
+                <div className="text-white">{`}`}</div>
+              </div>
+            </div>
+          </div>
+        </div>       
+          
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-6 sm:mb-[31px]">
             {/* Card 1: Centralized Data Collection */}
             <div className="bg-[#2A2A2A] rounded-xl p-6 sm:p-8 lg:p-12">
@@ -154,6 +198,7 @@ export default function Features({ isForProfessionalsPage = false }: FeaturesPro
               </div>
             </div>
           </div>
+          </>
         ) : (
           /* Original Layout for Non-Professionals Pages */
           <>

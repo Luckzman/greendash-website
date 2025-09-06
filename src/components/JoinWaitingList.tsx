@@ -2,7 +2,7 @@
 
 export default function JoinWaitingList() {
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-lime-200">
+    <section className="py-20 bg-gradient-to-b from-white to-[#7FFF6B]">
       <div className="max-w-7xl mx-auto px-6 text-center">
         {/* Main Headline */}
         <div className="mb-8">

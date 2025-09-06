@@ -10,9 +10,10 @@ interface JoinWaitingListFormProps {
   essentialKit?: boolean;
   esgMaturityCertification?: boolean;
   csrdVsmeCertification?: boolean;
+  isForProfessionalsPage?: boolean;
 }
 
-export default function JoinWaitingListForm({ essentialKit, esgMaturityCertification, csrdVsmeCertification }: JoinWaitingListFormProps) {
+export default function JoinWaitingListForm({ essentialKit, esgMaturityCertification, csrdVsmeCertification, isForProfessionalsPage = false }: JoinWaitingListFormProps) {
   const router = useRouter();
   const [formData, setFormData] = useState({
     firstName: '',
@@ -234,7 +235,7 @@ export default function JoinWaitingListForm({ essentialKit, esgMaturityCertifica
         duration={5000}
       />
 
-      <section className="py-20 bg-gradient-to-b from-[#7FFF6B] via-[#EEFFEC] to-[#7FFF6B]">
+      <section className={`py-20 bg-gradient-to-b from-[#7FFF6B] via-[#EEFFEC] to-[#7FFF6B] ${isForProfessionalsPage ? 'bg-gradient-to-b from-[#131313] via-[#202120] to-[#6FE451]' : ''}`}>
         <div className="max-w-5xl mx-auto px-6">
           {/* Header Section */}
           <div className="text-center mb-12">
@@ -244,7 +245,7 @@ export default function JoinWaitingListForm({ essentialKit, esgMaturityCertifica
             </div>
             
             {/* Main Headline */}
-            <h1 className="text-4xl lg:text-5xl font-bold bg-gradient-to-b from-[#000000] to-[#001354] bg-clip-text text-transparent pb-6 leading-[70px]">
+            <h1 className={`text-4xl lg:text-5xl font-bold text-black text-transparent pb-6 leading-[70px]  ${isForProfessionalsPage ? 'text-[#6FE451]' : ''}`}>
               {essentialKit ? 'Get your free CSRD/VSME Essentials Now!' : 
               esgMaturityCertification ? 'Let\'s start your ESG Maturity Certification journey' :
               csrdVsmeCertification ? 'Let\'s start your CSRD/VSME Certification journey' :

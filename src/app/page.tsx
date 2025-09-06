@@ -1,5 +1,5 @@
 import Hero from "../components/Hero";
-import ESGCompliance from "../components/ESGCompliance";
+// import ESGCompliance from "../components/ESGCompliance";
 import Features from "../components/Features";
 import IndustryCompliance from "../components/IndustryCompliance";
 import CTA from "../components/CTA";
@@ -13,13 +13,13 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <ESGCompliance />
+      {/* <ESGCompliance /> */}
       <Features />
+      <Results />
       <IndustryCompliance />
-      <CTA />
       <WhyReporting />
       <CoursesCertification />
-      <Results />
+      <CTA />
       <Partners />
       <JoinWaitingList />
     </>

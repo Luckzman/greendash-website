@@ -2,9 +2,13 @@
 
 import Image from "next/image";
 
-export default function CoursesCertification() {
+interface CoursesCertificationProps {
+  isForProfessionalsPage?: boolean;
+}
+
+export default function CoursesCertification({ isForProfessionalsPage = false }: CoursesCertificationProps) {
   return (
-    <section className="py-20 bg-gradient-to-b from-[#7FFF6BCC] from-20% to-white to-80%">
+    <section className="py-20 bg-gradient-to-b from-[#7FFF6B] from-20% to-white to-80%">
       <div className="max-w-7xl mx-auto px-6">
         {/* Top Badge */}
         <div className="text-center mb-8">
@@ -25,7 +29,7 @@ export default function CoursesCertification() {
         </div>
         
         {/* Cards Container */}
-        <div className="grid md:grid-cols-2 gap-8 lg:max-w-5xl mx-auto">
+        <div className={`grid md:grid-cols-2 gap-8 lg:max-w-5xl mx-auto ${isForProfessionalsPage ? 'lg:grid-cols-1 w-[550px]' : ''}`}>
           {/* Left Card - Green Dash Academy */}
           <div className="bg-white rounded-xl p-8 shadow-md shadow-gray-300 border border-[rgba(36, 38, 43, 0.5)]  flex flex-col">
             {/* Logo */}
@@ -53,7 +57,7 @@ export default function CoursesCertification() {
           </div>
           
           {/* Right Card - Green Dash Certification */}
-          <div className="bg-white rounded-xl p-8 shadow-md shadow-gray-300 border border-[rgba(36, 38, 43, 0.5)] flex flex-col">
+          {!isForProfessionalsPage && <div className="bg-white rounded-xl p-8 shadow-md shadow-gray-300 border border-[rgba(36, 38, 43, 0.5)] flex flex-col">
             {/* Logo */}
             <div className="text-center mb-6">
               <Image
@@ -76,7 +80,7 @@ export default function CoursesCertification() {
                 Learn more →
               </a>
             </div>
-          </div>
+          </div>}
         </div>
       </div>
     </section>

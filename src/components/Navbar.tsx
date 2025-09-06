@@ -12,7 +12,7 @@ export default function Navbar() {
   const pathname = usePathname();
   
   // Determine if we're on the for-professionals page
-  const isForProfessionalsPage = pathname === '/for-professionals';
+  const isForProfessionalsPage = pathname === '/for-professionals' || pathname === '/professional-contact-us' || pathname === '/getting-started';
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -26,7 +26,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 ${isForProfessionalsPage ? 'bg-black' : 'bg-[#EEFFEC]'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 ${isForProfessionalsPage ? 'bg-[#131313]' : 'bg-[#EEFFEC]'}`}>
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -105,18 +105,18 @@ export default function Navbar() {
 
             {/* CTA Buttons */}
             <div className="flex items-center space-x-4">
-              <Link href="/contact-us">
+              <Link href={isForProfessionalsPage ? "/professional-contact-us" : "/contact-us"}>
                 <button className="bg-[#6FE451] text-white px-6 py-2 rounded-lg font-semibold hover:bg-lime-600 transition-colors">
                   Contact Us
                 </button>
               </Link>
-              <Link href="/join-waiting-list">
+              <Link href={isForProfessionalsPage ? '/getting-started' :`/join-waiting-list`}>
                 <button className={`px-6 py-2 rounded-lg font-semibold transition-colors ${
                   isForProfessionalsPage 
                     ? 'bg-white text-black hover:bg-gray-200' 
                     : 'bg-black text-white hover:bg-gray-500'
                 }`}>
-                  Get Started
+                  {isForProfessionalsPage ? 'Get Started' : 'Join Waiting List'}
                 </button>
               </Link>
             </div>
@@ -214,18 +214,18 @@ export default function Navbar() {
 
             {/* Mobile Call-to-Action Buttons */}
             <div className="pt-4 space-y-3">
-              <Link href="/contact-us">
+              <Link href={isForProfessionalsPage ? "/professional-contact-us" : "/contact-us"}>
                 <button className="w-full bg-lime-500 hover:bg-lime-600 text-white px-6 py-3 rounded-lg font-medium transition-colors shadow-md">
                   Contact Us
                 </button>
               </Link>
-              <Link href="/join-waiting-list">
+              <Link href={isForProfessionalsPage ? "/getting-started" : "/join-waiting-list"}>
                 <button className={`w-full px-6 py-3 rounded-lg font-medium transition-colors shadow-md ${
                   isForProfessionalsPage 
                     ? 'bg-white text-black hover:bg-gray-200' 
                     : 'bg-black text-white hover:bg-gray-800'
                 }`}>
-                  Get Started
+                  {isForProfessionalsPage ? 'Get Started' : 'Join Waiting List'}
                 </button>
               </Link>
             </div>
