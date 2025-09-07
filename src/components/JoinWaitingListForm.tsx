@@ -176,7 +176,7 @@ export default function JoinWaitingListForm({ essentialKit, esgMaturityCertifica
 
     try {
       await handleFormSubmission(
-        essentialKit ? 'csrd-vsme-certification' : esgMaturityCertification ? 'esg-maturity-certification' : csrdVsmeCertification ? 'csrd-vsme-certification' : 'join-waiting-list',
+        essentialKit ? 'essential-kit' : esgMaturityCertification ? 'esg-maturity-certification' : csrdVsmeCertification ? 'csrd-vsme-certification' : 'join-waiting-list',
         formData,
         () => {
           showToast('success', essentialKit 
@@ -245,7 +245,7 @@ export default function JoinWaitingListForm({ essentialKit, esgMaturityCertifica
             </div>
             
             {/* Main Headline */}
-            <h1 className={`text-4xl lg:text-5xl font-bold pb-6 leading-[70px]  ${isForProfessionalsPage ? 'text-[#6FE451]' : 'text-black'}`}>
+            <h1 className={`text-4xl lg:text-5xl font-dm-sans font-bold pb-6 leading-[70px]  ${isForProfessionalsPage ? 'text-[#6FE451]' : 'text-black'}`}>
               {essentialKit ? 'Get your free CSRD/VSME Essentials Now!' : 
               esgMaturityCertification ? 'Let\'s start your ESG Maturity Certification journey' :
               csrdVsmeCertification ? 'Let\'s start your CSRD/VSME Certification journey' :
@@ -253,7 +253,7 @@ export default function JoinWaitingListForm({ essentialKit, esgMaturityCertifica
             </h1>
             
             {/* Description */}
-            <p className={`text-xl ${isForProfessionalsPage ? 'text-white' : 'text-[#010D3E]'}  max-w-3xl mx-auto leading-relaxed`}>
+            <p className={`text-xl ${isForProfessionalsPage ? 'text-white' : 'text-[#010D3E]'} font-inter  max-w-2xl mx-auto leading-relaxed`}>
               {essentialKit ? 
               'Answer to the questions below and download your FREE CSRD/VSME Essentials Kit, so you can start your reporting journey!' : 
               esgMaturityCertification || csrdVsmeCertification ? 'Please provide us some initial information and book your first call with us!' :
@@ -262,7 +262,7 @@ export default function JoinWaitingListForm({ essentialKit, esgMaturityCertifica
           </div>
 
           {/* Form Section */}
-          <div className="md:max-w-2xl lg:max-w-xl mx-auto bg-white rounded-xl p-8 shadow-lg">
+          <div className="md:max-w-2xl lg:max-w-xl mx-auto bg-white rounded-xl p-8 shadow-lg" style={{ boxShadow: '0 4px 4px rgba(0, 0, 0, 0.25)' }}>
             <form onSubmit={handleSubmit} method="POST" action="#" className="space-y-6">
               {/* First Row - First Name and Last Name */}
               <div className="grid md:grid-cols-2 gap-6">
@@ -405,7 +405,7 @@ export default function JoinWaitingListForm({ essentialKit, esgMaturityCertifica
               {/* Employee Count */}
               <div>
                 <label htmlFor="numberofemployees" className="block text-sm font-medium text-gray-700 mb-2">
-                  Number of Employees <span className="text-red-500">*</span>
+                  How many employees does your organization has? <span className="text-red-500">*</span>
                 </label>
                 <select
                   id="numberofemployees"
@@ -438,9 +438,9 @@ export default function JoinWaitingListForm({ essentialKit, esgMaturityCertifica
                   onChange={handleInputChange}
                   className="mt-1 w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500"
                 />
-                <label htmlFor="consent" className="text-sm text-gray-700">
+                <label htmlFor="consent" className="font-inter text-sm text-gray-700">
                   By submitting this form, you are agreeing that GreenDash may store and process your personal data as described in our{' '}
-                  <a href="#" className="text-green-600 hover:text-green-700 underline">
+                  <a href="#" className="text-[#6FE451] hover:text-green-700 underline">
                     Privacy Policy
                   </a>
                   .
@@ -458,8 +458,9 @@ export default function JoinWaitingListForm({ essentialKit, esgMaturityCertifica
                   className={`px-6 py-2 rounded-lg font-semibold text-lg transition-all duration-200 transform hover:-translate-y-0.5 ${
                     isSubmitting
                       ? 'bg-gray-400 cursor-not-allowed'
-                      : 'bg-green-500 hover:bg-green-600 text-white'
+                      : 'bg-[#6FE451] hover:bg-green-600 text-white'
                   }`}
+                  style={{ boxShadow: '0 4px 4px rgba(0, 0, 0, 0.25)' }}
                 >
                   {isSubmitting ? (
                     <span className="flex items-center justify-center">

@@ -192,22 +192,22 @@ export default function ContactUsForm({ isForProfessionalsPage = false }: Contac
         <div className="text-center mb-12">
           {/* Top Badge */}
           <div className="inline-block bg-white rounded-[10px] px-10 py-1 mb-6 border border-[rgba(34, 34, 34, 0.1)] shadow-sm">
-            <span className="text-sm font-medium text-black">Contact Us</span>
+            <span className="text-sm font-medium font-inter text-black">Contact Us</span>
           </div>
           
           {/* Main Headline */}
-          <h1 className={`text-4xl lg:text-5xl font-bold pb-6 leading-[70px]  ${isForProfessionalsPage ? 'text-[#6FE451]' : 'text-black'}`}>
+          <h1 className={`text-4xl lg:text-5xl font-dm-sans font-bold pb-6 leading-[70px]  ${isForProfessionalsPage ? 'text-[#6FE451]' : 'text-black'}`}>
             Let&apos;s talk!
           </h1>
           
           {/* Description */}
-          <p className={`text-xl ${isForProfessionalsPage ? 'text-white' : 'text-[#010D3E]'} max-w-3xl mx-auto leading-relaxed`}>
+          <p className={`text-xl ${isForProfessionalsPage ? 'text-white' : 'text-[#010D3E]'} font-inter max-w-3xl mx-auto leading-relaxed`}>
             Still have questions or in need of further help? Send us a message and one of our team members will be in touch with you in the next 24h
           </p>
         </div>
 
         {/* Form Section */}
-        <div className="md:max-w-2xl lg:max-w-xl mx-auto bg-white rounded-xl p-8 shadow-lg">
+        <div className="md:max-w-2xl lg:max-w-xl mx-auto bg-white rounded-xl p-8 shadow-lg" style={{ boxShadow: '0 4px 4px rgba(0, 0, 0, 0.25)' }}>
           <form onSubmit={handleSubmit} method="POST" action="#" className="space-y-6">
             {/* First Row - First Name and Last Name */}
             <div className="grid md:grid-cols-2 gap-6">
@@ -308,7 +308,7 @@ export default function ContactUsForm({ isForProfessionalsPage = false }: Contac
             {/* Job Title */}
             <div>
               <label htmlFor="jobTitle" className="block text-sm font-medium text-gray-700 mb-2">
-                Job title
+                Job title <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
@@ -323,7 +323,7 @@ export default function ContactUsForm({ isForProfessionalsPage = false }: Contac
             {/* Industry */}
             <div>
               <label htmlFor="industry" className="block text-sm font-medium text-gray-700 mb-2">
-                Which industry do you come from?
+                Which industry do you come from? <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
@@ -338,7 +338,7 @@ export default function ContactUsForm({ isForProfessionalsPage = false }: Contac
             {/* Employee Count */}
             <div>
               <label htmlFor="numberofemployees" className="block text-sm font-medium text-gray-700 mb-2">
-                Number of Employees
+              How many employees does your organization has? <span className="text-red-500">*</span>
               </label>
               <select
                 id="numberofemployees"
@@ -385,11 +385,11 @@ export default function ContactUsForm({ isForProfessionalsPage = false }: Contac
                 name="consent"
                 checked={formData.consent}
                 onChange={handleInputChange}
-                className="mt-1 w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500"
+                className="mt-1 w-4 h-4 text-[#6FE451] border-gray-300 rounded focus:ring-green-500"
               />
-              <label htmlFor="consent" className="text-sm text-gray-700">
+              <label htmlFor="consent" className="font-inter text-sm text-gray-700">
                 By submitting this form, you agreeing that GreenDash may store and process your personal data as described in our{' '}
-                <a href="#" className="text-green-600 hover:text-green-700 underline">
+                <a href="#" className="text-[#6FE451] hover:text-green-700 underline">
                   Privacy Policy
                 </a>
                 .
@@ -407,8 +407,9 @@ export default function ContactUsForm({ isForProfessionalsPage = false }: Contac
                 className={`px-6 py-2 rounded-lg font-semibold text-lg transition-all duration-200 transform hover:-translate-y-0.5 ${
                   isSubmitting
                     ? 'bg-gray-400 cursor-not-allowed'
-                    : 'bg-green-500 hover:bg-green-600 text-white'
+                    : 'bg-[#6FE451] hover:bg-green-600 text-white'
                 }`}
+                style={{ boxShadow: '0 4px 4px rgba(0, 0, 0, 0.25)' }}
               >
                 {isSubmitting ? (
                   <span className="flex items-center justify-center">

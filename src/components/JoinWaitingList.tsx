@@ -1,12 +1,14 @@
 'use client';
 
+import CTAButtons from "./CTAButtons";
+
 export default function JoinWaitingList() {
   return (
     <section className="py-20 bg-gradient-to-b from-white to-[#7FFF6B]">
       <div className="max-w-7xl mx-auto px-6 text-center">
         {/* Main Headline */}
         <div className="mb-8">
-          <h2 className="lg:w-10/12 mx-auto text-4xl lg:text-[54px] font-[700] text-[#001354] mb-6 leading-[60px]">
+          <h2 className="lg:w-10/12 mx-auto text-4xl font-dm-sans lg:text-[54px] font-[700] text-black mb-6 leading-[60px]">
             Join the Waiting List today
           </h2>
         </div>
@@ -19,9 +21,12 @@ export default function JoinWaitingList() {
         </div>
         
         {/* Call-to-Action Button */}
-        <button className="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-lg font-semibold text-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
-          Join Waiting List
-        </button>
+        <div className="flex items-center justify-center">
+          <CTAButtons
+            isForProfessionalsPage={false}
+            showLearnMore={false}
+          />
+        </div>
       </div>
     </section>
   );

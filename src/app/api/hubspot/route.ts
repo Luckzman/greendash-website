@@ -84,7 +84,6 @@ export async function POST(request: NextRequest) {
 
     // Transform and map form data to HubSpot properties
     const hubspotContactData = transformFormDataToHubSpot(formData, formType);
-    console.log('HubSpot contact data:', hubspotContactData);
 
     // Create contact in HubSpot
     const contactResponse = await createHubSpotContact(hubspotContactData);
@@ -103,7 +102,6 @@ export async function POST(request: NextRequest) {
     }
 
   } catch (error) {
-    console.error('HubSpot API error:', error);
     return NextResponse.json(
       { 
         error: 'Failed to submit form',

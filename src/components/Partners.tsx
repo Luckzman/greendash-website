@@ -9,13 +9,13 @@ export default function Partners() {
         {/* Top Badge */}
         <div className="text-center mb-8">
           <div className="inline-block bg-white rounded-[10px] px-10 py-1 mb-6 border border-[rgba(34, 34, 34, 0.1)] shadow-sm">
-            <span className="text-sm font-medium text-black">Partners</span>
+            <span className="text-sm font-medium font-inter text-black">Partners</span>
           </div>
         </div>
         
         {/* Main Headline */}
         <div className="text-center mb-16">
-          <h2 className="mx-auto text-4xl lg:text-[54px] font-[700] text-[#001354] mb-6 leading-[60px]">
+          <h2 className="mx-auto font-dm-sans text-4xl lg:text-[54px] font-[700] text-black mb-6 leading-[60px]">
             We are Collaborating with the Best in Town
           </h2>
         </div>
