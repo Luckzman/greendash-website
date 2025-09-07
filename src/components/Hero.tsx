@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import CTAButtons from './CTAButtons';
 
 interface HeroProps {
   isForProfessionalsPage?: boolean;
@@ -14,17 +15,17 @@ export default function Hero({ isForProfessionalsPage = false }: HeroProps) {
         : 'bg-gradient-to-b from-[#EEFFEC] to-[#7FFF6B]'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[80vh]">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[80vh]">
           
-          {/* Left Side - Marketing Content */}
-          <div className="space-y-6 sm:space-y-8 text-center lg:text-left">
+          {/* Left Side - Marketing Content (45%) */}
+          <div className="lg:col-span-5 space-y-6 sm:space-y-8 text-center lg:text-left">
             {/* Launch Tag */}
             <div className={`inline-block rounded-[10px] px-3 py-1 shadow-sm ${
               isForProfessionalsPage 
                 ? 'bg-white border border-black' 
                 : 'bg-white border border-[rgba(34, 34, 34, 0.1)]'
             }`}>
-              <span className={`text-sm font-medium ${
+              <span className={`text-sm font-inter font-medium ${
                 isForProfessionalsPage ? 'text-black' : 'text-black'
               }`}>
                 {isForProfessionalsPage ? 'Launch Coming Soon' : 'Launch Coming Soon'}
@@ -32,10 +33,10 @@ export default function Hero({ isForProfessionalsPage = false }: HeroProps) {
             </div>
 
             {/* Main Headline */}
-            <h1 className={`text-3xl sm:text-4xl lg:text-[55px] font-bold lg:leading-[60px] leading-tight ${
+            <h1 className={`text-3xl sm:text-4xl lg:text-[50px] font-dm-sans font-bold lg:leading-[60px] leading-tight ${
               isForProfessionalsPage 
                 ? 'text-[#6FE451]' 
-                : 'text-gray-800'
+                : 'text-black'
             }`}>
               {isForProfessionalsPage 
                 ? 'Accelerate Your Reporting Services' 
@@ -44,7 +45,7 @@ export default function Hero({ isForProfessionalsPage = false }: HeroProps) {
             </h1>
 
             {/* Description */}
-            <p className={`text-lg sm:text-[22px] font-normal leading-relaxed max-w-lg mx-auto lg:mx-0 ${
+            <p className={`text-lg sm:text-[22px] font-inter font-normal leading-relaxed max-w-lg mx-auto lg:mx-0 ${
               isForProfessionalsPage 
                 ? 'text-white' 
                 : 'text-gray-700'
@@ -57,26 +58,16 @@ export default function Hero({ isForProfessionalsPage = false }: HeroProps) {
 
             <div className="flex flex-col gap-6 sm:gap-8">
                 {/* Call to Action */}
-                <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
-                    <button className={`w-full sm:w-auto px-6 py-3 sm:py-2 rounded-lg font-semibold text-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 ${
-                      isForProfessionalsPage 
-                        ? 'bg-white text-black border border-black hover:bg-gray-200' 
-                        : 'bg-black hover:bg-gray-800 text-white'
-                    }`}>
-                        {isForProfessionalsPage ? 'Get Started' : 'Join Waiting List'}
-                    </button>
-                    <a href="#" className={`font-medium text-lg transition-colors ${
-                      isForProfessionalsPage 
-                        ? 'text-black hover:text-gray-700' 
-                        : 'text-gray-700 hover:text-gray-900'
-                    }`}>
-                        Learn more →
-                    </a>
-                </div>
+                <CTAButtons 
+                  isForProfessionalsPage={isForProfessionalsPage}
+                  learnMoreText="Learn more"
+                  learnMoreHref="#"
+                  showLearnMore={true}
+                />
 
                     {/* Backed By Section */}
                 <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3">
-                    <p className={`text-sm ${
+                    <p className={`text-sm font-inter ${
                       isForProfessionalsPage 
                         ? 'text-white' 
                         : 'text-gray-700'
@@ -87,8 +78,8 @@ export default function Hero({ isForProfessionalsPage = false }: HeroProps) {
                         <Image
                             src="/casa-do-impacto-logo.svg"
                             alt="Casa do Impacto Logo"
-                            width={120}
-                            height={40}
+                            width={180}
+                            height={60}
                             className="h-8 w-auto"
                         />
                     </div>
@@ -96,17 +87,26 @@ export default function Hero({ isForProfessionalsPage = false }: HeroProps) {
             </div>
           </div>
 
-          {/* Right Side - Dashboard Preview */}
-          <div className="relative order-first lg:order-last">
-            <div className="bg-[rgba(255, 255, 255, 0.28)] p-2 sm:p-[16px] rounded-2xl transform rotate-1 hover:rotate-0 transition-transform duration-500">
-              <Image
-                src="/dashboard-preview.png"
-                alt="Green Dash Dashboard Preview"
-                width={723}
-                height={424}
-                className="w-full h-auto rounded-2xl shadow-2xl"
-                priority
-              />
+          {/* Right Side - Dashboard Preview (55%) */}
+          <div className="relative order-first lg:order-last lg:col-span-7">
+            <div className="relative rounded-2xl transform rotate-1 hover:rotate-0 transition-transform duration-500 border border-white/20 overflow-hidden" style={{ backgroundColor: 'rgba(255, 255, 255, 0.2)' }}>
+              {/* Three circles on top left - positioned like window controls */}
+              <div className="absolute top-3 left-4 flex gap-1.5 z-10">
+                <div className="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
+                <div className="w-2.5 h-2.5 bg-gray-300 rounded-full"></div>
+                <div className="w-2.5 h-2.5 bg-gray-400 rounded-full"></div>
+              </div>
+              
+              <div className="p-2 pt-8 lg:p-4 lg:pt-8">
+                <Image
+                  src="/dashboard-preview.png"
+                  alt="Green Dash Dashboard Preview"
+                  width={723}
+                  height={424}
+                  className="w-full h-auto rounded-xl shadow-2xl"
+                  priority
+                />
+              </div>
             </div>
           </div>
         </div>

@@ -9,6 +9,7 @@ export default function Navbar() {
   const [isPlatformOpen, setIsPlatformOpen] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
   
   // Determine if we're on the for-professionals page
@@ -16,14 +17,55 @@ export default function Navbar() {
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
+      // Close desktop dropdown
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setIsPlatformOpen(false);
       }
     }
 
-    document.addEventListener("mousedown", handleClickOutside);
+    // Only add listener for desktop dropdown
+    if (window.innerWidth >= 1024) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  // Close mobile dropdown when mobile menu closes
+  useEffect(() => {
+    if (!isMobileOpen) {
+      setIsPlatformOpen(false);
+    }
+  }, [isMobileOpen]);
+
+  // Handle mobile dropdown clicks
+  const handleMobileDropdownClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIsPlatformOpen(!isPlatformOpen);
+  };
+
+  // Handle mobile menu clicks to close dropdown when clicking outside
+  const handleMobileMenuClick = (e: React.MouseEvent) => {
+    // If clicking on the mobile menu container but not on the dropdown button or links
+    if (e.target === e.currentTarget) {
+      setIsPlatformOpen(false);
+    }
+  };
+
+  // Smooth scroll to features section
+  const scrollToFeatures = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const featuresSection = document.getElementById('features');
+    if (featuresSection) {
+      featuresSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+    // Close mobile menu if open
+    setIsMobileOpen(false);
+    setIsPlatformOpen(false);
+  };
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 ${isForProfessionalsPage ? 'bg-[#131313]' : 'bg-[#EEFFEC]'}`}>
@@ -43,7 +85,7 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-8">
             {/* Platform Dropdown */}
             <div className="relative" ref={dropdownRef}>
               <button
@@ -67,7 +109,7 @@ export default function Navbar() {
 
               {isPlatformOpen && (
                 <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200 py-2 z-50">
-                  <a href="#" className="block px-4 py-2 text-sm text-[rgba(0, 0, 0, 0.6)] hover:bg-gray-100 font-regular">
+                  <a href="#features" onClick={scrollToFeatures} className="block px-4 py-2 text-sm text-[rgba(0, 0, 0, 0.6)] hover:bg-gray-100 font-regular">
                     Features
                   </a>
                   <a href="/pricing" className="block px-4 py-2 text-sm text-[rgba(0, 0, 0, 0.6)] hover:bg-gray-100 font-regular">
@@ -78,14 +120,14 @@ export default function Navbar() {
             </div>
 
             {/* Navigation Links */}
-            <a href="#" className={`font-regular transition-colors ${
+            <a href="#" className={`font-inter font-regular transition-colors ${
               isForProfessionalsPage 
                 ? 'text-white hover:text-gray-300' 
                 : 'text-[rgba(0, 0, 0, 0.6)] hover:text-gray-900'
             }`}>
               Academy
             </a>
-            <Link href="/certification" className={`font-regular transition-colors ${
+            <Link href="/certification" className={`font-inter font-regular transition-colors ${
               isForProfessionalsPage 
                 ? 'text-white hover:text-gray-300' 
                 : 'text-[rgba(0,0, 0, 0.6)] hover:text-gray-900'
@@ -94,7 +136,7 @@ export default function Navbar() {
             </Link>
             <Link 
               href={isForProfessionalsPage ? "/" : "/for-professionals"} 
-              className={`font-regular transition-colors ${
+              className={`font-inter font-regular transition-colors ${
                 isForProfessionalsPage 
                   ? 'text-white hover:text-gray-300' 
                   : 'text-[rgba(0, 0, 0, 0.6)] hover:text-gray-900'
@@ -106,30 +148,36 @@ export default function Navbar() {
             {/* CTA Buttons */}
             <div className="flex items-center space-x-4">
               <Link href={isForProfessionalsPage ? "/professional-contact-us" : "/contact-us"}>
-                <button className="bg-[#6FE451] text-white px-6 py-2 rounded-lg font-semibold hover:bg-lime-600 transition-colors">
+                <button className="bg-[#6FE451] text-white px-6 py-2 rounded-lg font-inter font-semibold hover:bg-lime-600 transition-all duration-200 transform hover:-translate-y-0.5" style={{ boxShadow: '0 4px 4px rgba(0, 0, 0, 0.25)' }}>
                   Contact Us
                 </button>
               </Link>
               <Link href={isForProfessionalsPage ? '/getting-started' :`/join-waiting-list`}>
-                <button className={`px-6 py-2 rounded-lg font-semibold transition-colors ${
+                <button className={`px-6 py-2 rounded-lg font-inter font-semibold transition-all duration-200 transform hover:-translate-y-0.5 ${
                   isForProfessionalsPage 
                     ? 'bg-white text-black hover:bg-gray-200' 
                     : 'bg-black text-white hover:bg-gray-500'
-                }`}>
-                  {isForProfessionalsPage ? 'Get Started' : 'Join Waiting List'}
+                }`} style={{ boxShadow: '0 4px 4px rgba(0, 0, 0, 0.25)' }}>
+                  Get Started
                 </button>
               </Link>
             </div>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          <div className="lg:hidden flex-shrink-0 z-50">
             <button
               onClick={() => setIsMobileOpen(!isMobileOpen)}
-              className={isForProfessionalsPage ? "text-white hover:text-gray-300" : "text-gray-700 hover:text-gray-900"}
+              className={`p-3 rounded-md transition-colors border-2 bg-red-500 ${
+                isForProfessionalsPage 
+                  ? "text-white hover:text-gray-300 hover:bg-red-600 border-white" 
+                  : "text-white hover:text-gray-200 hover:bg-red-600 border-white"
+              }`}
+              aria-label="Toggle mobile menu"
+              style={{ minWidth: '48px', minHeight: '48px' }}
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
           </div>
@@ -137,24 +185,11 @@ export default function Navbar() {
 
         {/* Mobile Navigation */}
         {isMobileOpen && (
-          <div className="md:hidden py-4 border-t border-gray-200">
-            {/* Mobile Logo */}
-            <div className="mb-4">
-              <Link href="/">
-                <Image
-                  src={isForProfessionalsPage ? "/green-dash-light-logo.svg" : "/green-dash-logo.png"}
-                  alt="Green Dash Logo"
-                  width={100}
-                  height={32}
-                  className="h-8 w-auto"
-                />
-              </Link>
-            </div>
-
+          <div className="lg:hidden py-4 border-t border-gray-200" ref={mobileMenuRef} onClick={handleMobileMenuClick}>
             {/* Mobile Platform Dropdown */}
             <div className="mb-4">
               <button
-                onClick={() => setIsPlatformOpen(!isPlatformOpen)}
+                onClick={handleMobileDropdownClick}
                 className={`flex items-center justify-between w-full text-left font-medium py-2 ${
                   isForProfessionalsPage 
                     ? 'text-white hover:text-gray-300' 
@@ -173,11 +208,27 @@ export default function Navbar() {
               </button>
 
               {isPlatformOpen && (
-                <div className="ml-4 mt-2 space-y-2">]
-                  <a href="#" className="block text-sm text-gray-600 hover:text-gray-900">
+                <div className="ml-4 mt-2 space-y-2">
+                  <a 
+                    href="#features" 
+                    onClick={scrollToFeatures}
+                    className={`block text-sm ${
+                      isForProfessionalsPage 
+                        ? 'text-white hover:text-gray-300' 
+                        : 'text-gray-700 hover:text-gray-900'
+                    }`}
+                  >
                     Features
                   </a>
-                  <a href="/pricing" className="block text-sm text-gray-600 hover:text-gray-900">
+                  <a 
+                    href="/pricing" 
+                    onClick={() => setIsPlatformOpen(false)}
+                    className={`block text-sm ${
+                      isForProfessionalsPage 
+                        ? 'text-white hover:text-gray-300' 
+                        : 'text-gray-700 hover:text-gray-900'
+                    }`}
+                  >
                     Pricing
                   </a>
                 </div>
@@ -186,23 +237,32 @@ export default function Navbar() {
 
             {/* Mobile Navigation Links */}
             <div className="space-y-2 mb-4">
-              <a href="#" className={`block font-medium py-2 ${
-                isForProfessionalsPage 
-                  ? 'text-white hover:text-gray-300' 
-                  : 'text-gray-700 hover:text-gray-900'
-              }`}>
+              <a 
+                href="#" 
+                onClick={() => setIsPlatformOpen(false)}
+                className={`block font-inter font-medium py-2 ${
+                  isForProfessionalsPage 
+                    ? 'text-white hover:text-gray-300' 
+                    : 'text-gray-700 hover:text-gray-900'
+                }`}
+              >
                 Academy
               </a>
-              <Link href="/certification" className={`block font-medium py-2 ${
-                isForProfessionalsPage 
-                  ? 'text-white hover:text-gray-300' 
-                  : 'text-gray-700 hover:text-gray-900'
-              }`}>
+              <Link 
+                href="/certification" 
+                onClick={() => setIsPlatformOpen(false)}
+                className={`block font-inter font-medium py-2 ${
+                  isForProfessionalsPage 
+                    ? 'text-white hover:text-gray-300' 
+                    : 'text-gray-700 hover:text-gray-900'
+                }`}
+              >
                 Certification
               </Link>
               <Link 
                 href={isForProfessionalsPage ? "/" : "/for-professionals"} 
-                className={`block font-medium py-2 ${
+                onClick={() => setIsPlatformOpen(false)}
+                className={`block font-inter font-medium py-2 ${
                   isForProfessionalsPage 
                     ? 'text-white hover:text-gray-300' 
                     : 'text-gray-700 hover:text-gray-900'
@@ -215,17 +275,25 @@ export default function Navbar() {
             {/* Mobile Call-to-Action Buttons */}
             <div className="pt-4 space-y-3">
               <Link href={isForProfessionalsPage ? "/professional-contact-us" : "/contact-us"}>
-                <button className="w-full bg-lime-500 hover:bg-lime-600 text-white px-6 py-3 rounded-lg font-medium transition-colors shadow-md">
+                <button 
+                  onClick={() => setIsPlatformOpen(false)}
+                  className="w-full bg-lime-500 hover:bg-lime-600 text-white px-6 py-3 rounded-lg font-inter font-medium transition-all duration-200 transform hover:-translate-y-0.5"
+                  style={{ boxShadow: '0 4px 4px rgba(0, 0, 0, 0.25)' }}
+                >
                   Contact Us
                 </button>
               </Link>
               <Link href={isForProfessionalsPage ? "/getting-started" : "/join-waiting-list"}>
-                <button className={`w-full px-6 py-3 rounded-lg font-medium transition-colors shadow-md ${
-                  isForProfessionalsPage 
-                    ? 'bg-white text-black hover:bg-gray-200' 
-                    : 'bg-black text-white hover:bg-gray-800'
-                }`}>
-                  {isForProfessionalsPage ? 'Get Started' : 'Join Waiting List'}
+                <button 
+                  onClick={() => setIsPlatformOpen(false)}
+                  className={`w-full px-6 py-3 rounded-lg mt-5 font-inter font-medium transition-all duration-200 transform hover:-translate-y-0.5 ${
+                    isForProfessionalsPage 
+                      ? 'bg-white text-black hover:bg-gray-200' 
+                      : 'bg-black text-white hover:bg-gray-800'
+                  }`}
+                  style={{ boxShadow: '0 4px 4px rgba(0, 0, 0, 0.25)' }}
+                >
+                  Get Started
                 </button>
               </Link>
             </div>

@@ -19,7 +19,7 @@ export default function Results({ isForProfessionalsPage = false }: ResultsProps
         
         {/* Main Headline and Subheading */}
         <div className="text-center mb-16">
-          <h2 className="lg:w-10/12 mx-auto text-4xl lg:text-[54px] font-[700] text-[#001354] mb-6 leading-[60px]">
+          <h2 className="lg:w-10/12 mx-auto text-4xl lg:text-[54px] font-[700] text-[#000000] mb-6 leading-[60px]">
             But why to choose GreenDash?
           </h2>
           
@@ -37,19 +37,19 @@ export default function Results({ isForProfessionalsPage = false }: ResultsProps
               <Image
                 src="/clock-icon.svg"
                 alt="Clock Icon"
-                width={32}
-                height={32}
-                className="w-24"
+                width={26}
+                height={26}
+                className="w-20"
               />
             </div>
             
             {/* Title */}
-            <h3 className="text-2xl font-bold text-black mb-4">
+            <h3 className="text-2xl font-bold font-dm-sans text-black mb-4">
               2.5x faster
             </h3>
             
             {/* Description */}
-            <p className="text-[rgba(1, 13, 62, 1)] text-base leading-relaxed">
+            <p className="text-[rgba(1, 13, 62, 1)] text-base font-inter leading-relaxed">
               ESG Reporting compared to previous methods
             </p>
           </div>
@@ -61,19 +61,19 @@ export default function Results({ isForProfessionalsPage = false }: ResultsProps
               <Image
                 src="/note-icon.svg"
                 alt="Note Icon"
-                width={32}
-                height={32}
-                className="w-24 h-24"
+                width={26}
+                height={26}
+                className="w-20 h-20"
               />
             </div>
             
             {/* Title */}
-            <h3 className="text-2xl font-bold text-black mb-4">
+            <h3 className="text-2xl font-bold font-dm-sans text-black mb-4">
               Up to less 50%
             </h3>
             
             {/* Description */}
-            <p className="text-[rgba(1, 13, 62, 1)] text-base leading-relaxed">
+            <p className="text-[#010D3E] text-base font-inter leading-relaxed">
               Reporting admin work compared to previous methods
             </p>
           </div>
@@ -85,19 +85,19 @@ export default function Results({ isForProfessionalsPage = false }: ResultsProps
                 <Image
                   src="/coins-icon.svg"
                   alt="Coins Icon"
-                  width={32}
-                  height={32}
-                className="w-28"
+                  width={26}
+                  height={26}
+                className="w-24"
               />
             </div>
             
             {/* Title */}
-            <h3 className="text-2xl font-bold text-black pt-4 mb-4">
+            <h3 className="text-2xl font-bold font-dm-sans text-black pt-4 mb-4">
               At least 25% cheaper
             </h3>
             
             {/* Description */}
-            <p className="text-[rgba(1, 13, 62, 1)] text-base leading-relaxed">
+            <p className="text-[#010D3E] text-base font-inter leading-relaxed">
               Compared to previous methods such as consultancy
             </p>
           </div>

@@ -196,7 +196,7 @@ export default function ContactUsForm({ isForProfessionalsPage = false }: Contac
           </div>
           
           {/* Main Headline */}
-          <h1 className={`text-4xl lg:text-5xl font-bold pb-6 leading-[70px]`}>
+          <h1 className={`text-4xl lg:text-5xl font-bold pb-6 leading-[70px]  ${isForProfessionalsPage ? 'text-[#6FE451]' : 'text-black'}`}>
             Let&apos;s talk!
           </h1>
           
