@@ -56,22 +56,19 @@ export default function Footer() {
 
           {/* Right Column - Solutions & Quick Links */}
           <div className="md:col-span-5">
+            <h3 className="text-white font-bold text-sm mb-4 sm:mb-6">Solutions</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
               <div>
-                <h3 className="text-white font-bold text-sm mb-4 sm:mb-6">Solutions</h3>
                 <ul className="space-y-3">
-                  <li><Link href="/" className="text-[#7B7B7B] hover:text-white transition-colors text-sm">Platform</Link></li>
-                  <li><Link href="/certification" className="text-[#7B7B7B] hover:text-white transition-colors text-sm">Certification</Link></li>
-                  <li><Link href="/" className="text-[#7B7B7B] hover:text-white transition-colors text-sm">Academy</Link></li>
+                  <li><Link href="/" className="text-[#7B7B7B] hover:text-white transition-colors text-sm">For SME</Link></li>
+                  <li><Link href="/for-professionals" className="text-[#7B7B7B] hover:text-white transition-colors text-sm">For Professionals</Link></li>
                 </ul>
               </div>
               
               <div>
-                <h3 className="text-white font-bold text-sm mb-4 sm:mb-6">Quick Links</h3>
                 <ul className="space-y-3">
-                  <li><Link href={isForProfessionalsPage ? "/" : "/for-professionals"} className="text-[#7B7B7B] hover:text-white transition-colors text-sm">{isForProfessionalsPage ? "For SMEs" : "For Professionals"}</Link></li>
-                  <li><Link href={isForProfessionalsPage ? "/professional-contact-us" : "/contact-us"} className="text-[#7B7B7B] hover:text-white transition-colors text-sm">Contact Us</Link></li>
-                  <li><Link href={isForProfessionalsPage ? "/getting-started" : "/join-waiting-list"} className="text-[#7B7B7B] hover:text-white transition-colors text-sm">Join Waiting List</Link></li>
+                  <li><Link href="/certification" className="text-[#7B7B7B] hover:text-white transition-colors text-sm">Certification</Link></li>
+                  <li><Link href="/" className="text-[#7B7B7B] hover:text-white transition-colors text-sm">Academy</Link></li>
                 </ul>
               </div>
             </div>
