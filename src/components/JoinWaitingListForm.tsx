@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import PhoneNumberInput from './PhoneNumberInput';
 import Toast from './Toast';
 import { handleFormSubmission } from '../lib/hubspot';
+import Link from 'next/link';
 
 interface JoinWaitingListFormProps {
   essentialKit?: boolean;
@@ -444,9 +445,9 @@ export default function JoinWaitingListForm({ essentialKit, esgMaturityCertifica
                 />
                 <label htmlFor="consent" className="font-inter text-sm text-gray-700">
                   By submitting this form, you are agreeing that GreenDash may store and process your personal data as described in our{' '}
-                  <a href="#" className="text-[#6FE451] hover:text-green-700 underline">
+                  <Link href="/privacy-policy" className="text-[#6FE451] hover:text-green-700 underline">
                     Privacy Policy
-                  </a>
+                  </Link>
                   .
                 </label>
               </div>

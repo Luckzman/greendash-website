@@ -18,7 +18,7 @@ export default function PrivacyPolicy() {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">Introduction</h2>
             <p className="text-gray-700 mb-4">
-              Green Dash ("we," "our," or "us") is committed to protecting your privacy and personal information. 
+              Green Dash (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) is committed to protecting your privacy and personal information. 
               This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit 
               our website or use our ESG compliance and sustainability services.
             </p>
@@ -154,7 +154,7 @@ export default function PrivacyPolicy() {
               <li><strong>Withdrawal:</strong> Withdraw consent where applicable</li>
             </ul>
             <p className="text-gray-700">
-              To exercise these rights, please contact us using the information provided in the "Contact Us" section.
+              To exercise these rights, please contact us using the information provided in the &quot;Contact Us&quot; section.
             </p>
           </section>
 
@@ -173,7 +173,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Children's Privacy</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Children&apos;s Privacy</h2>
             <p className="text-gray-700">
               Our services are not intended for children under 13 years of age. We do not knowingly collect personal information 
               from children under 13. If we become aware that we have collected personal information from a child under 13, 
@@ -189,7 +189,7 @@ export default function PrivacyPolicy() {
             <ul className="list-disc pl-6 text-gray-700 mb-4">
               <li>Posting the new Privacy Policy on this page</li>
               <li>Sending you an email notification</li>
-              <li>Updating the "Last updated" date</li>
+              <li>Updating the &quot;Last updated&quot; date</li>
             </ul>
             <p className="text-gray-700">
               We encourage you to review this Privacy Policy periodically for any changes. 

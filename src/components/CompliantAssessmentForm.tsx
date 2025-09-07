@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import PhoneNumberInput from './PhoneNumberInput';
+import Link from 'next/link';
 
 export default function CompliantAssessmentForm() {
   const [formData, setFormData] = useState({
@@ -305,9 +306,9 @@ export default function CompliantAssessmentForm() {
               />
               <label htmlFor="consent" className="text-sm text-gray-700">
                 By submitting this form, you are agreeing that GreenDash may store and process your personal data as described in our{' '}
-                <a href="#" className="text-green-600 hover:text-green-700 underline">
+                <Link href="/privacy-policy" className="text-green-600 hover:text-green-700 underline">
                   Privacy Policy
-                </a>
+                </Link>
                 .
               </label>
             </div>

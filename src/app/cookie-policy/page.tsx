@@ -48,7 +48,7 @@ export default function CookiePolicy() {
               <h3 className="text-xl font-semibold text-gray-900 mb-3">Analytics Cookies</h3>
               <p className="text-gray-700 mb-4">
                 These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously. 
-                This helps us improve our website's performance and user experience.
+                This helps us improve our website&apos;s performance and user experience.
               </p>
               <ul className="list-disc pl-6 text-gray-700">
                 <li>Google Analytics cookies</li>

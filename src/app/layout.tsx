@@ -46,7 +46,6 @@ export const metadata: Metadata = {
     description: "Build your Sustainability Report in line with CSRD in a simple and efficient way. Learn about ESG and ESG reporting and start getting certified now!",
     images: ["https://res.cloudinary.com/dpnkoawy4/image/upload/v1741803466/greendash-banner_bxwvze.jpg"],
   },
-  viewport: "width=device-width, initial-scale=1.0",
   robots: {
     index: true,
     follow: true,
@@ -58,6 +57,11 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1.0,
 };
 
 export default function RootLayout({

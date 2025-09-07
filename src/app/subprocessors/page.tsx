@@ -188,7 +188,7 @@ export default function Subprocessors() {
               <li>Receive notification of any subprocessor changes</li>
             </ul>
             <p className="text-gray-700">
-              To exercise these rights, please contact us using the information provided in the "Contact Us" section.
+              To exercise these rights, please contact us using the information provided in the &quot;Contact Us&quot; section.
             </p>
           </section>
 

@@ -18,7 +18,7 @@ export default function Legal() {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">Terms of Service</h2>
             <p className="text-gray-700 mb-4">
-              By accessing and using Green Dash's services, you agree to be bound by our Terms of Service. 
+              By accessing and using Green Dash&apos;s services, you agree to be bound by our Terms of Service. 
               These terms govern your use of our ESG compliance and sustainability platform.
             </p>
             <div className="bg-blue-50 p-6 rounded-lg mb-6">
@@ -146,10 +146,10 @@ export default function Legal() {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">Limitation of Liability</h2>
             <p className="text-gray-700 mb-4">
-              To the maximum extent permitted by law, Green Dash's liability is limited as follows:
+              To the maximum extent permitted by law, Green Dash&apos;s liability is limited as follows:
             </p>
             <ul className="list-disc pl-6 text-gray-700 mb-4">
-              <li>Services are provided "as is" without warranties of any kind</li>
+              <li>Services are provided &quot;as is&quot; without warranties of any kind</li>
               <li>We are not liable for indirect, incidental, or consequential damages</li>
               <li>Total liability is limited to the amount paid for services in the 12 months preceding the claim</li>
               <li>We are not responsible for third-party actions or content</li>
