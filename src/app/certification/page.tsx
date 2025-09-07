@@ -4,7 +4,7 @@ import Hero from "../../components/Hero";
 export default function CertificationPage() {
   return (
     <>
-      <Hero />
+      <Hero isForCertificationPage={true} />
       <Certification />
     </>
   );

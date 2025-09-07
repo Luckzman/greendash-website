@@ -4,7 +4,7 @@ import Hero from "../../components/Hero";
 export default function ESGMaturityCertificationPage() {
   return (
     <>
-      <Hero />
+      <Hero isForCertificationPage={true} />
       <JoinWaitingListForm esgMaturityCertification={true}/>
     </>
   );

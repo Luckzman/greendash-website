@@ -74,13 +74,13 @@ export default function IndustryCompliance() {
 
         {/* Industry Navigation */}
         <div className="flex justify-center mb-8 sm:mb-12">
-          <div className="bg-[#1A1A1A] border border-black rounded-xl p-1 sm:p-2 w-full max-w-4xl">
+          <div className="bg-[#1A1A1A] border border-black rounded-xl p-1 sm:p-2 w-full max-w-5xl">
             <div className="grid grid-cols-2 sm:flex gap-1 sm:gap-0">
               {industries.map((industry) => (
                 <button
                   key={industry.id}
                   onClick={() => setActiveIndustry(industry.id)}
-                  className={`px-2 sm:px-6 py-2 sm:py-3 font-dm-sans font-medium transition-all duration-200 text-xs sm:text-sm ${
+                  className={`w-full px-2 sm:px-6 py-2 sm:py-3 font-dm-sans font-medium transition-all duration-200 text-xs sm:text-sm ${
                     activeIndustry === industry.id
                       ? 'bg-[#6FE451] text-white rounded-lg shadow-lg'
                       : 'text-white hover:text-gray-200'

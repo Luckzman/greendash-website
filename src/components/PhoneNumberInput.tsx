@@ -148,12 +148,12 @@ export default function PhoneNumberInput({
       <label className="block text-sm font-medium text-gray-700 mb-2">
         {label} {required && <span className="text-red-500">*</span>}
       </label>
-      <div className="flex gap-3">
+      <div className="flex flex-col sm:flex-row gap-3">
         <select
           name="phoneCountry"
           value={countryCode}
           onChange={handleCountryChange}
-          className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+          className="w-full sm:w-auto sm:min-w-[200px] px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm sm:text-base"
         >
           {countries.map((country) => (
             <option key={country.code} value={country.code}>
@@ -170,7 +170,7 @@ export default function PhoneNumberInput({
           onClick={handleClick}
           onKeyDown={handleKeyDown}
           pattern="\+\d+.*"
-          className={`flex-1 px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent ${
+          className={`flex-1 w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm sm:text-base ${
             error ? 'border-red-500' : 'border-gray-300'
           }`}
           placeholder={currentCountry.dialCode}

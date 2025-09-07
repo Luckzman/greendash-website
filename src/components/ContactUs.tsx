@@ -186,7 +186,11 @@ export default function ContactUsForm({ isForProfessionalsPage = false }: Contac
         duration={5000}
       />
 
-      <section className={`py-20 ${isForProfessionalsPage ? 'bg-gradient-to-b from-[#131313] via-[#202120] to-[#6FE451]' : 'bg-gradient-to-b from-[#7FFF6B] via-[#EEFFEC] to-[#7FFF6B]'}`}>
+      <section className={`py-20 ${isForProfessionalsPage ? 'bg-gradient-to-b from-[#131313] via-[#202120] to-[#6FE451]' : ''}`}
+        style={{
+          background: `${isForProfessionalsPage ? '': 'linear-gradient(to bottom, #7FFF6B 0%, #ADFFA0 20%, #ADFFA0 40%, #FFFFFF 60%, #FFFFFF 85%, #7FFF6B 100%)'}`
+        }}
+      >
         <div className="max-w-5xl mx-auto px-6">
         {/* Header Section */}
         <div className="text-center mb-12">

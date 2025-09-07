@@ -5,9 +5,10 @@ import CTAButtons from './CTAButtons';
 
 interface HeroProps {
   isForProfessionalsPage?: boolean;
+  isForCertificationPage?: boolean;
 }
 
-export default function Hero({ isForProfessionalsPage = false }: HeroProps) {
+export default function Hero({ isForProfessionalsPage = false, isForCertificationPage = false }: HeroProps) {
   return (
     <section className={`min-h-screen ${
       isForProfessionalsPage 
@@ -40,6 +41,8 @@ export default function Hero({ isForProfessionalsPage = false }: HeroProps) {
             }`}>
               {isForProfessionalsPage 
                 ? 'Accelerate Your Reporting Services' 
+                : isForCertificationPage
+                ? 'ESG Certification for SMEs'
                 : 'Sustainability made Simple for SME'
               }
             </h1>
@@ -52,6 +55,8 @@ export default function Hero({ isForProfessionalsPage = false }: HeroProps) {
             }`}>
               {isForProfessionalsPage 
                 ? 'Deliver VSME-compliant sustainability reports for your clients faster and more efficiently with our all-in-one platform tailored for SMEs'
+                : isForCertificationPage
+                ? 'Prove your commitment. Build trust. Win more business. Be more sustainable'
                 : 'Collect, monitor and report your ESG/VSME data to all your stakeholders, while improving your company\'s ESG performance - fast and easily'
               }
             </p>
@@ -62,7 +67,7 @@ export default function Hero({ isForProfessionalsPage = false }: HeroProps) {
                   isForProfessionalsPage={isForProfessionalsPage}
                   learnMoreText="Learn more"
                   learnMoreHref="#"
-                  showLearnMore={true}
+                  showLearnMore={!isForCertificationPage}
                 />
 
                     {/* Backed By Section */}

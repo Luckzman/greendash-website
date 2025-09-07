@@ -168,10 +168,10 @@ export default function Navbar() {
           <div className="lg:hidden flex-shrink-0 z-50">
             <button
               onClick={() => setIsMobileOpen(!isMobileOpen)}
-              className={`p-3 rounded-md transition-colors border-2 bg-red-500 ${
+              className={`p-3 rounded-md transition-colors border-2 bg-gray-800 ${
                 isForProfessionalsPage 
-                  ? "text-white hover:text-gray-300 hover:bg-red-600 border-white" 
-                  : "text-white hover:text-gray-200 hover:bg-red-600 border-white"
+                  ? "text-white hover:text-gray-300 hover:bg-[#6FE451] border-white" 
+                  : "text-white hover:text-gray-200 hover:bg-[#6FE451] border-white"
               }`}
               aria-label="Toggle mobile menu"
               style={{ minWidth: '48px', minHeight: '48px' }}

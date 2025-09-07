@@ -4,7 +4,7 @@ import Hero from "../../../components/Hero";
 export default function ESGMaturityCertificationBookingPage() {
   return (
     <>
-      <Hero />
+      <Hero isForCertificationPage={true} />
       <CalendlyBooking />
     </>
   );

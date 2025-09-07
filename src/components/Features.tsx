@@ -295,9 +295,9 @@ export default function Features({ isForProfessionalsPage = false }: FeaturesPro
             </div>
 
             {/* Card 6: Full Customer Support */}
-            <div className="flex gap-12 bg-gradient-to-tr from-[#111111E5] from-10% via-[#232323F1] via-80% to-[#4C4C4C] to-90% rounded-xl p-12 hover:shadow-xl shadow-lg">
+            <div className="flex flex-col lg:flex-row gap-12 bg-gradient-to-tr from-[#111111E5] from-10% via-[#232323F1] via-80% to-[#4C4C4C] to-90% rounded-xl p-12 hover:shadow-xl shadow-lg">
               <div className="flex-1 flex-col items-start gap-4 mb-4">
-              <Image src="/eyeglass.svg" alt="Centralized Data Collection" width={24} height={24} className="w-12 h-12 bg-[#EA3C30] p-2 mb-4 sm:mb-5 rounded-lg" />
+                <Image src="/eyeglass.svg" alt="Centralized Data Collection" width={24} height={24} className="w-12 h-12 bg-[#EA3C30] p-2 mb-4 sm:mb-5 rounded-lg" />
                 <div>
                   <h3 className="text-[30px] lg:w-9/12 font-dm-sans text-[#ECECEC] mb-4 leading-[40px]">
                     Full-Customer Support from our Sustainability Experts

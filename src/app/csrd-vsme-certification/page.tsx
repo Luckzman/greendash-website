@@ -4,7 +4,7 @@ import Hero from "../../components/Hero";
 export default function CSRDVSMECertificationPage() {
   return (
     <>
-      <Hero />
+      <Hero isForCertificationPage={true} />
       <JoinWaitingListForm csrdVsmeCertification={true}/>
     </>
   );
