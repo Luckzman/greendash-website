@@ -214,7 +214,7 @@ export default function CompliantAssessmentForm() {
               <label className="block text-sm font-medium text-gray-700 mb-3">
                 Is your company based in the EU?
               </label>
-              <div className="space-y-2">
+              <div className="flex items-center gap-6">
                 <label className="flex items-center">
                   <input
                     type="radio"
@@ -245,7 +245,7 @@ export default function CompliantAssessmentForm() {
               <label className="block text-sm font-medium text-gray-700 mb-3">
                 Does your company have clients that are large companies (companies that have more than 1000 employees)?
               </label>
-              <div className="space-y-2">
+              <div className="flex items-center gap-6">
                 <label className="flex items-center">
                   <input
                     type="radio"
@@ -306,7 +306,7 @@ export default function CompliantAssessmentForm() {
               />
               <label htmlFor="consent" className="text-sm text-gray-700">
                 By submitting this form, you are agreeing that GreenDash may store and process your personal data as described in our{' '}
-                <Link href="/privacy-policy" className="text-green-600 hover:text-green-700 underline">
+                <Link href="/privacy-policy" className="text-[#6FE451] hover:text-green-700 underline">
                   Privacy Policy
                 </Link>
                 .
@@ -317,7 +317,7 @@ export default function CompliantAssessmentForm() {
             <div className="pt-4 text-center">
               <button
                 type="submit"
-                className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg font-semibold text-lg transition-all duration-200 transform hover:-translate-y-0.5"
+                className="bg-[#6FE451] hover:bg-green-600 text-white px-6 py-2 rounded-lg font-semibold text-lg transition-all duration-200 transform hover:-translate-y-0.5"
               >
                 Get your results
               </button>

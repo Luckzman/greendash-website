@@ -59,7 +59,7 @@ export default function Certification() {
             <div className="space-y-4">
               <p className="text-[#170F49] mb-6 font-inter font-medium">Included:</p>
               <div className="flex items-center">
-                <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                <div className="w-5 h-5 bg-[#4FCC3C] rounded-full flex items-center justify-center mr-3 flex-shrink-0">
                   <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
@@ -67,7 +67,7 @@ export default function Certification() {
                 <span className="text-[#6F6C8F] font-inter font-normal">ESG Maturity Assessment</span>
               </div>
               <div className="flex items-center">
-                <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                <div className="w-5 h-5 bg-[#4FCC3C] rounded-full flex items-center justify-center mr-3 flex-shrink-0">
                   <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
@@ -75,7 +75,7 @@ export default function Certification() {
                 <span className="text-[#6F6C8F] font-inter font-normal">Tailored Improvement Roadmap</span>
               </div>
               <div className="flex items-center">
-                <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                <div className="w-5 h-5 bg-[#4FCC3C] rounded-full flex items-center justify-center mr-3 flex-shrink-0">
                   <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
@@ -116,7 +116,7 @@ export default function Certification() {
             <div className="space-y-4">
               <p className="text-[#170F49] mb-6 font-inter font-medium">Included:</p>
               <div className="flex items-center">
-                <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                <div className="w-5 h-5 bg-[#4FCC3C] rounded-full flex items-center justify-center mr-3 flex-shrink-0">
                   <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
@@ -124,7 +124,7 @@ export default function Certification() {
                 <span className="text-[#6F6C8F] font-inter font-normal">Detailed Conformity Analysis</span>
               </div>
               <div className="flex items-center">
-                <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                <div className="w-5 h-5 bg-[#4FCC3C] rounded-full flex items-center justify-center mr-3 flex-shrink-0">
                   <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
@@ -132,7 +132,7 @@ export default function Certification() {
                 <span className="text-[#6F6C8F] font-inter font-normal">Corrective recommendations</span>
               </div>
               <div className="flex items-center">
-                <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                <div className="w-5 h-5 bg-[#4FCC3C] rounded-full flex items-center justify-center mr-3 flex-shrink-0">
                   <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>

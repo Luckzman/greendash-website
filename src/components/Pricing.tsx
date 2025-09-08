@@ -47,7 +47,7 @@ export default function Pricing() {
             <div className="">
               <p className="text-[#170F49] group-hover:text-gray-300 font-medium mb-10 font-inter">Features included:</p>
               <div className="flex items-center mb-3">
-                <div className="w-5 h-5 bg-green-500 group-hover:bg-white rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                <div className="w-5 h-5 bg-[#4FCC3C] group-hover:bg-white rounded-full flex items-center justify-center mr-3 flex-shrink-0">
                   <svg className="w-3 h-3 text-white group-hover:text-black" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
@@ -86,7 +86,7 @@ export default function Pricing() {
                 <p className="text-[#170F49] group-hover:text-gray-300 font-medium mb-10 font-inter">Features Included:</p>
                 <div className="space-y-6">
                   <div className="flex items-center">
-                    <div className="w-5 h-5 bg-green-500 group-hover:bg-white rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                    <div className="w-5 h-5 bg-[#4FCC3C] group-hover:bg-white rounded-full flex items-center justify-center mr-3 flex-shrink-0">
                       <svg className="w-3 h-3 text-white group-hover:text-black" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
@@ -94,7 +94,7 @@ export default function Pricing() {
                     <span className="text-[#6F6C8F] group-hover:text-white font-inter font-normal">ESG Data Center</span>
                   </div>
                   <div className="flex items-center">
-                    <div className="w-5 h-5 bg-green-500 group-hover:bg-white rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                    <div className="w-5 h-5 bg-[#4FCC3C] group-hover:bg-white rounded-full flex items-center justify-center mr-3 flex-shrink-0">
                       <svg className="w-3 h-3 text-white group-hover:text-black" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
@@ -102,7 +102,7 @@ export default function Pricing() {
                     <span className="text-[#6F6C8F] group-hover:text-white font-inter font-normal">ESG Data Analytics</span>
                   </div>
                   <div className="flex items-center">
-                    <div className="w-5 h-5 bg-green-500 group-hover:bg-white rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                    <div className="w-5 h-5 bg-[#4FCC3C] group-hover:bg-white rounded-full flex items-center justify-center mr-3 flex-shrink-0">
                       <svg className="w-3 h-3 text-white group-hover:text-black" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
@@ -110,7 +110,7 @@ export default function Pricing() {
                     <span className="text-[#6F6C8F] group-hover:text-white font-inter font-normal">ESG Recommendations</span>
                   </div>
                   <div className="flex items-center">
-                    <div className="w-5 h-5 bg-green-500 group-hover:bg-white rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                    <div className="w-5 h-5 bg-[#4FCC3C] group-hover:bg-white rounded-full flex items-center justify-center mr-3 flex-shrink-0">
                       <svg className="w-3 h-3 text-white group-hover:text-black" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
@@ -118,7 +118,7 @@ export default function Pricing() {
                     <span className="text-[#6F6C8F] group-hover:text-white font-inter font-normal">Data Export</span>
                   </div>
                   <div className="flex items-center">
-                    <div className="w-5 h-5 bg-green-500 group-hover:bg-white rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                    <div className="w-5 h-5 bg-[#4FCC3C] group-hover:bg-white rounded-full flex items-center justify-center mr-3 flex-shrink-0">
                       <svg className="w-3 h-3 text-white group-hover:text-black" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
@@ -126,7 +126,7 @@ export default function Pricing() {
                     <span className="text-[#6F6C8F] group-hover:text-white font-inter font-normal">Scope 1 and 2 Emissions</span>
                   </div>
                   <div className="flex items-center">
-                    <div className="w-5 h-5 bg-green-500 group-hover:bg-white rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                    <div className="w-5 h-5 bg-[#4FCC3C] group-hover:bg-white rounded-full flex items-center justify-center mr-3 flex-shrink-0">
                       <svg className="w-3 h-3 text-white group-hover:text-black" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
@@ -166,7 +166,7 @@ export default function Pricing() {
               <p className="text-[#170F49] group-hover:text-gray-300 font-medium mb-10 font-inter">All in Monitoring, plus:</p>
               <div className="space-y-6">
                 <div className="flex items-center">
-                  <div className="w-5 h-5 bg-green-500 group-hover:bg-white rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                  <div className="w-5 h-5 bg-[#4FCC3C] group-hover:bg-white rounded-full flex items-center justify-center mr-3 flex-shrink-0">
                     <svg className="w-3 h-3 text-white group-hover:text-black" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
@@ -174,7 +174,7 @@ export default function Pricing() {
                   <span className="text-[#6F6C8F] group-hover:text-white font-inter font-normal">1 Annual VSME Report</span>
                 </div>
                 <div className="flex items-center">
-                  <div className="w-5 h-5 bg-green-500 group-hover:bg-white rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                  <div className="w-5 h-5 bg-[#4FCC3C] group-hover:bg-white rounded-full flex items-center justify-center mr-3 flex-shrink-0">
                     <svg className="w-3 h-3 text-white group-hover:text-black" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
@@ -182,7 +182,7 @@ export default function Pricing() {
                   <span className="text-[#6F6C8F] group-hover:text-white font-inter font-normal">CSRD Certificate</span>
                 </div>
                 <div className="flex items-center">
-                  <div className="w-5 h-5 bg-green-500 group-hover:bg-white rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                  <div className="w-5 h-5 bg-[#4FCC3C] group-hover:bg-white rounded-full flex items-center justify-center mr-3 flex-shrink-0">
                     <svg className="w-3 h-3 text-white group-hover:text-black" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
@@ -220,7 +220,7 @@ export default function Pricing() {
                 <p className="text-[#170F49] group-hover:text-gray-300 font-medium mb-10 font-inter">All in Monitoring, plus:</p>
                 <div className="space-y-6">
                   <div className="flex items-center">
-                    <div className="w-5 h-5 bg-green-500 group-hover:bg-white rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                    <div className="w-5 h-5 bg-[#4FCC3C] group-hover:bg-white rounded-full flex items-center justify-center mr-3 flex-shrink-0">
                       <svg className="w-3 h-3 text-white group-hover:text-black" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
@@ -228,7 +228,7 @@ export default function Pricing() {
                     <span className="text-[#6F6C8F] group-hover:text-white font-inter font-normal">Report Graphic Design service</span>
                   </div>
                   <div className="flex items-center">
-                    <div className="w-5 h-5 bg-green-500 group-hover:bg-white rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                    <div className="w-5 h-5 bg-[#4FCC3C] group-hover:bg-white rounded-full flex items-center justify-center mr-3 flex-shrink-0">
                       <svg className="w-3 h-3 text-white group-hover:text-black" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>

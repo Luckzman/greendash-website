@@ -1,6 +1,7 @@
 'use client';
 
 import Image from "next/image";
+import CTAButtons from "./CTAButtons";
 
 interface ResultsProps {
   isForProfessionalsPage?: boolean;
@@ -104,13 +105,15 @@ export default function Results({ isForProfessionalsPage = false }: ResultsProps
         </div>
         
         {/* Bottom Call-to-Action Button */}
-        <div className="flex items-center justify-center gap-6 mt-10">
-            <button className="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-lg font-semibold text-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
-                {isForProfessionalsPage ? 'Get Started' : 'Join Waiting List'}
-            </button>
-            <a href="#" className="text-gray-700 hover:text-gray-900 font-medium text-lg transition-colors">
-                Contact Us →
-            </a>
+
+        <div className="flex items-center justify-center">
+          <CTAButtons
+            isForProfessionalsPage={isForProfessionalsPage}
+            learnMoreText="Contact Us"
+            learnMoreHref={isForProfessionalsPage ? "/professional-contact-us" : "/contact-us"}
+            showLearnMore={true}
+            buttonHref={isForProfessionalsPage ? "/getting-started" : "/join-waiting-list"}
+          />
         </div>
       </div>
     </section>

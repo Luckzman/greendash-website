@@ -27,7 +27,7 @@ export default function CTA() {
             <div className="w-full flex flex-col lg:flex-row gap-4 lg:gap-5 justify-between items-center">
               {/* Left Button - Assessment */}
               <Link href="/compliant-assessment" className="w-full block lg:w-auto">
-                <button className="w-full lg:w-auto bg-green-500 hover:bg-green-600 text-white px-6 sm:px-8 lg:px-11 py-3 sm:py-4 rounded-lg font-medium text-sm sm:text-[16px] transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-2 sm:gap-3">
+                <button className="w-full lg:w-auto bg-[#6FE451] hover:bg-green-600 text-white px-6 sm:px-8 lg:px-11 py-3 sm:py-4 rounded-lg font-medium text-sm sm:text-[16px] transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-2 sm:gap-3">
                   <span className="text-center font-dm-sans">Take your FREE Compliance CSRD/VSME Assessment now</span>
                   <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -37,7 +37,7 @@ export default function CTA() {
               
               {/* Right Button - Download Kit */}
               <Link href="/essential-kit" className="w-full block lg:w-auto">
-                <button className="w-full lg:w-auto bg-gray-900 text-white px-6 sm:px-8 py-3 sm:py-4 lg:px-11 rounded-lg font-medium text-sm sm:text-[16px] transition-all duration-200 hover:bg-gray-900 transform hover:-translate-y-0.5 flex items-center justify-center gap-2 sm:gap-3">
+                <button className="w-full lg:w-auto bg-black text-white px-6 sm:px-8 py-3 sm:py-4 lg:px-11 rounded-lg font-medium text-sm sm:text-[16px] transition-all duration-200 hover:bg-gray-900 transform hover:-translate-y-0.5 flex items-center justify-center gap-2 sm:gap-3">
                   <span className="text-center font-dm-sans">Download your FREE CSRD Essentials Kit</span>
                   <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
