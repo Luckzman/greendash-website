@@ -201,12 +201,9 @@ export default function PrivacyPolicy() {
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">Contact Us</h2>
             <p className="text-gray-700 mb-4">
               If you have any questions about this Privacy Policy or our privacy practices, please contact us:
-            </p>
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <p className="text-gray-700 mb-2"><strong>Email:</strong> privacy@greendash.com</p>
-              <p className="text-gray-700 mb-2"><strong>Address:</strong> Green Dash, 123 Business Street, City, State 12345</p>
-              <p className="text-gray-700 mb-2"><strong>Phone:</strong> +1 (555) 123-4567</p>
-              <p className="text-gray-700"><strong>Data Protection Officer:</strong> dpo@greendash.com</p>
+              </p>
+              <div className="bg-gray-50 p-6 rounded-lg">
+                <p className="text-gray-700 mb-2"><strong>Legal Department:</strong> legal@green-dash.com</p>
             </div>
           </section>
         </div>

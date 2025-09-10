@@ -42,6 +42,7 @@ export default function Partners() {
                       width={160}
                       height={60}
                       className="h-28 w-auto"
+                      suppressHydrationWarning
                     />
                   </div>
                 </div>
@@ -57,6 +58,7 @@ export default function Partners() {
                       width={160}
                       height={60}
                       className="h-28 w-auto"
+                      suppressHydrationWarning
                     />
                   </div>
                 </div>
@@ -72,6 +74,7 @@ export default function Partners() {
                       width={120}
                       height={40}
                       className="h-28 w-auto"
+                      suppressHydrationWarning
                     />
                   </div>
                 </div>
@@ -87,6 +90,7 @@ export default function Partners() {
                       width={160}
                       height={60}
                       className="h-28 w-auto"
+                      suppressHydrationWarning
                     />
                   </div>
                 </div>
@@ -105,6 +109,7 @@ export default function Partners() {
                       width={160}
                       height={60}
                       className="h-28 w-auto"
+                      suppressHydrationWarning
                     />
                   </div>
                 </div>
@@ -120,6 +125,7 @@ export default function Partners() {
                       width={160}
                       height={60}
                       className="h-28 w-auto"
+                      suppressHydrationWarning
                     />
                   </div>
                 </div>
@@ -135,6 +141,7 @@ export default function Partners() {
                       width={120}
                       height={40}
                       className="h-28 w-auto"
+                      suppressHydrationWarning
                     />
                   </div>
                 </div>
@@ -150,6 +157,7 @@ export default function Partners() {
                       width={160}
                       height={60}
                       className="h-28 w-auto"
+                      suppressHydrationWarning
                     />
                   </div>
                 </div>

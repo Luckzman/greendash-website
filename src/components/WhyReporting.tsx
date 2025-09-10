@@ -25,7 +25,7 @@ export default function WhyReporting() {
           {/* Item 1: Meet ESG Data Requests */}
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-sm">
-              <Image src="/person.svg" alt="Coins Icon" width={26} height={26} />
+              <Image src="/person.svg" alt="Coins Icon" width={26} height={26} suppressHydrationWarning style={{ width: 'auto', height: 'auto' }} />
             </div>
             <div>
               <p className="text-lg font-inter text-black leading-relaxed">
@@ -37,7 +37,7 @@ export default function WhyReporting() {
           {/* Item 2: Facilitate Green Financing */}
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-sm">
-              <Image src="/zoom-money.svg" alt="Coins Icon" width={26} height={26} />
+              <Image src="/zoom-money.svg" alt="Coins Icon" width={26} height={26} suppressHydrationWarning style={{ width: 'auto', height: 'auto' }} />
             </div>
             <div>
               <p className="text-lg font-inter text-black leading-relaxed">
@@ -49,7 +49,7 @@ export default function WhyReporting() {
           {/* Item 3: Manage ESG Risks */}
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-sm">
-              <Image src="/arrow-ramp-left.svg" alt="Coins Icon" width={26} height={26} />
+              <Image src="/arrow-ramp-left.svg" alt="Coins Icon" width={26} height={26} suppressHydrationWarning style={{ width: 'auto', height: 'auto' }} />
             </div>
             <div>
               <p className="text-lg font-inter text-black leading-relaxed">
@@ -61,7 +61,7 @@ export default function WhyReporting() {
           {/* Item 4: Competitive Advantage */}
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-sm">
-              <Image src="/dots.svg" alt="Coins Icon" width={26} height={26} />
+              <Image src="/dots.svg" alt="Coins Icon" width={26} height={26} suppressHydrationWarning style={{ width: 'auto', height: 'auto' }} />
             </div>
             <div>
               <p className="text-lg font-inter text-black leading-relaxed">
@@ -73,7 +73,7 @@ export default function WhyReporting() {
           {/* Item 5: Sustainable Economy */}
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-sm">
-              <Image src="/leaf.svg" alt="Coins Icon" width={26} height={26} />
+              <Image src="/leaf.svg" alt="Coins Icon" width={26} height={26} suppressHydrationWarning style={{ width: 'auto', height: 'auto' }} />
             </div>
             <div>
               <p className="text-lg font-inter text-black leading-relaxed">

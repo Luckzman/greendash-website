@@ -31,6 +31,7 @@ export default function ESGCompliance() {
               height={424}
               className="w-full h-auto"
               priority
+              suppressHydrationWarning
             />
         </div>
       </div>

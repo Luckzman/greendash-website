@@ -40,6 +40,7 @@ export default function CoursesCertification({ isForProfessionalsPage = false }:
                 width={200}
                 height={80}
                 className="h-16 w-auto mx-auto"
+                suppressHydrationWarning
               />
             </div>
             
@@ -67,6 +68,7 @@ export default function CoursesCertification({ isForProfessionalsPage = false }:
                   width={200}
                   height={80}
                   className="h-16 w-auto mx-auto"
+                  suppressHydrationWarning
                 />
               </div>
               

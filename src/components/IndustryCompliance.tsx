@@ -143,6 +143,7 @@ export default function IndustryCompliance() {
                 height={400}
                 className="w-full h-auto rounded-2xl shadow-2xl"
                 priority
+                suppressHydrationWarning
               />
             </div>
           </div>

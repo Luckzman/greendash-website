@@ -3,6 +3,7 @@ import { Inter, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Script from "next/script";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -73,6 +74,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${inter.variable} ${dmSans.variable} antialiased`}
+        suppressHydrationWarning
       >
         <div className="min-h-screen">
           <Navbar />
@@ -81,6 +83,10 @@ export default function RootLayout({
           </div>
           <Footer />
         </div>
+        <Script
+          src="https://embeds.iubenda.com/widgets/1a4966c0-f918-48d6-9f4c-e0aae709e7c4.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );

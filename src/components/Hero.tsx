@@ -86,6 +86,7 @@ export default function Hero({ isForProfessionalsPage = false, isForCertificatio
                             width={180}
                             height={60}
                             className="h-8 w-auto"
+                            suppressHydrationWarning
                         />
                     </div>
                 </div>
@@ -110,6 +111,7 @@ export default function Hero({ isForProfessionalsPage = false, isForCertificatio
                   height={424}
                   className="w-full h-auto rounded-xl shadow-2xl"
                   priority
+                  suppressHydrationWarning
                 />
               </div>
             </div>

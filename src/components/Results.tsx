@@ -41,6 +41,8 @@ export default function Results({ isForProfessionalsPage = false }: ResultsProps
                 width={26}
                 height={26}
                 className="w-20"
+                suppressHydrationWarning
+                style={{ width: 'auto', height: 'auto' }}
               />
             </div>
             
@@ -65,6 +67,8 @@ export default function Results({ isForProfessionalsPage = false }: ResultsProps
                 width={26}
                 height={26}
                 className="w-20 h-20"
+                suppressHydrationWarning
+                style={{ width: 'auto', height: 'auto' }}
               />
             </div>
             
@@ -88,8 +92,10 @@ export default function Results({ isForProfessionalsPage = false }: ResultsProps
                   alt="Coins Icon"
                   width={26}
                   height={26}
-                className="w-24"
-              />
+                  className="w-24"
+                  suppressHydrationWarning
+                  style={{ width: 'auto', height: 'auto' }}
+                />
             </div>
             
             {/* Title */}

@@ -107,7 +107,7 @@ export default function Features({ isForProfessionalsPage = false }: FeaturesPro
             <div className="bg-[#2A2A2A] rounded-xl p-6 sm:p-8 lg:p-12">
               <div className="flex-col items-start gap-4 sm:gap-6">
                 {/* Icon */}
-                <Image src="/layered-icon.svg" alt="Centralized Data Collection" width={24} height={24} className="w-12 h-12 bg-[#8A30EA] p-2 mb-4 sm:mb-5 rounded-lg" />
+                <Image src="/layered-icon.svg" alt="Centralized Data Collection" width={24} height={24} className="w-12 h-12 bg-[#8A30EA] p-2 mb-4 sm:mb-5 rounded-lg" suppressHydrationWarning />
                 
                 {/* Content */}
                 <div className="flex-1">
@@ -125,7 +125,7 @@ export default function Features({ isForProfessionalsPage = false }: FeaturesPro
             <div className="bg-[#2A2A2A] rounded-xl p-6 sm:p-8 lg:p-12">
               <div className="flex-col items-start gap-4 sm:gap-6">
                 {/* Icon */}
-                <Image src="/file-cert.svg" alt="Centralized Data Collection" width={24} height={24} className="w-12 h-12 bg-[#41DD1E] p-2 mb-4 sm:mb-5 rounded-lg" />
+                <Image src="/file-cert.svg" alt="Centralized Data Collection" width={24} height={24} className="w-12 h-12 bg-[#41DD1E] p-2 mb-4 sm:mb-5 rounded-lg" suppressHydrationWarning />
                 {/* Content */}
                 <div className="flex-1">
                   <h3 className="text-xl sm:text-2xl lg:text-[30px] font-dm-sans text-white mb-3 sm:mb-4 leading-tight lg:leading-[40px]">
@@ -143,7 +143,7 @@ export default function Features({ isForProfessionalsPage = false }: FeaturesPro
             <div className="bg-[#2A2A2A] rounded-xl p-6 sm:p-8 lg:p-12">
               <div className="flex-col items-start gap-4 sm:gap-6">
                 {/* Icon */}
-                <Image src="/cert.svg" alt="Centralized Data Collection" width={24} height={24} className="w-12 h-12 bg-[#EA30D8] p-2 mb-4 sm:mb-5 rounded-lg" />
+                <Image src="/cert.svg" alt="Centralized Data Collection" width={24} height={24} className="w-12 h-12 bg-[#EA30D8] p-2 mb-4 sm:mb-5 rounded-lg" suppressHydrationWarning />
                 
                 {/* Content */}
                 <div className="flex-1">
@@ -161,7 +161,7 @@ export default function Features({ isForProfessionalsPage = false }: FeaturesPro
             <div className="bg-[#2A2A2A] rounded-xl p-6 sm:p-8 lg:p-12">
               <div className="flex-col items-start gap-4 sm:gap-6">
                 {/* Icon */}
-                <Image src="/layered-int.svg" alt="Centralized Data Collection" width={24} height={24} className="w-12 h-12 bg-[#EA8730] p-2 mb-4 sm:mb-5 rounded-lg" />
+                <Image src="/layered-int.svg" alt="Centralized Data Collection" width={24} height={24} className="w-12 h-12 bg-[#EA8730] p-2 mb-4 sm:mb-5 rounded-lg" suppressHydrationWarning />
 
                 {/* Content */}
                 <div className="flex-1">
@@ -182,7 +182,7 @@ export default function Features({ isForProfessionalsPage = false }: FeaturesPro
             {/* Card 1: Centralized Data Collection */}
             <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 bg-gradient-to-tr from-[#111111E5] from-10% via-[#232323F1] via-80% to-[#4C4C4C] to-90% rounded-xl p-6 sm:p-8 lg:p-12 mb-6 sm:mb-[31px] hover:shadow-xl">
               <div className="flex-col flex-1 items-start gap-4 mb-4">
-                <Image src="/database-icon.svg" alt="Centralized Data Collection" width={24} height={24} className="w-12 h-12 bg-[#EA3C30] p-3 mb-4 sm:mb-5 rounded-lg" />
+                <Image src="/database-icon.svg" alt="Centralized Data Collection" width={24} height={24} className="w-12 h-12 bg-[#EA3C30] p-3 mb-4 sm:mb-5 rounded-lg" suppressHydrationWarning />
                 <div>
                   <h3 className="text-xl sm:text-2xl lg:text-[30px] w-full lg:w-9/12 font-dm-sans font-medium text-[#ECECEC] mb-3 sm:mb-4 leading-tight lg:leading-[40px]">
                     Centralized, Collaborative & Automated Data Collection
@@ -225,7 +225,7 @@ export default function Features({ isForProfessionalsPage = false }: FeaturesPro
               <div className="bg-[#2A2A2A] rounded-xl p-6 sm:p-8 lg:p-12">
                 <div className="flex-col items-start gap-4 sm:gap-6">
                   {/* Icon */}
-                  <Image src="/layered-icon.svg" alt="Centralized Data Collection" width={24} height={24} className="w-12 h-12 bg-[#8A30EA] p-2 mb-4 sm:mb-5 rounded-lg" />
+                  <Image src="/layered-icon.svg" alt="Centralized Data Collection" width={24} height={24} className="w-12 h-12 bg-[#8A30EA] p-2 mb-4 sm:mb-5 rounded-lg" suppressHydrationWarning />
                   
                   {/* Content */}
                   <div className="flex-1">
@@ -243,7 +243,7 @@ export default function Features({ isForProfessionalsPage = false }: FeaturesPro
               <div className="bg-[#2A2A2A] rounded-xl p-6 sm:p-8 lg:p-12">
                 <div className="flex-col items-start gap-4 sm:gap-6">
                   {/* Icon */}
-                  <Image src="/file-cert.svg" alt="Centralized Data Collection" width={24} height={24} className="w-12 h-12 bg-[#41DD1E] p-2 mb-4 sm:mb-5 rounded-lg" />
+                  <Image src="/file-cert.svg" alt="Centralized Data Collection" width={24} height={24} className="w-12 h-12 bg-[#41DD1E] p-2 mb-4 sm:mb-5 rounded-lg" suppressHydrationWarning />
                   
                   {/* Content */}
                   <div className="flex-1">
@@ -261,7 +261,7 @@ export default function Features({ isForProfessionalsPage = false }: FeaturesPro
               <div className="bg-[#2A2A2A] rounded-xl p-12">
                 <div className="flex-col items-start gap-6">
                   {/* Icon */}
-                  <Image src="/cert.svg" alt="Centralized Data Collection" width={24} height={24} className="w-12 h-12 bg-[#EA30D8] p-2 mb-4 sm:mb-5 rounded-lg" />
+                  <Image src="/cert.svg" alt="Centralized Data Collection" width={24} height={24} className="w-12 h-12 bg-[#EA30D8] p-2 mb-4 sm:mb-5 rounded-lg" suppressHydrationWarning />
                   
                   {/* Content */}
                   <div className="flex-1">
@@ -279,7 +279,7 @@ export default function Features({ isForProfessionalsPage = false }: FeaturesPro
               <div className="bg-[#2A2A2A] rounded-xl p-12">
                 <div className="flex-col items-start gap-6">
                   {/* Icon */}
-                  <Image src="/layered-int.svg" alt="Centralized Data Collection" width={24} height={24} className="w-12 h-12 bg-[#EA8730] p-2 mb-4 sm:mb-5 rounded-lg" />
+                  <Image src="/layered-int.svg" alt="Centralized Data Collection" width={24} height={24} className="w-12 h-12 bg-[#EA8730] p-2 mb-4 sm:mb-5 rounded-lg" suppressHydrationWarning />
                   
                   {/* Content */}
                   <div className="flex-1">
@@ -297,7 +297,7 @@ export default function Features({ isForProfessionalsPage = false }: FeaturesPro
             {/* Card 6: Full Customer Support */}
             <div className="flex flex-col lg:flex-row gap-12 bg-gradient-to-tr from-[#111111E5] from-10% via-[#232323F1] via-80% to-[#4C4C4C] to-90% rounded-xl p-12 hover:shadow-xl shadow-lg">
               <div className="flex-1 flex-col items-start gap-4 mb-4">
-                <Image src="/eyeglass.svg" alt="Centralized Data Collection" width={24} height={24} className="w-12 h-12 bg-[#EA3C30] p-2 mb-4 sm:mb-5 rounded-lg" />
+                <Image src="/eyeglass.svg" alt="Centralized Data Collection" width={24} height={24} className="w-12 h-12 bg-[#EA3C30] p-2 mb-4 sm:mb-5 rounded-lg" suppressHydrationWarning />
                 <div>
                   <h3 className="text-[30px] lg:w-9/12 font-dm-sans text-[#ECECEC] mb-4 leading-[40px]">
                     Full-Customer Support from our Sustainability Experts
@@ -314,6 +314,7 @@ export default function Features({ isForProfessionalsPage = false }: FeaturesPro
                   width={350} 
                   height={350}
                   className="w-full h-auto rounded-lg"
+                  suppressHydrationWarning
                 />
               </div>
             </div>
