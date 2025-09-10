@@ -2,12 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 export default function Footer() {
-  const pathname = usePathname();
-  // Determine if we're on the for-professionals page
-  const isForProfessionalsPage = pathname === '/for-professionals' || pathname === '/professional-contact-us' || pathname === '/getting-started';
 
   return (
     <footer className="bg-[#242424] text-white">
