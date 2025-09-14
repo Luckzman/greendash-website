@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useRef, useState } from "react";
 import { usePathname } from "next/navigation";
+import OutlineBtn from "@/components/common/link-buttons/OutlineBtn";
 
 const Header = () => {
   const dropDown = useRef<HTMLDivElement>(null);
@@ -150,10 +151,10 @@ const Header = () => {
                     <Link 
                       href={isForProfessionalsPage ? "/" : "/for-professionals"} 
                       onClick={() => setIsPlatformOpen(false)}
-                      className={`block font-inter font-medium py-2 ${
+                      className={`block font-inter py-2 ${
                         isForProfessionalsPage 
-                          ? 'text-white hover:text-gray-300' 
-                          : 'text-gray-700 hover:text-gray-900'
+                        ? 'text-white hover:text-gray-300' 
+                        : 'lg:text-black/60 lg:group-hover:text-black text-black'
                       }`}
                     >
                       {isForProfessionalsPage ? "For SMEs" : "For Professionals"}
@@ -174,7 +175,16 @@ const Header = () => {
               </div>
 
               <div onClick={toggleSidebar}>
-                <StandardBtn text="Get Started" link={"/join-waiting-list"} />
+                {/* <Link href={isForProfessionalsPage ? '/getting-started' :`/join-waiting-list`}>
+                  <button className={`px-4 py-1.5 rounded-lg font-inter font-semibold transition-all duration-200 transform hover:-translate-y-0.5 ${
+                    isForProfessionalsPage 
+                      ? 'bg-white text-black hover:bg-gray-200' 
+                      : 'bg-black text-white hover:bg-gray-500'
+                  }`} style={{ boxShadow: '0 4px 4px rgba(0, 0, 0, 0.25)' }}>
+                    Get Started
+                  </button>
+                </Link> */}
+                <OutlineBtn text="Get Started" link={isForProfessionalsPage ? '/getting-started' :`/join-waiting-list`} isForProfessionalsPage={isForProfessionalsPage} />
               </div>
             </div>
           </nav>
