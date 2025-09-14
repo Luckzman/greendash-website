@@ -73,20 +73,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${dmSans.variable} antialiased`}
-        suppressHydrationWarning
+      //   className={`${inter.variable} ${dmSans.variable} antialiased`}
+      //   suppressHydrationWarning
       >
-        <div className="min-h-screen">
+        {/* <div className="min-h-screen">
           <Navbar />
-          <div className="pt-20">
+          <div className="pt-20"> */}
             {children}
-          </div>
-          <Footer />
+          {/* </div> */}
+          {/* <Footer />
         </div>
         <Script
           src="https://embeds.iubenda.com/widgets/1a4966c0-f918-48d6-9f4c-e0aae709e7c4.js"
           strategy="afterInteractive"
-        />
+        /> */}
       </body>
     </html>
   );

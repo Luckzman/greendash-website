@@ -2,20 +2,567 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Smooth scrolling for the entire page */
+
+:root {
+  /* FONTS  */
+  --dm_sans: "DM_Sans";
+  --inter: "Inter";
+  /* FONTS  */
+  /* VIEW PORT UNITS  */
+  --vw1: 0.06944vw;
+  --vw2: 0.13889vw;
+  --vw3: 0.20833vw;
+  --vw4: 0.27778vw;
+  --vw5: 0.34722vw;
+  --vw6: 0.41667vw;
+  --vw7: 0.48611vw;
+  --vw8: 0.55556vw;
+  --vw9: 0.625vw;
+  --vw10: 0.69444vw;
+  --vw11: 0.76389vw;
+  --vw12: 0.83333vw;
+  --vw13: 0.90278vw;
+  --vw14: 0.97222vw;
+  --vw15: 1.04167vw;
+  --vw16: 1.11111vw;
+  --vw17: 1.18056vw;
+  --vw18: 1.25vw;
+  --vw19: 1.31944vw;
+  --vw20: 1.38889vw;
+  --vw21: 1.45833vw;
+  --vw22: 1.52778vw;
+  --vw23: 1.59722vw;
+  --vw24: 1.66667vw;
+  --vw25: 1.73611vw;
+  --vw26: 1.80556vw;
+  --vw27: 1.875vw;
+  --vw28: 1.94444vw;
+  --vw29: 2.01389vw;
+  --vw30: 2.08333vw;
+  --vw31: 2.15278vw;
+  --vw32: 2.22222vw;
+  --vw33: 2.29167vw;
+  --vw34: 2.36111vw;
+  --vw35: 2.43056vw;
+  --vw36: 2.5vw;
+  --vw37: 2.56944vw;
+  --vw38: 2.63889vw;
+  --vw39: 2.70833vw;
+  --vw40: 2.77778vw;
+  --vw41: 2.84722vw;
+  --vw42: 2.91667vw;
+  --vw43: 2.98611vw;
+  --vw44: 3.05556vw;
+  --vw45: 3.125vw;
+  --vw46: 3.19444vw;
+  --vw47: 3.26389vw;
+  --vw48: 3.33333vw;
+  --vw49: 3.40278vw;
+  --vw50: 3.47222vw;
+  --vw51: 3.54167vw;
+  --vw52: 3.61111vw;
+  --vw53: 3.68056vw;
+  --vw54: 3.75vw;
+  --vw55: 3.81944vw;
+  --vw56: 3.88889vw;
+  --vw57: 3.95833vw;
+  --vw58: 4.02778vw;
+  --vw59: 4.09722vw;
+  --vw60: 4.16667vw;
+  --vw61: 4.23611vw;
+  --vw62: 4.30556vw;
+  --vw63: 4.375vw;
+  --vw64: 4.44444vw;
+  --vw65: 4.51389vw;
+  --vw66: 4.58333vw;
+  --vw67: 4.65278vw;
+  --vw68: 4.72222vw;
+  --vw69: 4.79167vw;
+  --vw70: 4.86111vw;
+  --vw71: 4.93056vw;
+  --vw72: 5vw;
+  --vw73: 5.06944vw;
+  --vw74: 5.13889vw;
+  --vw75: 5.20833vw;
+  --vw76: 5.27778vw;
+  --vw77: 5.34722vw;
+  --vw78: 5.41667vw;
+  --vw79: 5.48611vw;
+  --vw80: 5.55556vw;
+  --vw81: 5.625vw;
+  --vw82: 5.69444vw;
+  --vw83: 5.76389vw;
+  --vw84: 5.83333vw;
+  --vw85: 5.90278vw;
+  --vw86: 5.97222vw;
+  --vw87: 6.04167vw;
+  --vw88: 6.11111vw;
+  --vw89: 6.18056vw;
+  --vw90: 6.25vw;
+  --vw91: 6.31944vw;
+  --vw92: 6.38889vw;
+  --vw93: 6.45833vw;
+  --vw94: 6.52778vw;
+  --vw95: 6.59722vw;
+  --vw96: 6.66667vw;
+  --vw97: 6.73611vw;
+  --vw98: 6.80556vw;
+  --vw99: 6.875vw;
+  --vw100: 6.94444vw;
+  --vw101: 7.01389vw;
+  --vw102: 7.08333vw;
+  --vw103: 7.15278vw;
+  --vw104: 7.22222vw;
+  --vw105: 7.29167vw;
+  --vw106: 7.36111vw;
+  --vw107: 7.43056vw;
+  --vw108: 7.5vw;
+  --vw109: 7.56944vw;
+  --vw110: 7.63889vw;
+  --vw111: 7.70833vw;
+  --vw112: 7.77778vw;
+  --vw113: 7.84722vw;
+  --vw114: 7.91667vw;
+  --vw115: 7.98611vw;
+  --vw116: 8.05556vw;
+  --vw117: 8.125vw;
+  --vw118: 8.19444vw;
+  --vw119: 8.26389vw;
+  --vw120: 8.33333vw;
+  --vw121: 8.40278vw;
+  --vw122: 8.47222vw;
+  --vw123: 8.54167vw;
+  --vw124: 8.61111vw;
+  --vw125: 8.68056vw;
+  --vw126: 8.75vw;
+  --vw127: 8.81944vw;
+  --vw128: 8.88889vw;
+  --vw129: 8.95833vw;
+  --vw130: 9.02778vw;
+  --vw131: 9.09722vw;
+  --vw132: 9.16667vw;
+  --vw133: 9.23611vw;
+  --vw134: 9.30556vw;
+  --vw135: 9.375vw;
+  --vw136: 9.44444vw;
+  --vw137: 9.51389vw;
+  --vw138: 9.58333vw;
+  --vw139: 9.65278vw;
+  --vw140: 9.72222vw;
+  --vw141: 9.79167vw;
+  --vw142: 9.86111vw;
+  --vw143: 9.93056vw;
+  --vw144: 10vw;
+  --vw145: 10.06944vw;
+  --vw146: 10.13889vw;
+  --vw147: 10.20833vw;
+  --vw148: 10.27778vw;
+  --vw149: 10.34722vw;
+  --vw150: 10.41667vw;
+  --vw151: 10.48611vw;
+  --vw152: 10.55556vw;
+  --vw153: 10.625vw;
+  --vw154: 10.69444vw;
+  --vw155: 10.76389vw;
+  --vw156: 10.83333vw;
+  --vw157: 10.90278vw;
+  --vw158: 10.97222vw;
+  --vw159: 11.04167vw;
+  --vw160: 11.11111vw;
+  --vw161: 11.18056vw;
+  --vw162: 11.25vw;
+  --vw163: 11.31944vw;
+  --vw164: 11.38889vw;
+  --vw165: 11.45833vw;
+  --vw166: 11.52778vw;
+  --vw167: 11.59722vw;
+  --vw168: 11.66667vw;
+  --vw169: 11.73611vw;
+  --vw170: 11.80556vw;
+  --vw171: 11.875vw;
+  --vw172: 11.94444vw;
+  --vw173: 12.01389vw;
+  --vw174: 12.08333vw;
+  --vw175: 12.15278vw;
+  --vw176: 12.22222vw;
+  --vw177: 12.29167vw;
+  --vw178: 12.36111vw;
+  --vw179: 12.43056vw;
+  --vw180: 12.5vw;
+  --vw181: 12.56944vw;
+  --vw182: 12.63889vw;
+  --vw183: 12.70833vw;
+  --vw184: 12.77778vw;
+  --vw185: 12.84722vw;
+  --vw186: 12.91667vw;
+  --vw187: 12.98611vw;
+  --vw188: 13.05556vw;
+  --vw189: 13.125vw;
+  --vw190: 13.19444vw;
+  --vw191: 13.26389vw;
+  --vw192: 13.33333vw;
+  --vw193: 13.40278vw;
+  --vw194: 13.47222vw;
+  --vw195: 13.54167vw;
+  --vw196: 13.61111vw;
+  --vw197: 13.68056vw;
+  --vw198: 13.75vw;
+  --vw199: 13.81944vw;
+  --vw200: 13.88889vw;
+
+  /* VIEW PORT UNITS  */
+}
+/* DM_Sans */
+@font-face {
+  font-family: "DM_Sans";
+  src: url("/fonts/DM_Sans/DMSans-Regular.ttf");
+  font-display: block;
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "DM_Sans";
+  src: url("/fonts/DM_Sans/DMSans-Medium.ttf");
+  font-display: block;
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "DM_Sans";
+  src: url("/fonts/DM_Sans/DMSans-SemiBold.ttf");
+  font-display: block;
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "DM_Sans";
+  src: url("/fonts/DM_Sans/DMSans-Bold.ttf");
+  font-display: block;
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* DM_Sans */
+/* Inter */
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter/Inter_18pt-Light.ttf");
+  font-display: block;
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter/Inter_18pt-Regular.ttf");
+  font-display: block;
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter/Inter_18pt-Medium.ttf");
+  font-display: block;
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter/Inter_18pt-SemiBold.ttf");
+  font-display: block;
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter/Inter_18pt-Bold.ttf");
+  font-display: block;
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Inter */
+
+body {
+  font-family: "DM_Sans";
+  background-color: white;
+  color: #010d3e;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+.dm_sans {
+  font-family: "DM_Sans";
+}
+.inter {
+  font-family: "Inter";
+}
 html {
   scroll-behavior: smooth;
 }
 
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+textarea {
+  resize: none;
+}
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+@layer components {
+  .fullVh.fullSvh {
+    @apply min-h-[100vh] min-h-[100svh];
   }
-  100% {
-    transform: translateX(-50%);
+  .fullVhcm.fullSvhcm {
+    @apply h-[100vh] h-[100svh];
+  }
+  .myContainer {
+    @apply lg:w-[86.6666666667vw] w-[90.699%] mx-[auto];
+  }
+
+  .text55 {
+    @apply lg:text-vw55 lg:leading-vw80 font-bold gradient_text mtext32  lg:tracking-[-0.09722222222vw] tracking-[-0.5px];
+  }
+  .text54 {
+    @apply lg:text-vw54 lg:leading-vw60 font-bold mtext30  lg:-tracking-vw2 tracking-[-0.7px];
+  }
+  .text22 {
+    @apply lg:text-vw22 lg:leading-vw31 mtext16 ls0792 inter;
+  }
+  .text32 {
+    @apply lg:text-vw32 lg:leading-vw42;
+  }
+  .text48 {
+    @apply lg:text-vw48 lg:leading-vw50;
+  }
+  .text24 {
+    @apply lg:text-vw24 lg:leading-vw29;
+  }
+  .text18 {
+    @apply lg:text-vw18 lg:leading-vw29;
+  }
+  .text16 {
+    @apply lg:text-vw16 lg:leading-vw24 mtext16;
+  }
+  .text14 {
+    @apply lg:text-vw14 lg:leading-vw17;
+  }
+  .text13 {
+    @apply lg:text-vw13 lg:leading-vw13;
+  }
+  .text12 {
+    @apply lg:text-vw12 lg:leading-vw13;
+  }
+
+  .mtext12 {
+    @apply sm:text-[14px] sm:leading-[24px] text-[12px] leading-[18px];
+  }
+  .mtext14 {
+    @apply sm:text-[16px] sm:leading-[26px] text-[14px] leading-[21px];
+  }
+  .mtext15 {
+    @apply sm:text-[17px] sm:leading-[27px] text-[15px] leading-[25px];
+  }
+  .mtext16 {
+    @apply sm:text-[18px] sm:leading-[28px] text-[16px] leading-[24px];
+  }
+  .mtext18 {
+    @apply sm:text-[20px] sm:leading-[30px] text-[18px] leading-[27px];
+  }
+  .mtext20 {
+    @apply sm:text-[22px] sm:leading-[32px] text-[20px] leading-[30px];
+  }
+  .mtext22 {
+    @apply sm:text-[24px] sm:leading-[34px] text-[22px] leading-[32px];
+  }
+  .mtext24 {
+    @apply sm:text-[26px] sm:leading-[36px] text-[24px] leading-[34px];
+  }
+  .mtext25 {
+    @apply sm:text-[27px] sm:leading-[37px] text-[25px] leading-[38px];
+  }
+  .mtext26 {
+    @apply sm:text-[28px] sm:leading-[38px] text-[26px] leading-[36px];
+  }
+  .mtext30 {
+    @apply sm:text-[32px] sm:leading-[42px] text-[30px] leading-[36px];
+  }
+  .mtext32 {
+    @apply sm:text-[34px] sm:leading-[44px] text-[32px] leading-[48px];
+  }
+
+  .ls096 {
+    @apply lg:tracking-[-0.06666666666vw] tracking-[-0.5px];
+  }
+  .ls0792 {
+    @apply lg:tracking-[-0.055vw] tracking-[-0.5px];
+  }
+  .ls032 {
+    @apply lg:tracking-[-0.02222222222vw] tracking-[-0.2px];
+  }
+  .ls016 {
+    @apply lg:tracking-[-0.01111111111vw];
+  }
+  .atlwh_Full {
+    @apply absolute top-0 left-0 size-full;
+  }
+  .atrwh_Full {
+    @apply absolute top-0 right-0 size-full;
+  }
+  .atwh_Full {
+    @apply absolute top-0 size-full;
+  }
+  .opacity_Hover {
+    transition: all 0.3s;
+  }
+
+  .section_gap {
+    @apply lg:py-vw180 sm:py-[120px] py-[80px];
+  }
+
+  .opacity_Hover:hover {
+    opacity: 0.7;
+  }
+  ul.defaultList,
+  .defaultList ul {
+    @apply list-disc;
+  }
+  ol.defaultList,
+  .defaultList ol {
+    @apply list-decimal;
+  }
+  ol.defaultList li::marker,
+  .defaultList ol li::marker {
+    color: inherit;
+    font-size: inherit;
+  }
+  ul.defaultList li::marker,
+  .defaultList ul li::marker {
+    color: inherit;
+    font-size: initial;
+  }
+  ul.defaultList,
+  ol.defaultList,
+  .defaultList ul,
+  .defaultList ol {
+    @apply lg:pl-[1.66666666667vw] pl-[25px];
+  }
+
+  .header_bg {
+    @apply backdrop-blur-[7px];
   }
 }
 
-.animate-scroll {
-  animation: scroll 30s linear infinite;
+/* Hide scrollbar for Chrome, Safari and Opera */
+.hideScroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.hideScroll {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  display: none;
+}
+
+.gradient_text {
+  background: linear-gradient(180deg, #000 0%, #001354 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero_gradient {
+  background: linear-gradient(178deg, #eeffec 39.64%, #7fff6b 91.32%);
+}
+
+/* details  */
+
+:root {
+  interpolate-size: allow-keywords;
+}
+
+details {
+  overflow: hidden;
+}
+
+/* don't add margin/padding to this, add it to the actual
+   stuff inside the details content */
+details::details-content {
+  block-size: 0;
+  /* opacity: 0; */
+  transition: all 1s;
+  transition-behavior: allow-discrete;
+}
+
+details[open]::details-content {
+  block-size: auto;
+  /* opacity: 1; */
+}
+
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+/* details  */
+@media (min-width: 1025px) {
+}
+
+@media (max-width: 1024px) {
+  /* HAMBURGER  */
+
+  .menu {
+    position: relative;
+  }
+  .menu span {
+    @apply absolute  bg-green h-[0.7vw] w-full  left-0 transition-all duration-300;
+  }
+
+  .menu.active {
+    top: 1px;
+  }
+  .menu.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .menu.active span:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 50%;
+  }
+  .menu.active span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 50%;
+  }
+  .sideBar.active {
+    opacity: 1;
+    pointer-events: initial;
+  }
+  .sideBar {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .sideBar {
+    -webkit-backdrop-filter: blur(30px) brightness(0.5);
+    backdrop-filter: blur(30px) brightness(0.5);
+    transition: all 0.5s;
+  }
+  body.active {
+    height: 100svh;
+    overflow: hidden;
+  }
+
+  /* HAMBURGER  */
+}
+
+@media (min-width: 640px) {
+}
+@media (max-width: 640px) {
 }

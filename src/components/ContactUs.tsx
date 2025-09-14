@@ -5,6 +5,7 @@ import PhoneNumberInput from './PhoneNumberInput';
 import Toast from './Toast';
 import { handleFormSubmission } from '../lib/hubspot';
 import Link from 'next/link';
+import Content from './common/Content';
 
 interface ContactUsFormProps {
   isForProfessionalsPage?: boolean;
@@ -187,32 +188,31 @@ export default function ContactUsForm({ isForProfessionalsPage = false }: Contac
         duration={5000}
       />
 
-      <section className={`py-20 ${isForProfessionalsPage ? 'bg-gradient-to-b from-[#131313] via-[#202120] to-[#6FE451]' : ''}`}
-        style={{
-          background: `${isForProfessionalsPage ? '': 'linear-gradient(to bottom, #7FFF6B 0%, #ADFFA0 20%, #ADFFA0 40%, #FFFFFF 60%, #FFFFFF 85%, #7FFF6B 100%)'}`
-        }}
-      >
-        <div className="max-w-5xl mx-auto px-6">
-        {/* Header Section */}
-        <div className="text-center mb-12">
-          {/* Top Badge */}
-          <div className="inline-block bg-white rounded-[10px] px-10 py-1 mb-6 border border-[rgba(34, 34, 34, 0.1)] shadow-sm">
-            <span className="text-sm font-medium font-inter text-black">Contact Us</span>
-          </div>
+      <section className="relative lg:pt-vw44 lg:pb-vw200 py-[60px] sm:py-[120px]">
+        <span
+          style={{
+            background:
+              "linear-gradient(180deg, #7FFF6B 3.25%, rgba(173, 255, 160, 0.80) 30.18%, rgba(239, 255, 236, 0.50) 66.1%, rgba(241, 255, 238, 0.10) 96.62%)",
+          }}
+          className="atlwh_Full pointer-events-none"
+        ></span>
+        <span
+          style={{
+            background: "linear-gradient(181deg, #FFF 42.57%, #7FFF6B 99.81%)",
+          }}
+          className="atlwh_Full lg:h-vw190 h-[30%] top-[unset] bottom-0 pointer-events-none"
+        ></span>
+        <div className="relative z-[2]">
+          <Content
+            tag="Contact Us"
+            heading="Let&apos;s talk!"
+            desc="Still have questions or in need of further help? Send us a message and one of our team members will be in touch with you in the next 24h"
+            wrapperWidth={"lg:w-[65.9027777778vw]"}
+            descWidth={"lg:w-[53vw]"}
+          />
           
-          {/* Main Headline */}
-          <h1 className={`text-4xl lg:text-5xl font-dm-sans font-bold pb-6 leading-[70px]  ${isForProfessionalsPage ? 'text-[#6FE451]' : 'text-black'}`}>
-            Let&apos;s talk!
-          </h1>
-          
-          {/* Description */}
-          <p className={`text-xl ${isForProfessionalsPage ? 'text-white' : 'text-[#010D3E]'} font-inter max-w-3xl mx-auto leading-relaxed`}>
-            Still have questions or in need of further help? Send us a message and one of our team members will be in touch with you in the next 24h
-          </p>
-        </div>
-
-        {/* Form Section */}
-        <div className="md:max-w-2xl lg:max-w-xl mx-auto bg-white rounded-xl p-8 shadow-lg" style={{ boxShadow: '0 4px 4px rgba(0, 0, 0, 0.25)' }}>
+          {/* Form Section */}
+          <div className="md:max-w-2xl mx-auto bg-white rounded-xl mt-10 p-14 shadow-lg" style={{ boxShadow: '0 4px 4px rgba(0, 0, 0, 0.25)' }}>
           <form onSubmit={handleSubmit} method="POST" action="#" className="space-y-6">
             {/* First Row - First Name and Last Name */}
             <div className="grid md:grid-cols-2 gap-6">
@@ -430,9 +430,35 @@ export default function ContactUsForm({ isForProfessionalsPage = false }: Contac
               </button>
             </div>
           </form>
+          </div>
+        </div>
+      </section>
+
+      {/* <section className={`py-20 ${isForProfessionalsPage ? 'bg-gradient-to-b from-[#131313] via-[#202120] to-[#6FE451]' : ''}`}
+        style={{
+          background: `${isForProfessionalsPage ? '': 'linear-gradient(to bottom, #7FFF6B 0%, #ADFFA0 20%, #ADFFA0 40%, #FFFFFF 60%, #FFFFFF 85%, #7FFF6B 100%)'}`
+        }}
+      >
+        <div className="max-w-5xl mx-auto px-6">
+        <div className="text-center mb-12">
+          <div className="inline-block bg-white rounded-[10px] px-10 py-1 mb-6 border border-[rgba(34, 34, 34, 0.1)] shadow-sm">
+            <span className="text-sm font-medium font-inter text-black">Contact Us</span>
+          </div>
+          
+          <h1 className={`text-4xl lg:text-5xl font-dm-sans font-bold pb-6 leading-[70px]  ${isForProfessionalsPage ? 'text-[#6FE451]' : 'text-black'}`}>
+            Let&apos;s talk!
+          </h1>
+          
+          <p className={`text-xl ${isForProfessionalsPage ? 'text-white' : 'text-[#010D3E]'} font-inter max-w-3xl mx-auto leading-relaxed`}>
+            Still have questions or in need of further help? Send us a message and one of our team members will be in touch with you in the next 24h
+          </p>
+        </div>
+
+        <div className="md:max-w-2xl lg:max-w-xl mx-auto bg-white rounded-xl p-8 shadow-lg" style={{ boxShadow: '0 4px 4px rgba(0, 0, 0, 0.25)' }}>
+
         </div>
       </div>
-    </section>
+    </section> */}
     </>
   );
 }

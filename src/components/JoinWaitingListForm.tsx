@@ -6,6 +6,7 @@ import PhoneNumberInput from './PhoneNumberInput';
 import Toast from './Toast';
 import { handleFormSubmission } from '../lib/hubspot';
 import Link from 'next/link';
+import Content from './common/Content';
 
 interface JoinWaitingListFormProps {
   essentialKit?: boolean;
@@ -236,43 +237,42 @@ export default function JoinWaitingListForm({ essentialKit, esgMaturityCertifica
         duration={5000}
       />
 
-      <section className={`py-20 ${isForProfessionalsPage ? 'bg-gradient-to-b from-[#131313] via-[#202120] to-[#6FE451]' : ''}`}
-        style={{
-          background: `${isForProfessionalsPage ? '': 'linear-gradient(to bottom, #7FFF6B 0%, #ADFFA0 20%, #ADFFA0 40%, #FFFFFF 60%, #FFFFFF 85%, #7FFF6B 100%)'}`
-        }}
-      >
-        <div className="max-w-5xl mx-auto px-6">
-          {/* Header Section */}
-          <div className="text-center mb-12">
-            {/* Top Badge */}
-            <div className="inline-block bg-white rounded-[10px] px-10 py-1 mb-6 border border-[rgba(34, 34, 34, 0.1)] shadow-sm">
-              <span className="text-sm font-medium text-black">{essentialKit ? 'CSRD/VSME Essentials Kit' : esgMaturityCertification ? 'Certification' : csrdVsmeCertification ? 'Certification' : 'Join the Waiting List'}</span>
-            </div>
-            
-            {/* Main Headline */}
-            <h1 className={`text-4xl lg:text-5xl font-dm-sans font-bold pb-6 leading-[70px]  ${isForProfessionalsPage ? 'text-[#6FE451]' : 'text-black'}`}>
-              {essentialKit ? 'Get your free CSRD/VSME Essentials Now!' : 
+      <section className="relative lg:pt-vw44 lg:pb-vw200 py-[60px] sm:py-[120px]">
+        <span
+          style={{
+            background:
+              "linear-gradient(180deg, #7FFF6B 3.25%, rgba(173, 255, 160, 0.80) 30.18%, rgba(239, 255, 236, 0.50) 66.1%, rgba(241, 255, 238, 0.10) 96.62%)",
+          }}
+          className="atlwh_Full pointer-events-none"
+        ></span>
+        <span
+          style={{
+            background: "linear-gradient(181deg, #FFF 42.57%, #7FFF6B 99.81%)",
+          }}
+          className="atlwh_Full lg:h-vw190 h-[30%] top-[unset] bottom-0 pointer-events-none"
+        ></span>
+        <div className="relative z-[2]">
+          <Content
+            tag={essentialKit ? 'CSRD/VSME Essentials Kit' : esgMaturityCertification ? 'Certification' : csrdVsmeCertification ? 'Certification' : 'Join the Waiting List'}
+            heading={essentialKit ? 'Get your free CSRD/VSME Essentials Now!' : 
               esgMaturityCertification ? 'Let\'s start your ESG Maturity Certification journey' :
               csrdVsmeCertification ? 'Let\'s start your CSRD/VSME Certification journey' :
               'Hold Tight, GreenDash is Coming Soon'}
-            </h1>
-            
-            {/* Description */}
-            <p className={`text-xl ${isForProfessionalsPage ? 'text-white' : 'text-[#010D3E]'} font-inter  max-w-2xl mx-auto leading-relaxed`}>
-              {essentialKit ? 
+            desc={essentialKit ? 
               'Answer to the questions below and download your FREE CSRD/VSME Essentials Kit, so you can start your reporting journey!' : 
               esgMaturityCertification || csrdVsmeCertification ? 'Please provide us some initial information and book your first call with us!' :
               "We're preparing for a launch that will make a real impact. By joining the waiting list, you'll secure your spot, receive early updates, and be the first to experience our platform"}
-            </p>
-          </div>
-
+            wrapperWidth={"lg:w-[65.9027777778vw]"}
+            descWidth={"lg:w-[53vw]"}
+          />
+          
           {/* Form Section */}
-          <div className="md:max-w-2xl lg:max-w-xl mx-auto bg-white rounded-xl p-8 shadow-lg" style={{ boxShadow: '0 4px 4px rgba(0, 0, 0, 0.25)' }}>
+          <div className="md:max-w-2xl mx-auto bg-white rounded-xl mt-10 p-14 shadow-lg" style={{ boxShadow: '0 4px 4px rgba(0, 0, 0, 0.25)' }}>
             <form onSubmit={handleSubmit} method="POST" action="#" className="space-y-6">
               {/* First Row - First Name and Last Name */}
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="firstName" className="block text-base font-medium text-gray-700 mb-2">
                     First name <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -291,7 +291,7 @@ export default function JoinWaitingListForm({ essentialKit, esgMaturityCertifica
                 </div>
                 
                 <div>
-                  <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="lastName" className="block text-base font-medium text-gray-700 mb-2">
                     Last name <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -312,7 +312,7 @@ export default function JoinWaitingListForm({ essentialKit, esgMaturityCertifica
 
               {/* Company */}
               <div>
-                <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="company" className="block text-base font-medium text-gray-700 mb-2">
                   Company <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -332,7 +332,7 @@ export default function JoinWaitingListForm({ essentialKit, esgMaturityCertifica
 
               {/* Company Email */}
               <div>
-                <label htmlFor="companyEmail" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="companyEmail" className="block text-base font-medium text-gray-700 mb-2">
                   Company Email <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -369,7 +369,7 @@ export default function JoinWaitingListForm({ essentialKit, esgMaturityCertifica
 
               {/* Job Title */}
               <div>
-                <label htmlFor="jobTitle" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="jobTitle" className="block text-base font-medium text-gray-700 mb-2">
                   Job title <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -389,7 +389,7 @@ export default function JoinWaitingListForm({ essentialKit, esgMaturityCertifica
 
               {/* Industry */}
               <div>
-                <label htmlFor="industry" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="industry" className="block text-base font-medium text-gray-700 mb-2">
                   Which industry do you come from? <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -409,7 +409,7 @@ export default function JoinWaitingListForm({ essentialKit, esgMaturityCertifica
 
               {/* Employee Count */}
               <div>
-                <label htmlFor="numberofemployees" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="numberofemployees" className="block text-base font-medium text-gray-700 mb-2">
                   How many employees does your organization has? <span className="text-red-500">*</span>
                 </label>
                 <select
@@ -460,7 +460,7 @@ export default function JoinWaitingListForm({ essentialKit, esgMaturityCertifica
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`px-6 py-2 rounded-lg font-semibold text-lg transition-all duration-200 transform hover:-translate-y-0.5 ${
+                  className={`px-6 py-2 rounded-lg font-semibold text-base transition-all duration-200 transform hover:-translate-y-0.5 ${
                     isSubmitting
                       ? 'bg-gray-400 cursor-not-allowed'
                       : 'bg-[#6FE451] hover:bg-green-600 text-white'
@@ -487,6 +487,38 @@ export default function JoinWaitingListForm({ essentialKit, esgMaturityCertifica
           </div>
         </div>
       </section>
+
+      {/* <section className={`py-20 ${isForProfessionalsPage ? 'bg-gradient-to-b from-[#131313] via-[#202120] to-[#6FE451]' : ''}`}
+        style={{
+          background: `${isForProfessionalsPage ? '': 'linear-gradient(to bottom, #7FFF6B 0%, #ADFFA0 20%, #ADFFA0 40%, #FFFFFF 60%, #FFFFFF 85%, #7FFF6B 100%)'}`
+        }}
+      >
+        <div className="max-w-5xl mx-auto px-6">
+
+          <div className="text-center mb-12">
+
+            <div className="inline-block bg-white rounded-[10px] px-10 py-1 mb-6 border border-[rgba(34, 34, 34, 0.1)] shadow-sm">
+              <span className="text-sm font-medium text-black">{essentialKit ? 'CSRD/VSME Essentials Kit' : esgMaturityCertification ? 'Certification' : csrdVsmeCertification ? 'Certification' : 'Join the Waiting List'}</span>
+            </div>
+            
+            <h1 className={`text-4xl lg:text-5xl font-dm-sans font-bold pb-6 leading-[70px]  
+              ${isForProfessionalsPage ? 'text-[#6FE451]' : 'text-black'}`}
+            >
+              {essentialKit ? 'Get your free CSRD/VSME Essentials Now!' : 
+              esgMaturityCertification ? 'Let\'s start your ESG Maturity Certification journey' :
+              csrdVsmeCertification ? 'Let\'s start your CSRD/VSME Certification journey' :
+              'Hold Tight, GreenDash is Coming Soon'}
+            </h1>
+            
+            <p className={`text-xl ${isForProfessionalsPage ? 'text-white' : 'text-[#010D3E]'} font-inter  max-w-2xl mx-auto leading-relaxed`}>
+              {essentialKit ? 
+              'Answer to the questions below and download your FREE CSRD/VSME Essentials Kit, so you can start your reporting journey!' : 
+              esgMaturityCertification || csrdVsmeCertification ? 'Please provide us some initial information and book your first call with us!' :
+              "We're preparing for a launch that will make a real impact. By joining the waiting list, you'll secure your spot, receive early updates, and be the first to experience our platform"}
+            </p>
+          </div>
+        </div>
+      </section> */}
     </>
   );
 }
