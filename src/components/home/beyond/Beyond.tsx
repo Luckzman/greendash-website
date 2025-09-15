@@ -2,7 +2,11 @@ import React from "react";
 import Content from "../../common/Content";
 import Card from "./Card";
 
-const Beyond = () => {
+interface BeyondProps {
+  isForProfessionalsPage?: boolean;
+}
+
+const Beyond = ({ isForProfessionalsPage = false }: BeyondProps) => {
   return (
     <section className="lg:pt-vw86 lg:pb-vw50 py-[60px] sm:py-[120px] relative">
       <span
@@ -14,9 +18,9 @@ const Beyond = () => {
       ></span>
       <div className="w-full relative z-[2]">
         <Content
-          tag={"Courses & Certification"}
+          tag={isForProfessionalsPage ? "Courses" : "Courses & Certification"}
           heading={"Go Beyond Reporting "}
-          desc={`We help small and medium businesses not only comply, but also build in-house expertise that wins client trust and opens new market opportunities`}
+          desc={isForProfessionalsPage ? "Stay ahead of regulatory requirements and build internal sustainability knowledge with our curated courses under ESG, SDG and CSRD/VSME" : "We help small and medium businesses not only comply, but also build in-house expertise that wins client trust and opens new market opportunities"}
           descWidth={"lg:w-[59.72222222222222vw]"}
         />
         <div className="flex lg:gap-x-vw30 gap-6 justify-between lg:justify-center items-stretch flex-wrap myContainer lg:mt-vw60 mt-10">
@@ -26,12 +30,12 @@ const Beyond = () => {
               "Grow your expertise and learn about ESG, SDG and CSRD/VSME from Zero to Pro No Jargon or Complexity, Just Clarity"
             }
           />
-          <Card
+          {!isForProfessionalsPage && <Card
             logo={"/images/home/beyond/2.svg"}
             desc={
               "Get certified and showcase your alignment with CSRD/VSME and SDG standards"
             }
-          />
+          />}
         </div>
       </div>
     </section>

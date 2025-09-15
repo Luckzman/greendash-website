@@ -325,7 +325,7 @@ input[type="number"] {
   }
 
   .text55 {
-    @apply lg:text-vw55 lg:leading-vw80 font-bold gradient_text mtext32  lg:tracking-[-0.09722222222vw] tracking-[-0.5px];
+    @apply lg:text-vw55 lg:leading-vw80 font-bold mtext32  lg:tracking-[-0.09722222222vw] tracking-[-0.5px];
   }
   .text54 {
     @apply lg:text-vw54 lg:leading-vw60 font-bold mtext30  lg:-tracking-vw2 tracking-[-0.7px];

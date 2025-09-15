@@ -17,6 +17,8 @@ interface ContentProps {
     text: string;
     link: string;
   };
+  descColor?: string;
+  isForProfessionalsPage?: boolean;
 }
 
 const Content: React.FC<ContentProps> = ({
@@ -28,6 +30,8 @@ const Content: React.FC<ContentProps> = ({
   headingClasses,
   standardBtn,
   chevronBtn,
+  descColor,
+  isForProfessionalsPage,
 }) => {
   return (
     <div
@@ -60,11 +64,11 @@ const Content: React.FC<ContentProps> = ({
           dangerouslySetInnerHTML={{ __html: desc }}
           className={`text22 ${
             descWidth ? descWidth : "lg:w-[50.13888888888889vw]"
-          }`}
+          } ${descColor}`}
         ></div>
       )}
       {standardBtn && chevronBtn && (
-        <PairedButtons standardBtn={standardBtn} chevronBtn={chevronBtn} />
+        <PairedButtons standardBtn={standardBtn} chevronBtn={chevronBtn} isForProfessionalsPage={isForProfessionalsPage} />
       )}
     </div>
   );

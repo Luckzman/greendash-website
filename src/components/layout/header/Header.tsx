@@ -150,7 +150,7 @@ const Header = () => {
                   <div className="relative">
                     <Link 
                       href={isForProfessionalsPage ? "/" : "/for-professionals"} 
-                      onClick={() => setIsPlatformOpen(false)}
+                      onClick={() => toggleSidebar()}
                       className={`block font-inter py-2 ${
                         isForProfessionalsPage 
                         ? 'text-white hover:text-gray-300' 

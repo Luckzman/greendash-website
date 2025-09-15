@@ -8,7 +8,7 @@ interface CoursesCertificationProps {
 
 export default function CoursesCertification({ isForProfessionalsPage = false }: CoursesCertificationProps) {
   return (
-    <section className="py-20 bg-gradient-to-b from-[#7FFF6BCC] from-20% to-white to-80%">
+    <section className="py-20 bg-gradient-to-b from-[#7FFF6B] from-20% to-white to-80%">
       <div className="max-w-7xl mx-auto px-6">
         {/* Top Badge */}
         <div className="text-center mb-8">

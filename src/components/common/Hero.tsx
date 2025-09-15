@@ -1,7 +1,9 @@
 import React from "react";
 import PairedButtons from "./PairedButtons";
 import Image from "next/image";
-
+import StandardBtn from "./link-buttons/StandardBtn";
+import OutlineBtn from "./link-buttons/OutlineBtn";
+import ChevronBtn from "./link-buttons/ChevronBtn";
 
 interface HeroProps {
   isForProfessionalsPage?: boolean;
@@ -11,7 +13,10 @@ interface HeroProps {
 const Hero = ({ isForProfessionalsPage = false, isForCertificationPage = false }: HeroProps) => {
   return (
     <section className="fullVh fullSvh relative lg:pt-[19vh] lg:pb-[10.5555555556vh] pt-36 sm:pt-[200px] pb-[60px] sm:pb-[120px]">
-      <span className="hero_gradient atlwh_Full pointer-events-none"></span>
+      <span className={`${
+      isForProfessionalsPage 
+        ? 'bg-[#131313]' 
+        : 'hero_gradient'} atlwh_Full pointer-events-none`}></span>
       <div className="relative z-[2] flex flex-wrap items-center lg:gap-x-vw81 gap-y-6 sm:gap-y-10 lg:pl-vw53">
         <div className="lg:w-[35.4861111111vw] w-[90.699%] mx-auto lg:mx-0 flex flex-col items-start lg:gap-y-vw20 gap-y-4">
           <div
@@ -26,11 +31,11 @@ const Hero = ({ isForProfessionalsPage = false, isForCertificationPage = false }
               Launch Coming Soon
             </span>
           </div>
-          <h1 data-aos="fade-up" data-aos-delay="100" className={`text55 ${
+          <h1 data-aos="fade-up" data-aos-delay="100" className={`${
               isForProfessionalsPage 
                 ? 'text-[#6FE451]' 
                 : 'text-black'
-            }`}>
+            } text55 `}>
             {isForProfessionalsPage 
                 ? 'Accelerate Your Reporting Services' 
                 : isForCertificationPage
@@ -54,17 +59,13 @@ const Hero = ({ isForProfessionalsPage = false, isForCertificationPage = false }
                 : 'Collect, monitor and report your ESG/VSME data to all your stakeholders, while improving your company\'s ESG performance - fast and easily'
               }
           </p>
-          <PairedButtons
-            standardBtn={{
-              text: "Get Started",
-              link: "/join-waiting-list",
-            }}
-            chevronBtn={{
-              text: "Learn more",
-              link: "#feature",
-            }}
-          />
-          
+          <PairedButtons standardBtn={{
+            text: "Get Started",
+            link: isForProfessionalsPage ? "/getting-started" : "/join-waiting-list",
+          }} chevronBtn={{
+            text: "Learn more",
+            link: isForProfessionalsPage ? "#feature" : "#feature",
+          }} isForProfessionalsPage={isForProfessionalsPage} />
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3">
               <p className={`text-sm font-inter ${
                 isForProfessionalsPage 
