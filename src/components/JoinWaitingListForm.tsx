@@ -240,14 +240,17 @@ export default function JoinWaitingListForm({ essentialKit, esgMaturityCertifica
       <section className="relative lg:pt-vw44 lg:pb-vw200 py-[60px] sm:py-[120px]">
         <span
           style={{
-            background:
-              "linear-gradient(180deg, #7FFF6B 3.25%, rgba(173, 255, 160, 0.80) 30.18%, rgba(239, 255, 236, 0.50) 66.1%, rgba(241, 255, 238, 0.10) 96.62%)",
+            background: isForProfessionalsPage
+            ? 'linear-gradient(to bottom, #131313 5%, #202120 10%, #2C2D2B 35%, #6FE451 80%, #6FE451 100%)'
+            : "linear-gradient(180deg, #7FFF6B 3.25%, rgba(173, 255, 160, 0.80) 30.18%, rgba(239, 255, 236, 0.50) 66.1%, rgba(241, 255, 238, 0.10) 96.62%)",
           }}
           className="atlwh_Full pointer-events-none"
         ></span>
         <span
           style={{
-            background: "linear-gradient(181deg, #FFF 42.57%, #7FFF6B 99.81%)",
+            background: isForProfessionalsPage
+            ? '#6FE451'
+            : "linear-gradient(181deg, #FFF 42.57%, #7FFF6B 99.81%)",
           }}
           className="atlwh_Full lg:h-vw190 h-[30%] top-[unset] bottom-0 pointer-events-none"
         ></span>
@@ -258,12 +261,15 @@ export default function JoinWaitingListForm({ essentialKit, esgMaturityCertifica
               esgMaturityCertification ? 'Let\'s start your ESG Maturity Certification journey' :
               csrdVsmeCertification ? 'Let\'s start your CSRD/VSME Certification journey' :
               'Hold Tight, GreenDash is Coming Soon'}
+            headingClasses={`${isForProfessionalsPage ? 'text-[#6FE451]' : 'text-black'}`}
             desc={essentialKit ? 
               'Answer to the questions below and download your FREE CSRD/VSME Essentials Kit, so you can start your reporting journey!' : 
               esgMaturityCertification || csrdVsmeCertification ? 'Please provide us some initial information and book your first call with us!' :
               "We're preparing for a launch that will make a real impact. By joining the waiting list, you'll secure your spot, receive early updates, and be the first to experience our platform"}
             wrapperWidth={"lg:w-[65.9027777778vw]"}
             descWidth={"lg:w-[53vw]"}
+            descColor={`${isForProfessionalsPage ? 'text-white' : ''}`}
+            isForProfessionalsPage={isForProfessionalsPage}
           />
           
           {/* Form Section */}

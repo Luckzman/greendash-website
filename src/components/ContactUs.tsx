@@ -191,24 +191,30 @@ export default function ContactUsForm({ isForProfessionalsPage = false }: Contac
       <section className="relative lg:pt-vw44 lg:pb-vw200 py-[60px] sm:py-[120px]">
         <span
           style={{
-            background:
-              "linear-gradient(180deg, #7FFF6B 3.25%, rgba(173, 255, 160, 0.80) 30.18%, rgba(239, 255, 236, 0.50) 66.1%, rgba(241, 255, 238, 0.10) 96.62%)",
+            background: isForProfessionalsPage 
+            ? 'linear-gradient(to bottom, #131313 5%, #202120 10%, #2C2D2B 35%, #6FE451 80%, #6FE451 100%)'
+            : "linear-gradient(180deg, #7FFF6B 3.25%, rgba(173, 255, 160, 0.80) 30.18%, rgba(239, 255, 236, 0.50) 66.1%, rgba(241, 255, 238, 0.10) 96.62%)",  
           }}
           className="atlwh_Full pointer-events-none"
         ></span>
         <span
           style={{
-            background: "linear-gradient(181deg, #FFF 42.57%, #7FFF6B 99.81%)",
+            background: isForProfessionalsPage 
+            ? '#6FE451'
+            : "linear-gradient(181deg, #FFF 42.57%, #7FFF6B 99.81%)",
           }}
           className="atlwh_Full lg:h-vw190 h-[30%] top-[unset] bottom-0 pointer-events-none"
         ></span>
         <div className="relative z-[2]">
           <Content
             tag="Contact Us"
+            headingClasses={`${isForProfessionalsPage ? 'text-[#6FE451]' : 'text-black'}`}
             heading="Let&apos;s talk!"
             desc="Still have questions or in need of further help? Send us a message and one of our team members will be in touch with you in the next 24h"
             wrapperWidth={"lg:w-[65.9027777778vw]"}
             descWidth={"lg:w-[53vw]"}
+            descColor={`${isForProfessionalsPage ? 'text-white' : ''}`}
+            isForProfessionalsPage={isForProfessionalsPage}
           />
           
           {/* Form Section */}

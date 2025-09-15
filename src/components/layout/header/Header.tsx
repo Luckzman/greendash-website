@@ -171,7 +171,7 @@ const Header = () => {
             </ul>
             <div className="flex flex-wrap justify-between lg:items-center lg:gap-x-vw24 gap-4 w-full lg:w-auto">
               <div onClick={toggleSidebar}>
-                <StandardBtn text="contact Us" link={"/contact-us"} greenVersion />
+                <StandardBtn text="contact Us" link={isForProfessionalsPage ? '/professional-contact-us' : "/contact-us"} greenVersion />
               </div>
 
               <div onClick={toggleSidebar}>
