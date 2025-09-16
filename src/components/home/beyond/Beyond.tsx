@@ -35,6 +35,7 @@ const Beyond = ({ isForProfessionalsPage = false }: BeyondProps) => {
             desc={
               "Get certified and showcase your alignment with CSRD/VSME and SDG standards"
             }
+            link="/certification"
           />}
         </div>
       </div>

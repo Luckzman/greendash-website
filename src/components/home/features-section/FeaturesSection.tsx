@@ -100,6 +100,7 @@ const FeaturesSection = ({ isForProfessionalsPage = false }: FeaturesSectionProp
             const isLast = index === features(isForProfessionalsPage).length - 1;
             // Only apply last item full width styling if we're NOT on professionals page
             const shouldTakeFullWidth = isFirst || (isLast && !isForProfessionalsPage);
+            // const shouldTakeFullWidth = isFirst || isLast;
             
             return (
             <div
@@ -128,7 +129,7 @@ const FeaturesSection = ({ isForProfessionalsPage = false }: FeaturesSectionProp
                     }}
                   >
                     {feature.icon && (
-                      <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 lg:size-vw96 ${shouldTakeFullWidth ? 'lg:size-vw28 size-6' : 'size-20'}`}>
+                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 lg:size-vw96 size-20">
                         <Image fill alt="icon" src={feature.icon} />
                       </div>
                     )}

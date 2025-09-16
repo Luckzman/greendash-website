@@ -52,7 +52,7 @@ const Content: React.FC<ContentProps> = ({
       <h2
         data-aos="fade-up"
         className={`${
-          headingClasses ? headingClasses : "gradient_text"
+          headingClasses ? headingClasses : "text-black"
         } text54 `}
       >
         {heading}

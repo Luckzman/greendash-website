@@ -8,7 +8,6 @@ export default function PricingPage() {
   return (
     <Layout>
       <Hero />
-      {/* <Pricing /> */}
       <Pricing /> 
     </Layout>
   );

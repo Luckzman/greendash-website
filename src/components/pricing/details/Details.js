@@ -36,7 +36,6 @@ const details = [
     ],
     overview:
       "Perfect for SMEs that want full ESG monitoring, professional CSRD report generation, a tailored ESG policy, and official VSME certification",
-    active: true,
   },
   {
     title: "Tailored",
@@ -52,7 +51,7 @@ const Details = () => {
   return (
     <div
       data-aos="fade"
-      className="flex lg:justify-center items-start lg:gap-x-vw30 gap-x-4 px-6 lg:px-0 lg:my-vw45 my-10 myContainer lg:w-full overflow-scroll lg:overflow-visible w-[95.350%] ml-auto mr-0 lg:mx-auto whitespace-nowrap"
+      className="flex lg:justify-center items-stretch lg:gap-x-vw30 gap-x-4 px-6 lg:px-0 lg:my-vw45 my-10 myContainer lg:w-full overflow-scroll lg:overflow-visible w-[95.350%] ml-auto mr-0 lg:mx-auto whitespace-nowrap"
     >
       {details.map((detail, index) => (
         <Detail key={index} detail={detail} index={index} details={details} />
