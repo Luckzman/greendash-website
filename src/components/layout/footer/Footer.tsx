@@ -46,7 +46,7 @@ const socialLinks = [
   },
   {
     icon: "/images/icons/social-links/linkedin.svg",
-    link: "https://www.linkedin.com",
+    link: "https://www.linkedin.com/company/green-dash-ai",
     alt: "LinkedIn",
   },
   {
@@ -115,19 +115,19 @@ const Footer = () => {
         <span>© Copyright 2025. Greendash, LDA. All rights reserved.</span>
         <ul className="flex flex-wrap lg:gap-x-vw8 gap-2 font-light">
           <li className="opacity_Hover">
-            <Link href={"/"}>Cookie policy</Link>
+            <Link href={"/cookie-policy"}>Cookie policy</Link>
           </li>
           <span className="lg:text18 mtext18 font-normal">|</span>
           <li className="opacity_Hover">
-            <Link href={"/"}>Privacy policy</Link>
+            <Link href={"/privacy-policy"}>Privacy policy</Link>
           </li>
           <span className="lg:text18 mtext18 font-normal">|</span>
           <li className="opacity_Hover">
-            <Link href={"/"}>Subprocessors</Link>
+            <Link href={"/subprocessors"}>Subprocessors</Link>
           </li>
           <span className="lg:text18 mtext18 font-normal">|</span>
           <li className="opacity_Hover">
-            <Link href={"/"}>Legal</Link>
+            <Link href={"/legal"}>Legal</Link>
           </li>
         </ul>
       </div>
