@@ -325,16 +325,16 @@ input[type="number"] {
   }
 
   .text55 {
-    @apply lg:text-vw55 lg:leading-vw80 font-bold mtext32  lg:tracking-[-0.09722222222vw] tracking-[-0.5px];
+    @apply lg:text-[55px] lg:leading-vw80 font-bold mtext32  lg:tracking-[-0.09722222222vw] tracking-[-0.5px];
   }
   .text54 {
-    @apply lg:text-vw54 lg:leading-vw60 font-bold mtext30  lg:-tracking-vw2 tracking-[-0.7px];
+    @apply lg:text-[54px] lg:leading-vw60 font-bold mtext30  lg:-tracking-vw2 tracking-[-0.7px];
   }
   .text22 {
     @apply lg:text-vw22 lg:leading-vw31 mtext16 ls0792 inter;
   }
   .text32 {
-    @apply lg:text-vw32 lg:leading-vw42;
+    @apply lg:text-[22px] lg:leading-vw42;
   }
   .text48 {
     @apply lg:text-vw48 lg:leading-vw50;

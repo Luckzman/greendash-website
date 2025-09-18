@@ -16,7 +16,7 @@ const HelpingHand = () => {
         <div className="flex flex-wrap lg:gap-vw22 gap-1.5 sm:gap-2 border border-[#1F1F1F] lg:rounded-vw12 rounded-[12px] lg:p-vw9 p-1.5 sm:p-2">
           <Link
             data-aos="fade"
-            href={"/quizz"}
+            href={"/quiz"}
             className={`w-full lg:w-auto flex justify-center text-center items-center lg:gap-x-vw12 gap-x-2 bg-green lg:rounded-vw8 rounded-[8px] lg:px-vw21 lg:py-vw12 px-6 py-2`}
           >
             <span className="text16 text-white font-medium capitalize">
@@ -33,7 +33,7 @@ const HelpingHand = () => {
           <Link
             data-aos="fade"
             data-aos-delay="150"
-            href={"/"}
+            href={"/essential-kit"}
             className={`w-full lg:w-auto flex justify-center text-center items-center lg:gap-x-vw12 gap-x-2 bg-black lg:rounded-vw8 rounded-[8px] lg:px-vw21 lg:py-vw12 px-6 py-2`}
           >
             <span className="text16 text-white font-medium capitalize">

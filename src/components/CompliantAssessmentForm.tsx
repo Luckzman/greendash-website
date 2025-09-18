@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import PhoneNumberInput from './PhoneNumberInput';
 import Link from 'next/link';
+import Content from './common/Content';
 
 export default function CompliantAssessmentForm() {
   const [formData, setFormData] = useState({
@@ -51,28 +52,31 @@ export default function CompliantAssessmentForm() {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-b from-[#7FFF6B] via-[#EEFFEC] to-[#7FFF6B]">
-      <div className="max-w-5xl mx-auto px-6">
-        {/* Header Section */}
-        <div className="text-center mb-12">
-          {/* Top Badge */}
-          <div className="inline-block bg-white rounded-[10px] px-10 py-1 mb-6 border border-[rgba(34, 34, 34, 0.1)] shadow-sm">
-            <span className="text-sm font-medium text-black">CSRD/VSME Assessment</span>
-          </div>
+      <section className="relative lg:pt-vw44 lg:pb-vw200 py-[60px] sm:py-[120px]">
+        <span
+          style={{
+            background: "linear-gradient(180deg, #7FFF6B 3.25%, rgba(173, 255, 160, 0.80) 30.18%, rgba(239, 255, 236, 0.50) 66.1%, rgba(241, 255, 238, 0.10) 96.62%)",
+          }}
+          className="atlwh_Full pointer-events-none"
+        ></span>
+        <span
+          style={{
+            background: "linear-gradient(181deg, #FFF 42.57%, #7FFF6B 99.81%)",
+          }}
+          className="atlwh_Full lg:h-vw190 h-[30%] top-[unset] bottom-0 pointer-events-none"
+        ></span>
+        <div className="relative z-[2]">
+          <Content
+            tag="CSRD/VSME Assessment"
+            heading="Should you start VSME/ESG reporting?"
+            headingClasses='text-black'
+            desc="Answer the assessment below, and check if you should start your VSME/ESG reporting journey"
+            wrapperWidth={"lg:w-[65.9027777778vw]"}
+            descWidth={"lg:w-[53vw]"}
+          />
           
-          {/* Main Headline */}
-          <h1 className="text-4xl lg:text-5xl font-bold text-[#166534] pb-6 leading-[70px]">
-            Should you start VSME/ESG reporting?
-          </h1>
-          
-          {/* Description */}
-          <p className="text-xl text-[#010D3E] max-w-3xl mx-auto leading-relaxed">
-            Answer the assessment below, and check if you should start your VSME/ESG reporting journey
-          </p>
-        </div>
-
-        {/* Form Section */}
-        <div className="md:max-w-2xl lg:max-w-xl mx-auto bg-white rounded-xl p-8 shadow-lg">
+          {/* Form Section */}
+        <div className="md:max-w-2xl lg:max-w-xl mx-auto bg-white rounded-xl p-8 shadow-lg mt-10">
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* First Row - First Name and Last Name */}
             <div className="grid md:grid-cols-2 gap-6">
@@ -324,7 +328,7 @@ export default function CompliantAssessmentForm() {
             </div>
           </form>
         </div>
-      </div>
-    </section>
+        </div>
+      </section>
   );
 }

@@ -10,11 +10,16 @@ import OutlineBtn from "@/components/common/link-buttons/OutlineBtn";
 const Header = () => {
   const dropDown = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
-  const [isPlatformOpen, setIsPlatformOpen] = useState(false);
   const pathname = usePathname();
 
   // Determine if we're on the for-professionals page
   const isForProfessionalsPage = pathname === '/for-professionals' || pathname === '/professional-contact-us' || pathname === '/getting-started';
+  
+  // Determine if we're on the pricing page
+  const isPricingPage = pathname === '/pricing';
+  
+  // Determine if we're on the home page
+  const isHomePage = pathname === '/';
 
   useAos();
   function toggleSidebar() {
@@ -44,17 +49,58 @@ const Header = () => {
       }
     }
   }
+
+  // Smooth scroll to features section
+  const scrollToFeatures = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (isHomePage) {
+      const featuresSection = document.getElementById('features');
+      if (featuresSection) {
+        featuresSection.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    } else {
+      // Navigate to home page and scroll to features
+      window.location.href = '/#features';
+    }
+    // Close mobile menu if open
+    toggleSidebar();
+    toggleDropDown();
+  };
+
+  // Smooth scroll to pricing section
+  const scrollToPricing = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (isPricingPage) {
+      const pricingSection = document.getElementById('pricing');
+      if (pricingSection) {
+        pricingSection.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    } else {
+      // Navigate to pricing page
+      window.location.href = '/pricing';
+    }
+    // Close mobile menu if open
+    toggleSidebar();
+    toggleDropDown();
+  };
+
   const navLinks = [
     {
       link: "",
       title: "platform",
       dropDown: [
         {
-          link: "#feature",
+          link: isHomePage ? "#features" : "/#features",
           title: "Features",
         },
         {
-          link: "/pricing",
+          link: isPricingPage ? "#pricing" : "/pricing",
           title: "Pricing",
         },
       ],
@@ -124,9 +170,15 @@ const Header = () => {
                       <ul className="flex flex-col font-dm_sans font-medium tracking-normal border border-[#818181] bg-[rgba(255,255,255)] lg:rounded-vw8 rounded-[8px]">
                         {navLink.dropDown.map((dropDownLink, ind) => (
                           <li
-                            onClick={() => {
-                              toggleSidebar();
-                              toggleDropDown();
+                            onClick={(e) => {
+                              if (dropDownLink.title === "Pricing") {
+                                scrollToPricing(e);
+                              } else if (dropDownLink.title === "Features") {
+                                scrollToFeatures(e);
+                              } else {
+                                toggleSidebar();
+                                toggleDropDown();
+                              }
                             }}
                             className="lg:w-vw104 lg:mx-auto lg:py-vw9 border-b border-[#DEDEDE] last:border-0 lg:px-0 p-3 lg:text-black/60 lg:hover:text-black text-black transition flex lg:justify-center"
                             key={ind}
