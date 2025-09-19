@@ -17,7 +17,7 @@ const Join = () => {
           desc={`Celebrate the joy of accomplishment with an app designed to track your progress and motivate your efforts.`}
           descWidth={"lg:w-[38.75vw]"}
         />
-        <StandardBtn text={"Get Started"} link={"/join-waiting-list"} />
+        <StandardBtn text={"Get Started"} link={"/join-waiting-list"} hasShadow={false} />
       </div>
     </section>
   );

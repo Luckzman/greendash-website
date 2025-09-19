@@ -7,6 +7,7 @@ interface StandardBtnProps {
   tag?: React.ElementType;
   isExternal?: boolean;
   greenVersion?: boolean;
+  hasShadow?: boolean;
 }
 
 
@@ -16,6 +17,7 @@ const StandardBtn = ({
   tag: Tag = Link,
   isExternal = false, // Default to false
   greenVersion,
+  hasShadow = true,
 }: StandardBtnProps) => {
   if (!text) {
     return <></>;
@@ -31,7 +33,7 @@ const StandardBtn = ({
       className={`${
         greenVersion ? "bg-green" : "bg-black"
       } text-white  lg:px-vw17 lg:py-vw8 py-1.5 px-4 capitalize lg:rounded-vw10 rounded-[10px] text16 ls032 font-inter font-medium transition`}
-      style={{ boxShadow: "0 4px 4px 0 rgba(0, 0, 0, 0.25)" }}
+      style={{ boxShadow: hasShadow ? "0 4px 4px 0 rgba(0, 0, 0, 0.25)" : "none" }}
     >
       {text}
     </Tag>
