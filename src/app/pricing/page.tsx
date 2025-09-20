@@ -3,23 +3,10 @@
 import Pricing from "../../components/pricing/Index";
 import Hero from "@/components/common/Hero";
 import Layout from "@/components/layout/Index";
-import { useEffect } from "react";
+import useScrollToElement from "@/hooks/useScrollToElement";
 
 export default function PricingPage() {
-  useEffect(() => {
-    // Scroll to pricing component after a short delay to ensure it's rendered
-    const timer = setTimeout(() => {
-      const pricingSection = document.getElementById('pricing');
-      if (pricingSection) {
-        pricingSection.scrollIntoView({ 
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, []);
+  useScrollToElement('pricing');
 
   return (
     <Layout>

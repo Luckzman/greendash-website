@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import Hero from "../common/Hero";
 import FeaturesSection from "./features-section/FeaturesSection";
 import Industry from "./industry/Industry";
@@ -9,24 +9,12 @@ import Beyond from "./beyond/Beyond";
 import WhyChoose from "./why-choose/WhyChoose";
 import Partners from "./partners/Partners";
 import Join from "./Join";
+import useScrollToElement from "@/hooks/useScrollToElement";
 
 const Index = () => {
-  useEffect(() => {
-    // Check if URL has hash for features section
-    if (window.location.hash === '#features') {
-      const timer = setTimeout(() => {
-        const featuresSection = document.getElementById('features');
-        if (featuresSection) {
-          featuresSection.scrollIntoView({ 
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      }, 100);
-
-      return () => clearTimeout(timer);
-    }
-  }, []);
+  // Check if URL has hash for features section and scroll to it
+  const shouldScrollToFeatures = typeof window !== 'undefined' && window.location.hash === '#features';
+  useScrollToElement('features', 100, shouldScrollToFeatures);
 
   return (
     <>
