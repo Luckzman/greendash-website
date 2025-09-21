@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Layout from "@/components/layout/Index";
 
 export const metadata: Metadata = {
   title: "Privacy Policy - Green Dash",
@@ -7,7 +8,8 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicy() {
   return (
-    <div className="min-h-screen bg-white">
+    <Layout>
+    <div className="min-h-screen bg-white pt-32">
       <div className="max-w-4xl mx-auto px-6 py-16">
         <div className="prose prose-lg max-w-none">
           <h1 className="text-4xl font-bold text-gray-900 mb-8">Privacy Policy</h1>
@@ -209,5 +211,6 @@ export default function PrivacyPolicy() {
         </div>
       </div>
     </div>
+    </Layout>
   );
 }

@@ -6,8 +6,6 @@ import Details from "./details/Details";
 
 const CertificationPage = () => {
   return (
-    <>
-      <Hero />
       <section className="relative lg:pt-vw44 lg:pb-vw200 py-[60px] sm:py-[120px]">
         <span
           style={{
@@ -37,14 +35,13 @@ const CertificationPage = () => {
           <Details />
           <div className="myContainer flex flex-wrap gap-3 lg:gap-x-vw12 justify-center items-center text-black font-inter font-medium text22">
             <span> Still not sure?</span>{" "}
-            <StandardBtn text={"Contact Us"} link={"/"} greenVersion />
+            <StandardBtn text={"Contact Us"} link={"/contact-us"} greenVersion />
             <span>
               for a free consultation to help choose the right plan for you
             </span>
           </div>
         </div>
       </section>
-    </>
   );
 };
 

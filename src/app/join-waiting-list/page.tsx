@@ -6,7 +6,6 @@ import Layout from "@/components/layout/Index";
 import useScrollToElement from "@/hooks/useScrollToElement";
 
 export default function JoinWaitingListPage() {
-
   useScrollToElement('joinWaitingList');
 
   return (

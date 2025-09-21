@@ -62,7 +62,7 @@ interface FeaturesSectionProps {
 const FeaturesSection = ({ isForProfessionalsPage = false }: FeaturesSectionProps) => {
   return (
     <section
-      id="feature"
+      id={isForProfessionalsPage ? "pro-features" : "features"}
       className="relative lg:pt-vw64 lg:pb-vw43 py-[60px] sm:py-[120px]"
     >
       <span
@@ -89,7 +89,7 @@ const FeaturesSection = ({ isForProfessionalsPage = false }: FeaturesSectionProp
           }}
           chevronBtn={{
             text: "Contact Us",
-            link: "/contact-us",
+            link: isForProfessionalsPage ? "/professional-contact-us" : "/contact-us",
           }}
           descColor={`${isForProfessionalsPage ? 'text-white' : ''}`}
           isForProfessionalsPage={isForProfessionalsPage}
@@ -142,11 +142,11 @@ const FeaturesSection = ({ isForProfessionalsPage = false }: FeaturesSectionProp
                     dangerouslySetInnerHTML={{ __html: feature.desc }}
                   ></div>
                 </div>
-                <div
+                {feature.image && <div
                   className={`${feature.imageClasses} relative hidden lg:block`}
                 >
-                  <Image fill alt="image" src={feature.image || ""} />
-                </div>
+                  <Image fill alt="image" src={feature.image} />
+                </div>}
               </div>
             </div>
             );

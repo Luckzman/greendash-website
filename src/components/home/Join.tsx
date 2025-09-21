@@ -2,7 +2,11 @@ import React from "react";
 import Content from "../common/Content";
 import StandardBtn from "../common/link-buttons/StandardBtn";
 
-const Join = () => {
+interface JoinProps {
+  isForProfessionalsPage?: boolean;
+}
+
+const Join = ({ isForProfessionalsPage = false }: JoinProps) => {
   return (
     <section className="lg:py-vw132 py-[60px] sm:py-[120px] relative">
       <span
@@ -17,7 +21,7 @@ const Join = () => {
           desc={`Celebrate the joy of accomplishment with an app designed to track your progress and motivate your efforts.`}
           descWidth={"lg:w-[38.75vw]"}
         />
-        <StandardBtn text={"Get Started"} link={"/join-waiting-list"} hasShadow={false} />
+        <StandardBtn text={"Get Started"} link={isForProfessionalsPage ? "/getting-started" : "/join-waiting-list"} hasShadow={false} />
       </div>
     </section>
   );

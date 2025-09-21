@@ -1,16 +1,20 @@
+"use client";
+
 import Hero from "@/components/common/Hero";
-// import Join from "@/components/home/Join";
 import JoinWaitingListForm from "../../components/JoinWaitingListForm";
 import Layout from "@/components/layout/Index";
-// import Hero from "../../components/Hero";
+import useScrollToElement from "@/hooks/useScrollToElement";
 
 
 
 export default function GettingStartedPage() {
+  useScrollToElement('gettingStarted');
   return (
     <Layout>
       <Hero isForProfessionalsPage={true} />
-      <JoinWaitingListForm isForProfessionalsPage={true} />
+      <div id="gettingStarted">
+        <JoinWaitingListForm isForProfessionalsPage={true} />
+      </div>
     </Layout>
   );
 }

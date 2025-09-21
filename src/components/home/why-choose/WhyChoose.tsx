@@ -2,7 +2,10 @@ import React from "react";
 import Content from "../../common/Content";
 import Card from "./Card";
 import PairedButtons from "@/components/common/PairedButtons";
-const options = [
+
+
+
+const options = (isForProfessionalsPage: boolean) => ([
   {
     icon: "/images/home/why-choose/1.svg",
     iconClasses: "lg:w-vw94 lg:h-vw76 w-[54px] h-[44px]",
@@ -18,11 +21,16 @@ const options = [
   {
     icon: "/images/home/why-choose/3.svg",
     iconClasses: "lg:w-vw101 lg:h-vw63 w-[68px] h-[42px]",
-    title: "At least 25% cheaper",
-    desc: "Compared to previous methods such as consultancy",
+    title: isForProfessionalsPage ? "Up to 40%" : "At least 25% cheaper",
+    desc: isForProfessionalsPage ? "Increase billable output by serving more clients with same resources" : "Compared to previous methods such as consultancy",
   },
-];
-const WhyChoose = () => {
+]);
+
+interface WhyChooseProps {
+  isForProfessionalsPage?: boolean;
+}
+
+const WhyChoose = ({ isForProfessionalsPage = false }: WhyChooseProps) => {
   return (
     <section className="lg:pt-vw122 lg:pb-vw36 py-[60px] sm:py-[120px] relative">
       <div className="w-full relative z-[2]">
@@ -33,7 +41,7 @@ const WhyChoose = () => {
           descWidth={"lg:w-[59.72222222222222vw]"}
         />
         <div className="flex lg:gap-x-vw30 gap-4 justify-between lg:justify-center items-stretch flex-wrap myContainer lg:mt-vw43 mt-10">
-          {options.map((option, index) => (
+          {options(isForProfessionalsPage).map((option, index: number) => (
             <Card
               key={index}
               icon={option.icon}
@@ -48,11 +56,11 @@ const WhyChoose = () => {
           <PairedButtons
             standardBtn={{
               text: "Get Started",
-              link: "/join-waiting-list",
+              link: isForProfessionalsPage ? "/getting-started" : "/join-waiting-list",
             }}
             chevronBtn={{
               text: "Contact Us",
-              link: "/contact-us",
+              link: isForProfessionalsPage ? "/professional-contact-us" : "/contact-us",
             }}
           />
         </div>

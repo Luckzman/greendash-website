@@ -7,16 +7,12 @@ const navLinks = [
     title: "Solutions",
     links: [
       {
-        title: "Platform",
+        title: "For SME",
         link: "/",
       },
       {
-        title: "Certification",
-        link: "/certification",
-      },
-      {
-        title: "Academy",
-        link: "/",
+        title: "For Professionals",
+        link: "/for-professionals",
       },
     ],
   },
@@ -24,36 +20,32 @@ const navLinks = [
     title: "Quick Links",
     links: [
       {
-        title: "For Professionals",
-        link: "/",
+        title: "Certification",
+        link: "/certification",
       },
       {
-        title: "Contact Us",
-        link: "/",
-      },
-      {
-        title: "Join Waiting List",
-        link: "/join-waiting-list",
+        title: "Academy",
+        link: "/academy",
       },
     ],
   },
 ];
 const socialLinks = [
-  {
-    icon: "/images/icons/social-links/insta.svg",
-    link: "https://www.instagram.com",
-    alt: "Instagram",
-  },
+  // {
+  //   icon: "/images/icons/social-links/insta.svg",
+  //   link: "https://www.instagram.com",
+  //   alt: "Instagram",
+  // },
   {
     icon: "/images/icons/social-links/linkedin.svg",
     link: "https://www.linkedin.com/company/green-dash-ai",
     alt: "LinkedIn",
   },
-  {
-    icon: "/images/icons/social-links/youtube.svg",
-    link: "https://www.youtube.com",
-    alt: "YouTube",
-  },
+  // {
+  //   icon: "/images/icons/social-links/youtube.svg",
+  //   link: "https://www.youtube.com",
+  //   alt: "YouTube",
+  // },
 ];
 
 const Footer = () => {
@@ -84,9 +76,9 @@ const Footer = () => {
           {navLinks.map((navLink, index) => (
             <div
               key={index}
-              className="flex flex-col lg:gap-y-vw20 gap-y-3 lg:text14 mtext14 font-inter"
+              className="flex flex-col justify-end lg:gap-y-vw20 gap-y-3 lg:text14 mtext14 font-inter"
             >
-              <span className="font-bold text-white">solutions</span>
+              <span className="font-bold text-white">{index === navLinks.length - 1 ? "" : "Solutions"}</span>
               <ul className="flex flex-col lg:gap-y-vw20 gap-y-3 text-7B7B7B">
                 {navLink.links.map((link, ind) => (
                   <li key={ind} className="opacity_Hover">

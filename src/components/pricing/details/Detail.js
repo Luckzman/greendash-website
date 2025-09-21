@@ -57,7 +57,7 @@ const Detail = ({ detail, index, details }) => {
             <Link
               data-aos="fade"
               data-aos-delay="100"
-              href={"/"}
+              href={"/contact-us"}
               className={`flex items-center lg:gap-x-vw6 gap-x-1.5 capitalize lg:rounded-vw10 rounded-[10px] lg:text16 mtext18 ls032 font-inter font-medium transition`}
             >
               <div className="relative lg:size-vw16 size-4">
@@ -72,7 +72,7 @@ const Detail = ({ detail, index, details }) => {
           ) : (
             <ChevronBtn
               text={"Get started"}
-              link={"/"}
+              link={"/join-waiting-list"}
               colorInherit={"#170F49"}
             />
           )}

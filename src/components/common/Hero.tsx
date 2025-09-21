@@ -64,7 +64,7 @@ const Hero = ({ isForProfessionalsPage = false, isForCertificationPage = false }
             link: isForProfessionalsPage ? "/getting-started" : "/join-waiting-list",
           }} chevronBtn={{
             text: "Learn more",
-            link: isForProfessionalsPage ? "#feature" : "#feature",
+            link: isForProfessionalsPage ? "#pro-features" : "#features",
           }} isForProfessionalsPage={isForProfessionalsPage} />
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3">
               <p className={`text-sm font-inter ${
@@ -75,14 +75,21 @@ const Hero = ({ isForProfessionalsPage = false, isForCertificationPage = false }
                 Backed by
               </p>
               <div className="flex items-center gap-3">
-                  <Image
+                  {isForProfessionalsPage ? <Image
+                      src="/casa-do-impacto-white-logo.svg"
+                      alt="Casa do Impacto Logo"
+                      width={200}
+                      height={100}
+                      className="h-[60px] w-auto"
+                      suppressHydrationWarning
+                  /> : <Image
                       src="/casa-do-impacto-logo.svg"
                       alt="Casa do Impacto Logo"
                       width={180}
                       height={60}
-                      className="h-8 w-auto"
+                      className="h-[38pxß] w-auto"
                       suppressHydrationWarning
-                  />
+                  />}
               </div>
           </div>
         </div>
