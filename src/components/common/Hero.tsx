@@ -4,6 +4,7 @@ import Image from "next/image";
 import StandardBtn from "./link-buttons/StandardBtn";
 import OutlineBtn from "./link-buttons/OutlineBtn";
 import ChevronBtn from "./link-buttons/ChevronBtn";
+import { usePathname } from "next/navigation";
 
 interface HeroProps {
   isForProfessionalsPage?: boolean;
@@ -11,6 +12,19 @@ interface HeroProps {
 }
 
 const Hero = ({ isForProfessionalsPage = false, isForCertificationPage = false }: HeroProps) => {
+  const pathname = usePathname();
+  
+  // Determine the correct link for the "Learn more" button
+  const getLearnMoreLink = () => {
+    if (isForProfessionalsPage && (isForCertificationPage || pathname === '/for-professionals')) {
+      return "#pro-features";
+    } else if (isForProfessionalsPage) {
+      return "/for-professionals#pro-features";
+    } else {
+      return "#features";
+    }
+  };
+  
   return (
     <section className="fullVh fullSvh relative lg:pt-[19vh] lg:pb-[10.5555555556vh] pt-36 sm:pt-[200px] pb-[60px] sm:pb-[120px]">
       <span className={`${
@@ -64,7 +78,7 @@ const Hero = ({ isForProfessionalsPage = false, isForCertificationPage = false }
             link: isForProfessionalsPage ? "/getting-started" : "/join-waiting-list",
           }} chevronBtn={{
             text: "Learn more",
-            link: isForProfessionalsPage ? "#pro-features" : "#features",
+            link: getLearnMoreLink(),
           }} isForProfessionalsPage={isForProfessionalsPage} />
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3">
               <p className={`text-sm font-inter ${

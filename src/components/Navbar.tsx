@@ -55,12 +55,27 @@ export default function Navbar() {
   // Smooth scroll to features section
   const scrollToFeatures = (e: React.MouseEvent) => {
     e.preventDefault();
-    const featuresSection = document.getElementById('features');
-    if (featuresSection) {
-      featuresSection.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      });
+    if (pathname === '/for-professionals') {
+      // On for-professionals page, scroll to pro-features section
+      const proFeaturesSection = document.getElementById('pro-features');
+      if (proFeaturesSection) {
+        proFeaturesSection.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    } else if (isForProfessionalsPage) {
+      // On other professional pages, navigate to for-professionals page with hash
+      window.location.href = '/for-professionals#pro-features';
+    } else {
+      // On other pages, scroll to features section
+      const featuresSection = document.getElementById('features');
+      if (featuresSection) {
+        featuresSection.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
     }
     // Close mobile menu if open
     setIsMobileOpen(false);

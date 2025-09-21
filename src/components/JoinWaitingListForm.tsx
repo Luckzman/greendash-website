@@ -416,7 +416,7 @@ export default function JoinWaitingListForm({ essentialKit, esgMaturityCertifica
               {/* Employee Count */}
               <div>
                 <label htmlFor="numberofemployees" className="block text-base font-medium text-gray-700 mb-2">
-                  How many employees does your organization has? <span className="text-red-500">*</span>
+                  How many employees does your organization have? <span className="text-red-500">*</span>
                 </label>
                 <select
                   id="numberofemployees"

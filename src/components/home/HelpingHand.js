@@ -20,7 +20,7 @@ const HelpingHand = () => {
             className={`w-full lg:w-auto flex justify-center text-center items-center lg:gap-x-vw12 gap-x-2 bg-green lg:rounded-vw8 rounded-[8px] lg:px-vw21 lg:py-vw12 px-6 py-2`}
           >
             <span className="text16 text-white font-medium capitalize">
-              Take your FREE Compliance CSRD/VSME Assessement now
+              Take your FREE Compliance CSRD/VSME Assessment now
             </span>
             <div className="relative sm:block hidden lg:size-vw20 size-6 lg:min-w-vw20 min-w-6">
               <Image
@@ -37,7 +37,7 @@ const HelpingHand = () => {
             className={`w-full lg:w-auto flex justify-center text-center items-center lg:gap-x-vw12 gap-x-2 bg-black lg:rounded-vw8 rounded-[8px] lg:px-vw21 lg:py-vw12 px-6 py-2`}
           >
             <span className="text16 text-white font-medium capitalize">
-              Download your FREE CSRD Essentials Kit
+              Download your FREE VSME Essentials Kit
             </span>
             <div className="relative sm:block hidden lg:size-vw20 size-6 lg:min-w-vw20 min-w-6">
               <Image

@@ -61,6 +61,18 @@ const Header = () => {
           block: 'start'
         });
       }
+    } else if (pathname === '/for-professionals') {
+      // On for-professionals page, scroll to pro-features section
+      const proFeaturesSection = document.getElementById('pro-features');
+      if (proFeaturesSection) {
+        proFeaturesSection.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    } else if (isForProfessionalsPage) {
+      // On other professional pages, navigate to for-professionals page with hash
+      window.location.href = '/for-professionals#pro-features';
     } else {
       // Navigate to home page and scroll to features
       window.location.href = '/#features';
@@ -96,7 +108,7 @@ const Header = () => {
       title: "platform",
       dropDown: [
         {
-          link: isHomePage ? "#features" : "/#features",
+          link: isHomePage ? "#features" : isForProfessionalsPage ? "#pro-features" : "/#features",
           title: "Features",
         },
         {
@@ -156,7 +168,7 @@ const Header = () => {
                         <Image
                           fill
                           alt="chevron"
-                          src={"/images/icons/header_dropdown_chevron.svg"}
+                          src={isForProfessionalsPage ? "/images/icons/header_dropdown_light-chevron.svg" : "/images/icons/header_dropdown_chevron.svg"}
                         />
                       </div>
                     )}
