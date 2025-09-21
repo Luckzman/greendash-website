@@ -118,8 +118,9 @@ const Header = () => {
       ],
     },
     {
-      link: "/academy",
+      link: "#",
       title: "Academy",
+      comingSoon: true,
     },
     {
       link: "/certification",
@@ -154,6 +155,15 @@ const Header = () => {
                   >
                     {navLink.dropDown ? (
                       <button className="capitalize">{navLink.title}</button>
+                    ) : navLink.comingSoon ? (
+                      <div className="relative inline-block">
+                        <span className="group-hover:opacity-0 opacity-100 transition-all duration-300 capitalize inline-block">
+                          {navLink.title}
+                        </span>
+                        <span className="group-hover:opacity-100 opacity-0 transition-all duration-300 capitalize absolute left-[-13px] top-0 whitespace-nowrap">
+                          Coming soon
+                        </span>
+                      </div>
                     ) : (
                       <Link onClick={toggleSidebar} href={`${navLink.link}`}>
                         {navLink.title}

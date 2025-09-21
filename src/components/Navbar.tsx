@@ -137,13 +137,22 @@ export default function Navbar() {
             </div>
 
             {/* Navigation Links */}
-            <a href="#" className={`font-inter font-regular transition-colors ${
-              isForProfessionalsPage 
-                ? 'text-white hover:text-gray-300' 
-                : 'text-[rgba(0, 0, 0, 0.6)] hover:text-gray-900'
-            }`}>
-              Academy
-            </a>
+            <div className="relative group cursor-pointer inline-block">
+              <span className={`font-inter font-regular transition-all duration-300 group-hover:opacity-0 opacity-100 inline-block ${
+                isForProfessionalsPage 
+                  ? 'text-white' 
+                  : 'text-[rgba(0, 0, 0, 0.6)]'
+              }`}>
+                Academy
+              </span>
+              <span className={`font-inter font-regular transition-all duration-300 group-hover:opacity-100 opacity-0 absolute left-0 top-0 whitespace-nowrap ${
+                isForProfessionalsPage 
+                  ? 'text-white' 
+                  : 'text-[rgba(0, 0, 0, 0.6)]'
+              }`}>
+                Coming Soon
+              </span>
+            </div>
             <Link href="/certification" className={`font-inter font-regular transition-colors ${
               isForProfessionalsPage 
                 ? 'text-white hover:text-gray-300' 
@@ -254,17 +263,22 @@ export default function Navbar() {
 
             {/* Mobile Navigation Links */}
             <div className="space-y-2 mb-4">
-              <a 
-                href="#" 
-                onClick={() => setIsPlatformOpen(false)}
-                className={`block font-inter font-medium py-2 ${
+              <div className="relative group inline-block">
+                <span className={`block font-inter font-medium py-2 transition-all duration-300 group-hover:opacity-0 opacity-100 ${
                   isForProfessionalsPage 
-                    ? 'text-white hover:text-gray-300' 
-                    : 'text-gray-700 hover:text-gray-900'
-                }`}
-              >
-                Academy
-              </a>
+                    ? 'text-white' 
+                    : 'text-gray-700'
+                }`}>
+                  Academy
+                </span>
+                <span className={`block font-inter font-medium py-2 transition-all duration-300 group-hover:opacity-100 opacity-0 absolute left-0 top-0 whitespace-nowrap ${
+                  isForProfessionalsPage 
+                    ? 'text-white' 
+                    : 'text-gray-700'
+                }`}>
+                  Coming Soon
+                </span>
+              </div>
               <Link 
                 href="/certification" 
                 onClick={() => setIsPlatformOpen(false)}

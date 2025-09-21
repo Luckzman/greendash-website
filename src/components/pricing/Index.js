@@ -29,7 +29,7 @@ const PricingPage = () => {
             desc={"Start Your ESG Journey Today"}
           />
           <Details />
-          <div className="myContainer flex flex-wrap gap-3 lg:gap-x-vw12 justify-center items-center text-black font-inter font-medium text22">
+          <div data-aos="fade" className="myContainer flex flex-wrap gap-3 lg:gap-x-vw12 justify-center items-center text-black font-inter font-medium text22">
             <span> Still not sure?</span>{" "}
             <StandardBtn text={"Contact Us"} link={"/"} greenVersion />
             <span>

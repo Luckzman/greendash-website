@@ -1,9 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import ChevronBtn from "@/components/common/link-buttons/ChevronBtn";
-import Link from "next/link";
 
-const Card = ({ logo, desc, link="#" }) => {
+const Card = ({ logo, desc, link="#", comingSoon=false }) => {
   return (
     <div
       data-aos="fade"
@@ -15,14 +14,20 @@ const Card = ({ logo, desc, link="#" }) => {
       </div>
       <p className="text16 font-inter ls016 mb-auto">{desc}</p>
       <div className="relative">
-        <Link href={link}>
+        {comingSoon ? (
+          <>
+            <div className="group-hover:opacity-0 opacity-100 transition-all duration-500">
+              <ChevronBtn text={"Learn more"} link={link} />
+            </div>
+            <span className="group-hover:opacity-100 opacity-0 text-black transition-all duration-100 lg:text16 mtext18 ls032 font-inter font-medium capitalize absolute size-full left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 whitespace-nowrap">
+              coming soon
+            </span>
+          </>
+        ) : (
           <div className="group-hover:opacity-80 opacity-100 transition-all duration-500">
-            <ChevronBtn text={"Learn more"} tag={"div"} />
+            <ChevronBtn text={"Learn more"} link={link} />
           </div>
-        </Link>
-        {/* <span className="group-hover:opacity-100 opacity-0 text-black transition-all duration-500 lg:text16 mtext18 ls032 font-inter font-medium capitalize absolute size-full left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2">
-          coming soon
-        </span> */}
+        )}
       </div>
     </div>
   );

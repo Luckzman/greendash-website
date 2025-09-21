@@ -28,7 +28,6 @@ const StandardBtn = ({
 
   return (
     <Tag
-      data-aos="fade"
       {...(Tag === Link ? { href: link, target } : {})} // Apply target only if Tag is Link
       className={`${
         greenVersion ? "bg-green" : "bg-black"

@@ -29,6 +29,7 @@ const Beyond = ({ isForProfessionalsPage = false }: BeyondProps) => {
             desc={
               "Grow your expertise and learn about ESG, SDG and CSRD/VSME from Zero to Pro No Jargon or Complexity, Just Clarity"
             }
+            comingSoon={true}
           />
           {!isForProfessionalsPage && <Card
             logo={"/images/home/beyond/2.svg"}
