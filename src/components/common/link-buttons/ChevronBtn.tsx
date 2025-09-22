@@ -20,9 +20,10 @@ const ChevronBtn = ({
     return <></>;
   }
 
-  // Handle hash navigation with custom click handler (only for simple hash links)
+  // Handle hash navigation with custom click handler
   const handleClick = (e: React.MouseEvent) => {
     if (link && link.startsWith('#') && !link.includes('/')) {
+      // Simple hash link (same page)
       e.preventDefault();
       const elementId = link.substring(1);
       const element = document.getElementById(elementId);
@@ -32,14 +33,31 @@ const ChevronBtn = ({
           block: 'start'
         });
       }
+    } else if (link && link.includes('/#') && !isExternal) {
+      // External page with hash (e.g., "/#features")
+      e.preventDefault();
+      const [path, hash] = link.split('#');
+      if (path === window.location.pathname) {
+        // Same page, just scroll to hash
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      } else {
+        // Different page, navigate with hash
+        window.location.href = link;
+      }
     }
   };
 
   // Determine the target attribute based on isExternal
   const target = isExternal ? "_blank" : "_self";
 
-  // If it's a hash link (starts with # but no slash), render as a button, otherwise render as Link
-  if (link && link.startsWith('#') && !link.includes('/')) {
+  // If it's a hash link (starts with # but no slash) or external page with hash, render as a button, otherwise render as Link
+  if ((link && link.startsWith('#') && !link.includes('/')) || (link && link.includes('/#') && !isExternal)) {
     return (
       <button
         style={{

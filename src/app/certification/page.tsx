@@ -12,7 +12,7 @@ const Page = () => {
   return (
     <>
       <Layout>
-        <Hero />
+        <Hero isForCertificationPage={true} />
         <div id="certification">
           <CertificationPage />
         </div>

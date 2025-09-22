@@ -20,6 +20,9 @@ const Hero = ({ isForProfessionalsPage = false, isForCertificationPage = false }
       return "#pro-features";
     } else if (isForProfessionalsPage) {
       return "/for-professionals#pro-features";
+    } else if (isForCertificationPage || pathname === '/pricing') {
+      // For non-professional pages (pricing, certification), navigate to homepage features
+      return "/#features";
     } else {
       return "#features";
     }
