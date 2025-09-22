@@ -19,7 +19,7 @@ const details = [
       "ESG Data Analytics",
       "ESG Recommendations",
       "Data Export",
-      "Scope 1 and 2 Emissions",
+      "Scope 1, 2 and 3* Emissions",
       "24/7 support on VSME",
     ],
     overview:
@@ -31,11 +31,11 @@ const details = [
     featuresTitle: "All in Monitoring, plus:",
     features: [
       "1 Annual VSME Report",
-      "CSRD Certificate",
+      "VSME Certificate",
       "ESG Policy Service",
     ],
     overview:
-      "Perfect for SMEs that want full ESG monitoring, professional CSRD report generation, a tailored ESG policy, and official VSME certification",
+      "Perfect for SMEs that want full ESG monitoring, professional VSME/CSRD report generation, a tailored ESG policy, and official VSME certification",
   },
   {
     title: "Tailored",

@@ -192,7 +192,7 @@ export default function CompliantAssessmentForm() {
                 name="numberofemployees"
                 value={formData.numberofemployees}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                className="w-80 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
               >
                 <option value="">Select</option>
                 <option value="0-1">0-1 employees</option>
@@ -248,7 +248,7 @@ export default function CompliantAssessmentForm() {
                 value={formData.largeEuClients}
                 onChange={handleInputChange}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                className="w-80 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
               >
                 <option className="text-[#808080] font-inter text-[15.5px]" value="">Select</option>
                 <option value="0">0</option>

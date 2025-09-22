@@ -9,7 +9,7 @@ const features = (isForProfessionalsPage: boolean) => {
       color: "#EA3C30",
       heading: "Centralized, Collaborative & Automated Data Collection",
       desc: `Forget the spreadsheets and scattered files. <br/>
-Gather ESG data effortlessly from your team and stakeholders everything centralized in one single place, so you can track, analyze, and report with confidence.<br/>
+Gather ESG data effortlessly from your team and stakeholders - everything centralized in one single place, so you can track, analyze, and report with confidence.<br/>
 We automate data collection process with smart integrations and full-document uploads, minimizing manual work
 `,
       image: "/images/home/features/1.png",
