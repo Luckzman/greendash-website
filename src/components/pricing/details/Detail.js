@@ -37,7 +37,7 @@ const Detail = ({ detail, index, details }) => {
             {detail.title}
           </h5>
           <p
-            className={`font-medium lg:text14 lg:leading-vw21 mtext14 h-[72px] ${
+            className={`font-medium lg:text14 lg:leading-vw21 mtext14 h-[76px] ${
               isActive ? "text-[#F1F2F9]" : "text-514F6E"
             }`}
           >
