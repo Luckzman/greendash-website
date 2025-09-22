@@ -37,45 +37,45 @@ const Detail = ({ detail, index, details }) => {
             {detail.title}
           </h5>
           <p
-            className={`font-medium lg:text14 lg:leading-vw21 mtext14 ${
+            className={`font-medium lg:text14 lg:leading-vw21 mtext14 h-[72px] ${
               isActive ? "text-[#F1F2F9]" : "text-514F6E"
             }`}
           >
             {detail.desc}
           </p>
-        </div>
-        <div
-          style={{
-            background:
-              "linear-gradient(151deg, var(--Colors-Neutrals-White, #FFF) -62.65%, var(--Colors-Neutrals-Neutral-200, #FBFBFE) 83.01%)",
-            boxShadow:
-              "0 3px 6px 0 rgba(7, 0, 110, 0.03), 0 -2px 2px 0 rgba(27, 35, 85, 0.07) inset, 0 4px 6px 0 rgba(255, 255, 255, 0.40) inset",
-          }}
-          className="flex justify-center items-center lg:mt-vw6 lg:px-vw17 lg:py-vw11 py-1.5 px-4 w-full border border-[#D9DBE9] lg:rounded-vw12 rounded-[12px]"
-        >
-          {index === details.length - 1 ? (
-            <Link
-              data-aos="fade"
-              data-aos-delay="100"
-              href={"/contact-us"}
-              className={`flex items-center lg:gap-x-vw6 gap-x-1.5 capitalize lg:rounded-vw10 rounded-[10px] lg:text16 mtext18 ls032 font-inter font-medium transition`}
-            >
-              <div className="relative lg:size-vw16 size-4">
-                <Image
-                  fill
-                  alt="chevron"
-                  src={"/images/icons/pricing_email.svg"}
-                />
-              </div>
-              Contact us
-            </Link>
-          ) : (
-            <ChevronBtn
-              text={"Get started"}
-              link={"/join-waiting-list"}
-              colorInherit={"#170F49"}
-            />
-          )}
+          <div
+            style={{
+              background:
+                "linear-gradient(151deg, var(--Colors-Neutrals-White, #FFF) -62.65%, var(--Colors-Neutrals-Neutral-200, #FBFBFE) 83.01%)",
+              boxShadow:
+                "0 3px 6px 0 rgba(7, 0, 110, 0.03), 0 -2px 2px 0 rgba(27, 35, 85, 0.07) inset, 0 4px 6px 0 rgba(255, 255, 255, 0.40) inset",
+            }}
+            className="flex justify-center items-center lg:mt-vw6 lg:px-vw17 lg:py-vw11 py-1.5 px-4 w-full border border-[#D9DBE9] lg:rounded-vw12 rounded-[12px]"
+          >
+            {index === details.length - 1 ? (
+              <Link
+                data-aos="fade"
+                data-aos-delay="100"
+                href={"/contact-us"}
+                className={`flex items-center lg:gap-x-vw6 gap-x-1.5 capitalize lg:rounded-vw10 rounded-[10px] lg:text16 mtext18 ls032 font-inter font-medium transition`}
+              >
+                <div className="relative lg:size-vw16 size-4">
+                  <Image
+                    fill
+                    alt="chevron"
+                    src={"/images/icons/pricing_email.svg"}
+                  />
+                </div>
+                Contact us
+              </Link>
+            ) : (
+              <ChevronBtn
+                text={"Get started"}
+                link={"/join-waiting-list"}
+                colorInherit={"#170F49"}
+              />
+            )}
+          </div>
         </div>
         <span
           className={`${
