@@ -38,13 +38,13 @@ We automate data collection process with smart integrations and full-document up
     {
       icon: "/images/home/features/icons/5.svg",
       color: "#EA8730",
-      heading: isForProfessionalsPage ? "Fully White-Label Platform" : "Benchmark VSME Suggestions",
-      desc: isForProfessionalsPage ? "Your clients access the platform through a white-label interface with your branding, giving them a seamless, fully customised user experience. Position your firm as a technology-enabled sustainability partner" : "Get tailored recommendations to improve your VSME performance. Based on your data and industry benchmarks, GreenDash suggests actionable practices so your company can align with the best in class",
+      heading: isForProfessionalsPage ? "Fully White-Label Platform" : "Benchmark ESG Suggestions",
+      desc: isForProfessionalsPage ? "Your clients access the platform through a white-label interface with your branding, giving them a seamless, fully customised user experience. Position your firm as a technology-enabled sustainability partner" : "Get tailored recommendations to improve your ESG performance. Based on your data and industry benchmarks, GreenDash suggests actionable practices so your company can align with the best in class",
     },
     {
       icon: "/images/home/features/icons/6.svg",
       color: "#EA3C30",
-      heading: "Full-Customer Support from our VSME Experts",
+      heading: "Full-Customer Support from our Sustainability Experts",
       desc: `Our dedicated team provides you End-to-End guidance, from helping you navigate our platform, understanding the CSRD/VSME, to helping you reporting on all the data points required`,
       image: "/images/home/features/2.png",
       imageClasses: "lg:w-[27.22222222222222vw] lg:h-[18.125vw]",
@@ -134,11 +134,11 @@ const FeaturesSection = ({ isForProfessionalsPage = false }: FeaturesSectionProp
                       </div>
                     )}
                   </div>
-                  <h3 className="lg:text32 mtext22 ls016 lg:mt-vw16 mt-4">
+                  <h3 className="lg:mtext32 mtext22 ls016 lg:mt-vw16 mt-4">
                     {feature.heading}
                   </h3>
                   <div
-                    className="lg:text16 mtext14 lg:mt-vw10 mt-2"
+                    className="lg:mtext16 mtext14 lg:mt-vw10 mt-2"
                     dangerouslySetInnerHTML={{ __html: feature.desc }}
                   ></div>
                 </div>

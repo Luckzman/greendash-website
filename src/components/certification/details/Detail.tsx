@@ -4,6 +4,7 @@ import Image from "next/image";
 import ChevronBtn from "@/components/common/link-buttons/ChevronBtn";
 
 import { DetailProps } from "./Details";
+import Link from "next/link";
 
 const Detail = ({ detail }: { detail: DetailProps }) => {
   return (
@@ -30,17 +31,19 @@ const Detail = ({ detail }: { detail: DetailProps }) => {
       <span className="lg:text48 mtext24 font-semibold text-[#170F49]">
         {detail.price}
       </span>
-      <div
-        style={{
-          background:
-            "linear-gradient(151deg, var(--Colors-Neutrals-White, #FFF) -62.65%, var(--Colors-Neutrals-Neutral-200, #FBFBFE) 83.01%)",
-          boxShadow:
-            "0 3px 6px 0 rgba(7, 0, 110, 0.03), 0 -2px 2px 0 rgba(27, 35, 85, 0.07) inset, 0 4px 6px 0 rgba(255, 255, 255, 0.40) inset",
-        }}
-        className="flex justify-center items-center lg:mt-vw6 lg:px-vw17 lg:py-vw11 py-1.5 px-4 w-full border border-[#D9DBE9] lg:rounded-vw12 rounded-[12px]"
-      >
-        <ChevronBtn text={"Get started"} link={detail.link} colorInherit={"#170F49"} />
-      </div>
+      <Link href={detail.link}>
+        <div
+          style={{
+            background:
+              "linear-gradient(151deg, var(--Colors-Neutrals-White, #FFF) -62.65%, var(--Colors-Neutrals-Neutral-200, #FBFBFE) 83.01%)",
+            boxShadow:
+              "0 3px 6px 0 rgba(7, 0, 110, 0.03), 0 -2px 2px 0 rgba(27, 35, 85, 0.07) inset, 0 4px 6px 0 rgba(255, 255, 255, 0.40) inset",
+          }}
+          className="flex justify-center items-center lg:mt-vw6 lg:px-vw17 lg:py-vw11 py-1.5 px-4 w-full border border-[#D9DBE9] lg:rounded-vw12 rounded-[12px]"
+        >
+          <ChevronBtn text={"Get started"} link={detail.link} colorInherit={"#170F49"} />
+        </div>
+      </Link>
       <span className={`bg-[#D9DBE9] h-[1px] w-full block`}></span>
       <div>
         <h6 className={`text16 font-medium text-170F49`}>

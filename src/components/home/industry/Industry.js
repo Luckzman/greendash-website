@@ -60,7 +60,7 @@ const Industry = () => {
     <section className="lg:pt-vw50 lg:pb-vw62 py-[60px] sm:py-[120px]">
       <Content
         tag={"Perfect Match"}
-        heading={"Industry Compliance Assurance"}
+        heading={"Industry Compliance"}
         desc={
           "Aligned with CSRD/VSME, we provide an industry-fit and up-to-date solution that allows you to stay ahead of the evolving sustainability reporting standards"
         }
