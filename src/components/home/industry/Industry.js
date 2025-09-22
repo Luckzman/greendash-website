@@ -13,7 +13,7 @@ const Industry = () => {
         heading: "Manufacturing & Industry",
         desc: "GreenDash helps manufacturing SMEs track energy and emissions, and demonstrate supply chain sustainability to large B2B clients",
         list: [
-          "Simple emissions and electricity calculation",
+          "Simple GHG emissions and electricity calculation",
           "Energy efficiency and consume reduction recommendations",
           "Ready to share ESG data",
         ],
@@ -23,9 +23,9 @@ const Industry = () => {
       label: "Food/Beverage & Retail",
       content: {
         heading: "Food/Beverage & Retail",
-        desc: "Enables food companies to easily track water and waste, and deliver CSRD-aligned reports to retail and enterprise customers",
+        desc: "Enables food companies to easily track water and waste, and deliver VSME-aligned reports to retail and enterprise customers",
         list: [
-          "Simple emissions and electricity calculation",
+          "Simple GHG emissions and electricity calculation",
           "Energy efficiency and consume reduction recommendations",
           "Ready to share ESG data",
         ],
@@ -35,9 +35,9 @@ const Industry = () => {
       label: "Construction & Real Estate",
       content: {
         heading: "Construction & Real Estate",
-        desc: "Supports SMEs collect ESG data, monitor materials and safety metrics, and create compliant  reports for clients and regulators",
+        desc: "Supports SMEs collect ESG data, monitor materials and safety metrics, and create compliant reports for clients and regulators",
         list: [
-          "Simple emissions and electricity calculation",
+          "Simple GHG emissions and electricity calculation",
           "Safety and ethics recommendations",
           "Ready to share ESG data",
         ],
@@ -49,9 +49,21 @@ const Industry = () => {
         heading: "Transport & Logistics",
         desc: "Supports Transport & Logistic SME to fully track ESG metrics and report with success to their clients",
         list: [
-          "Simple emissions and electricity calculation",
-          "Safety and ethics recommendations",
-          "Energy efficiency and consume reduction recomendations",
+          "Simple GHG emissions and electricity calculation",
+          "Energy efficiency and consumptions reduction recommendations",
+          "Ready to share ESG data",
+        ],
+      },
+    },
+    {
+      label: "Services",
+      content: {
+        heading: "Services",
+        desc: "Supports Services SME to fully track ESG metrics and report with success to their clients",
+        list: [
+          "Simple GHG emissions and electricity calculation",
+          "Energy efficiency and consumptions reduction recommendations",
+          "Ready to share ESG data",
         ],
       },
     },

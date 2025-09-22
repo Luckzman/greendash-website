@@ -19,6 +19,7 @@ export default function CompliantAssessmentForm() {
     euBase: '',
     largeClients: '',
     largeEuClients: '',
+    companyProfile: '',
     consent: false
   });
 
@@ -70,7 +71,7 @@ export default function CompliantAssessmentForm() {
             tag="CSRD/VSME Assessment"
             heading="Should you start VSME/ESG reporting?"
             headingClasses='text-black'
-            desc="Answer the assessment below, and check if you should start your VSME/ESG reporting journey"
+            desc="Answer to the assessment below, and check if you should start your VSME/ESG reporting journey and how ready is your company"
             wrapperWidth={"lg:w-[65.9027777778vw]"}
             descWidth={"lg:w-[53vw]"}
           />
@@ -155,7 +156,7 @@ export default function CompliantAssessmentForm() {
             {/* Job Title */}
             <div>
               <label htmlFor="jobTitle" className="block text-sm font-medium text-gray-700 mb-2">
-                Job title
+                Job title <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
@@ -170,31 +171,21 @@ export default function CompliantAssessmentForm() {
             {/* Company Industry */}
             <div>
               <label htmlFor="companyIndustry" className="block text-sm font-medium text-gray-700 mb-2">
-                Company Industry
+                Company Industry <span className="text-red-500">*</span>
               </label>
-              <select
+              <input
                 id="companyIndustry"
                 name="companyIndustry"
                 value={formData.industry}
                 onChange={handleInputChange}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-              >
-                <option value="">Select</option>
-                <option value="technology">Technology</option>
-                <option value="finance">Finance</option>
-                <option value="healthcare">Healthcare</option>
-                <option value="manufacturing">Manufacturing</option>
-                <option value="retail">Retail</option>
-                <option value="energy">Energy</option>
-                <option value="consulting">Consulting</option>
-                <option value="other">Other</option>
-              </select>
+              />
             </div>
 
             {/* Employee Count */}
             <div>
               <label htmlFor="numberofemployees" className="block text-sm font-medium text-gray-700 mb-2">
-                How many employees does your organization have?
+                How many employees does your organization have? <span className="text-red-500">*</span>
               </label>
               <select
                 id="numberofemployees"
@@ -213,10 +204,66 @@ export default function CompliantAssessmentForm() {
               </select>
             </div>
 
+            {/* Does your company have clients that are large companies? */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-3">
+                Does your company have clients that are large companies (companies that have more than 1000 employees)? <span className="text-red-500">*</span>
+              </label>
+              <div className="flex items-center gap-6">
+                <label className="flex items-center">
+                  <input
+                    type="radio"
+                    name="largeClients"
+                    value="yes"
+                    checked={formData.largeClients === 'yes'}
+                    onChange={() => handleRadioChange('largeClients', 'yes')}
+                    className="mr-2 text-green-600 border-gray-300 focus:ring-green-500"
+                    required
+                  />
+                  <span className="text-[#808080] font-inter text-[15.5px]">Yes</span>
+                </label>
+                <label className="flex items-center">
+                  <input
+                    type="radio"
+                    name="largeClients"
+                    value="no"
+                    checked={formData.largeClients === 'no'}
+                    onChange={() => handleRadioChange('largeClients', 'no')}
+                    className="mr-2 text-green-600 border-gray-300 focus:ring-green-500"
+                    required
+                  />
+                  <span className="text-[#808080] font-inter text-[15.5px]">No</span>
+                </label>
+              </div>
+            </div>
+
+            {/* How many large EU clients does your company have? */}
+            <div>
+              <label htmlFor="largeEUClientsCount" className="block text-sm font-medium text-gray-700 mb-2">
+                How many large EU clients (more than 1000 employees) does your company have? <span className="text-red-500">*</span>
+              </label>
+              <select
+                id="largeEUClientsCount"
+                name="largeEuClients"
+                value={formData.largeEuClients}
+                onChange={handleInputChange}
+                required
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+              >
+                <option className="text-[#808080] font-inter text-[15.5px]" value="">Select</option>
+                <option value="0">0</option>
+                <option value="1-5">1-5</option>
+                <option value="6-10">6-10</option>
+                <option value="11-25">11-25</option>
+                <option value="26-50">26-50</option>
+                <option value="50+">50+</option>
+              </select>
+            </div>
+
             {/* Is your company based in the EU? */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-3">
-                Is your company based in the EU?
+                Is your company based in the EU? <span className="text-red-500">*</span>
               </label>
               <div className="flex items-center gap-6">
                 <label className="flex items-center">
@@ -228,7 +275,7 @@ export default function CompliantAssessmentForm() {
                     onChange={() => handleRadioChange('euBase', 'yes')}
                     className="mr-2 text-green-600 border-gray-300 focus:ring-green-500"
                   />
-                  <span className="text-gray-700">Yes</span>
+                  <span className="text-[#808080] font-inter text-[15.5px]">Yes</span>
                 </label>
                 <label className="flex items-center">
                   <input
@@ -239,62 +286,78 @@ export default function CompliantAssessmentForm() {
                     onChange={() => handleRadioChange('euBase', 'no')}
                     className="mr-2 text-green-600 border-gray-300 focus:ring-green-500"
                   />
-                  <span className="text-gray-700">No</span>
+                  <span className="text-[#808080] font-inter text-[15.5px]">No</span>
                 </label>
               </div>
             </div>
 
-            {/* Does your company have clients that are large companies? */}
+            {/* Which one of this options fits your company? */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-3">
-                Does your company have clients that are large companies (companies that have more than 1000 employees)?
+                Which one of this options fits your company?
               </label>
-              <div className="flex items-center gap-6">
-                <label className="flex items-center">
+              <div className="space-y-3">
+                <label className="flex items-start">
                   <input
                     type="radio"
-                    name="largeClients"
-                    value="yes"
-                    checked={formData.largeClients === 'yes'}
-                    onChange={() => handleRadioChange('largeClients', 'yes')}
-                    className="mr-2 text-green-600 border-gray-300 focus:ring-green-500"
+                    name="companyProfile"
+                    value="large-eu-pies"
+                    checked={formData.companyProfile === 'large-eu-pies'}
+                    onChange={() => handleRadioChange('companyProfile', 'large-eu-pies')}
+                    className="mt-1 mr-3 text-green-600 border-gray-300 focus:ring-green-500"
+                    required
                   />
-                  <span className="text-gray-700">Yes</span>
+                  <span className="text-[#808080] font-inter text-[15.5px]">Large EU PIEs with &gt; 1000 employees</span>
                 </label>
-                <label className="flex items-center">
+                <label className="flex items-start">
                   <input
                     type="radio"
-                    name="largeClients"
-                    value="no"
-                    checked={formData.largeClients === 'no'}
-                    onChange={() => handleRadioChange('largeClients', 'no')}
-                    className="mr-2 text-green-600 border-gray-300 focus:ring-green-500"
+                    name="companyProfile"
+                    value="eu-company-large"
+                    checked={formData.companyProfile === 'eu-company-large'}
+                    onChange={() => handleRadioChange('companyProfile', 'eu-company-large')}
+                    className="mt-1 mr-3 text-green-600 border-gray-300 focus:ring-green-500"
+                    required
                   />
-                  <span className="text-gray-700">No</span>
+                  <span className="text-[#808080] font-inter text-[15.5px]">EU Company with &gt; 1000 employees and Net volume &gt; 50M€ or Balance sheet &gt; 25M€</span>
+                </label>
+                <label className="flex items-start">
+                  <input
+                    type="radio"
+                    name="companyProfile"
+                    value="listed-smes-eu"
+                    checked={formData.companyProfile === 'listed-smes-eu'}
+                    onChange={() => handleRadioChange('companyProfile', 'listed-smes-eu')}
+                    className="mt-1 mr-3 text-green-600 border-gray-300 focus:ring-green-500"
+                    required
+                  />
+                  <span className="text-[#808080] font-inter text-[15.5px]">Listed SMEs in the EU</span>
+                </label>
+                <label className="flex items-start">
+                  <input
+                    type="radio"
+                    name="companyProfile"
+                    value="non-eu-parents"
+                    checked={formData.companyProfile === 'non-eu-parents'}
+                    onChange={() => handleRadioChange('companyProfile', 'non-eu-parents')}
+                    className="mt-1 mr-3 text-green-600 border-gray-300 focus:ring-green-500"
+                    required
+                  />
+                  <span className="text-[#808080] font-inter text-[15.5px]">Non-EU Parents with Turnover &gt;450M€ and large EU subsidiary or EU branch with &gt;50M€ turnover</span>
+                </label>
+                <label className="flex items-start">
+                  <input
+                    type="radio"
+                    name="companyProfile"
+                    value="other"
+                    checked={formData.companyProfile === 'other'}
+                    onChange={() => handleRadioChange('companyProfile', 'other')}
+                    className="mt-1 mr-3 text-green-600 border-gray-300 focus:ring-green-500"
+                    required
+                  />
+                  <span className="text-[#808080] font-inter text-[15.5px]">Other</span>
                 </label>
               </div>
-            </div>
-
-            {/* How many large EU clients does your company have? */}
-            <div>
-              <label htmlFor="largeEUClientsCount" className="block text-sm font-medium text-gray-700 mb-2">
-                How many large EU clients (more than 1000 employees) does your company have?
-              </label>
-              <select
-                id="largeEUClientsCount"
-                name="largeEuClients"
-                value={formData.largeEuClients}
-                onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-              >
-                <option value="">Select</option>
-                <option value="0">0</option>
-                <option value="1-5">1-5</option>
-                <option value="6-10">6-10</option>
-                <option value="11-25">11-25</option>
-                <option value="26-50">26-50</option>
-                <option value="50+">50+</option>
-              </select>
             </div>
 
             {/* Consent Checkbox */}

@@ -45,7 +45,7 @@ We automate data collection process with smart integrations and full-document up
       icon: "/images/home/features/icons/6.svg",
       color: "#EA3C30",
       heading: "Full-Customer Support from our Sustainability Experts",
-      desc: `Our dedicated team provides you End-to-End guidance, from helping you navigate our platform, understanding the CSRD/VSME, to helping you reporting on all the data points required`,
+      desc: `Our dedicated team provides you End-to-End guidance, from helping you navigate our platform, understanding the CSRD/VSME, to supporting your reporting on all the data points required`,
       image: "/images/home/features/2.png",
       imageClasses: "lg:w-[27.22222222222222vw] lg:h-[18.125vw]",
     },
