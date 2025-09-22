@@ -1,9 +1,6 @@
 import React from "react";
 import PairedButtons from "./PairedButtons";
 import Image from "next/image";
-import StandardBtn from "./link-buttons/StandardBtn";
-import OutlineBtn from "./link-buttons/OutlineBtn";
-import ChevronBtn from "./link-buttons/ChevronBtn";
 import { usePathname } from "next/navigation";
 
 interface HeroProps {
@@ -20,7 +17,7 @@ const Hero = ({ isForProfessionalsPage = false, isForCertificationPage = false }
       return "#pro-features";
     } else if (isForProfessionalsPage) {
       return "/for-professionals#pro-features";
-    } else if (isForCertificationPage || pathname === '/pricing') {
+    } else if (isForCertificationPage || pathname === '/pricing' || pathname === '/quiz' || pathname === '/essential-kit') {
       // For non-professional pages (pricing, certification), navigate to homepage features
       return "/#features";
     } else {
