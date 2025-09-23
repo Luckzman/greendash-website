@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Script from "next/script";
+import CookieConsent from "@/components/CookieConsent";
 
 export const metadata: Metadata = {
   title: "GreenDash: Simplifying ESG Reporting powered by AI",
@@ -61,10 +61,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         {children}
-        <Script
-          src="https://embeds.iubenda.com/widgets/1a4966c0-f918-48d6-9f4c-e0aae709e7c4.js"
-          strategy="afterInteractive"
-        />
+        <CookieConsent />
       </body>
     </html>
   );
