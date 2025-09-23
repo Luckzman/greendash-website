@@ -95,8 +95,22 @@ export default function Legal() {
                 <li><strong>Data Subject Rights:</strong> We assist with data subject requests and rights</li>
                 <li><strong>Breach Notification:</strong> Prompt notification of any data security incidents</li>
                 <li><strong>Data Retention:</strong> Data is retained only as long as necessary</li>
-                <li><strong>International Transfers:</strong> Adequate safeguards for cross-border data transfers</li>
+                <li><strong>EU Data Residency:</strong> All customer data is hosted exclusively in EU datacenters</li>
+                <li><strong>EU Data Sovereignty:</strong> No international data transfers - all data remains within EU borders</li>
               </ul>
+              <div className="bg-green-50 p-6 rounded-lg mb-6">
+                <h3 className="text-lg font-semibold text-green-900 mb-2">EU Data Hosting Commitment</h3>
+                <p className="text-green-800 mb-4">
+                  In compliance with EU data protection policies and regulations, Green Dash commits to hosting all customer data 
+                  exclusively in EU datacenters. This ensures:
+                </p>
+                <ul className="list-disc pl-6 text-green-800">
+                  <li>Full compliance with GDPR and EU data protection laws</li>
+                  <li>Enhanced data sovereignty for EU customers</li>
+                  <li>No data transfers outside the EU without explicit consent</li>
+                  <li>Alignment with EU policies on data localization</li>
+                </ul>
+              </div>
             </section>
 
             <section className="mb-8">

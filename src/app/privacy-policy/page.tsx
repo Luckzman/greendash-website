@@ -161,17 +161,41 @@ export default function PrivacyPolicy() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">International Data Transfers</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Data Hosting and Location</h2>
             <p className="text-gray-700 mb-4">
-              Your information may be transferred to and processed in countries other than your own. 
-              We ensure that such transfers comply with applicable data protection laws and implement appropriate safeguards, including:
+              In compliance with EU data protection regulations and policies, Green Dash hosts all customer data exclusively in EU datacenters. 
+              This ensures that your personal information and ESG data remain within the European Union and are subject to EU data protection laws.
             </p>
-            <ul className="list-disc pl-6 text-gray-700 mb-4">
-              <li>Standard contractual clauses</li>
-              <li>Adequacy decisions</li>
-              <li>Certification schemes</li>
-              <li>Other appropriate safeguards</li>
-            </ul>
+            <div className="bg-green-50 p-6 rounded-lg mb-6">
+              <h3 className="text-lg font-semibold text-green-900 mb-2">EU Data Residency Commitment</h3>
+              <ul className="list-disc pl-6 text-green-800">
+                <li>All customer data is stored and processed in EU-based datacenters</li>
+                <li>No data is transferred outside the European Union without explicit consent</li>
+                <li>Compliance with GDPR and other EU data protection regulations</li>
+                <li>Enhanced data sovereignty and protection for EU customers</li>
+              </ul>
+            </div>
+            <p className="text-gray-700 mb-4">
+              This approach aligns with EU policies on data sovereignty and ensures that your data benefits from the highest level of protection 
+              available under European data protection law.
+            </p>
+          </section>
+
+          <section className="mb-8">
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Data Transfer Policy</h2>
+            <p className="text-gray-700 mb-4">
+              All customer data is processed and stored exclusively within EU datacenters. We do not transfer personal data 
+              outside the European Union, ensuring complete data sovereignty and compliance with EU data protection policies.
+            </p>
+            <div className="bg-green-50 p-6 rounded-lg mb-6">
+              <h3 className="text-lg font-semibold text-green-900 mb-2">No International Transfers</h3>
+              <ul className="list-disc pl-6 text-green-800">
+                <li>All data remains within EU borders</li>
+                <li>No transfers to third countries</li>
+                <li>Complete EU data sovereignty</li>
+                <li>Full compliance with EU data protection regulations</li>
+              </ul>
+            </div>
           </section>
 
           <section className="mb-8">

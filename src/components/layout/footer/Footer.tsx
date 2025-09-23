@@ -25,7 +25,8 @@ const navLinks = [
       },
       {
         title: "Academy",
-        link: "/academy",
+        link: "#",
+        comingSoon: true,
       },
     ],
   },
@@ -81,8 +82,19 @@ const Footer = () => {
               <span className="font-bold text-white">{index === navLinks.length - 1 ? "" : "Solutions"}</span>
               <ul className="flex flex-col lg:gap-y-vw20 gap-y-3 text-7B7B7B">
                 {navLink.links.map((link, ind) => (
-                  <li key={ind} className="opacity_Hover">
-                    <Link href={`${link.link}`}>{link.title}</Link>
+                  <li key={ind} className={link.comingSoon ? "group relative" : "opacity_Hover"}>
+                    {link.comingSoon ? (
+                      <div className="relative inline-block cursor-pointer">
+                        <span className="group-hover:opacity-0 opacity-100 transition-all duration-300 inline-block">
+                          {link.title}
+                        </span>
+                        <span className="group-hover:opacity-100 opacity-0 transition-all duration-300 absolute left-0 top-0 whitespace-nowrap">
+                          Coming soon
+                        </span>
+                      </div>
+                    ) : (
+                      <Link href={`${link.link}`}>{link.title}</Link>
+                    )}
                   </li>
                 ))}
               </ul>

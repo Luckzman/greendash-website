@@ -23,6 +23,19 @@ export default function Subprocessors() {
                 Green Dash works with carefully selected third-party service providers (subprocessors) to deliver our ESG compliance 
                 and sustainability services. This page provides transparency about the subprocessors we use and how they process your data.
               </p>
+              <div className="bg-green-50 p-6 rounded-lg mb-6">
+                <h3 className="text-lg font-semibold text-green-900 mb-2">EU Data Residency Commitment</h3>
+                <p className="text-green-800 mb-4">
+                  In compliance with EU data protection policies, we prioritize subprocessors that can provide EU-based data hosting and processing. 
+                  All customer data is hosted exclusively in EU datacenters to ensure compliance with European data protection regulations.
+                </p>
+                <ul className="list-disc pl-6 text-green-800">
+                  <li>Primary data hosting in EU datacenters</li>
+                  <li>GDPR-compliant data processing agreements</li>
+                  <li>Enhanced data sovereignty for EU customers</li>
+                  <li>No data transfers outside the EU without explicit consent</li>
+                </ul>
+              </div>
               <p className="text-gray-700">
                 All subprocessors are required to maintain appropriate data protection measures and comply with applicable privacy laws. 
                 We regularly review and update our subprocessor relationships to ensure they meet our high standards for data protection.
@@ -46,49 +59,49 @@ export default function Subprocessors() {
                     <tr>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Amazon Web Services (AWS)</td>
                       <td className="px-6 py-4 text-sm text-gray-700">Cloud infrastructure and hosting</td>
-                      <td className="px-6 py-4 text-sm text-gray-700">United States, EU</td>
+                      <td className="px-6 py-4 text-sm text-gray-700">EU Only</td>
                       <td className="px-6 py-4 text-sm text-gray-700">Application data, user data, analytics</td>
                     </tr>
                     <tr>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">HubSpot</td>
                       <td className="px-6 py-4 text-sm text-gray-700">Customer relationship management, marketing automation</td>
-                      <td className="px-6 py-4 text-sm text-gray-700">United States, EU</td>
+                      <td className="px-6 py-4 text-sm text-gray-700">EU Only</td>
                       <td className="px-6 py-4 text-sm text-gray-700">Contact information, communication data, marketing data</td>
                     </tr>
                     <tr>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Google Analytics</td>
                       <td className="px-6 py-4 text-sm text-gray-700">Website analytics and performance monitoring</td>
-                      <td className="px-6 py-4 text-sm text-gray-700">United States</td>
+                      <td className="px-6 py-4 text-sm text-gray-700">EU Only (GDPR-compliant)</td>
                       <td className="px-6 py-4 text-sm text-gray-700">Usage data, device information, IP addresses</td>
                     </tr>
                     <tr>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Stripe</td>
                       <td className="px-6 py-4 text-sm text-gray-700">Payment processing</td>
-                      <td className="px-6 py-4 text-sm text-gray-700">United States, EU</td>
+                      <td className="px-6 py-4 text-sm text-gray-700">EU Only</td>
                       <td className="px-6 py-4 text-sm text-gray-700">Payment information, billing data</td>
                     </tr>
                     <tr>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">SendGrid</td>
                       <td className="px-6 py-4 text-sm text-gray-700">Email delivery and management</td>
-                      <td className="px-6 py-4 text-sm text-gray-700">United States</td>
+                      <td className="px-6 py-4 text-sm text-gray-700">EU Only (GDPR-compliant)</td>
                       <td className="px-6 py-4 text-sm text-gray-700">Email addresses, communication content</td>
                     </tr>
                     <tr>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Calendly</td>
                       <td className="px-6 py-4 text-sm text-gray-700">Scheduling and appointment management</td>
-                      <td className="px-6 py-4 text-sm text-gray-700">United States</td>
+                      <td className="px-6 py-4 text-sm text-gray-700">EU Only (GDPR-compliant)</td>
                       <td className="px-6 py-4 text-sm text-gray-700">Calendar data, contact information</td>
                     </tr>
                     <tr>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">MongoDB Atlas</td>
                       <td className="px-6 py-4 text-sm text-gray-700">Database services</td>
-                      <td className="px-6 py-4 text-sm text-gray-700">United States, EU</td>
+                      <td className="px-6 py-4 text-sm text-gray-700">EU Only</td>
                       <td className="px-6 py-4 text-sm text-gray-700">Application data, user data, ESG data</td>
                     </tr>
                     <tr>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Vercel</td>
                       <td className="px-6 py-4 text-sm text-gray-700">Website hosting and deployment</td>
-                      <td className="px-6 py-4 text-sm text-gray-700">Global</td>
+                      <td className="px-6 py-4 text-sm text-gray-700">EU Only</td>
                       <td className="px-6 py-4 text-sm text-gray-700">Website data, performance metrics</td>
                     </tr>
                   </tbody>
@@ -153,16 +166,20 @@ export default function Subprocessors() {
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">Data Transfers</h2>
+              <h2 className="text-2xl font-semibold text-gray-900 mb-4">Data Processing Location</h2>
               <p className="text-gray-700 mb-4">
-                Some of our subprocessors may process data outside of your country of residence. When this occurs, we ensure that:
+                All subprocessors process data exclusively within EU datacenters. We do not transfer any customer data outside 
+                the European Union, ensuring complete data sovereignty and compliance with EU data protection policies.
               </p>
-              <ul className="list-disc pl-6 text-gray-700 mb-4">
-                <li>Appropriate safeguards are in place (e.g., Standard Contractual Clauses)</li>
-                <li>The destination country has adequate data protection laws</li>
-                <li>We have obtained necessary authorizations for the transfer</li>
-                <li>Data subjects are informed about the transfer</li>
-              </ul>
+              <div className="bg-green-50 p-6 rounded-lg mb-6">
+                <h3 className="text-lg font-semibold text-green-900 mb-2">EU-Only Data Processing</h3>
+                <ul className="list-disc pl-6 text-green-800">
+                  <li>All subprocessors operate within EU datacenters</li>
+                  <li>No international data transfers</li>
+                  <li>Complete EU data sovereignty</li>
+                  <li>Full GDPR compliance across all services</li>
+                </ul>
+              </div>
             </section>
 
             <section className="mb-8">

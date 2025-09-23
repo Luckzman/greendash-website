@@ -249,15 +249,6 @@ const Header = () => {
               </div>
 
               <div onClick={toggleSidebar}>
-                {/* <Link href={isForProfessionalsPage ? '/getting-started' :`/join-waiting-list`}>
-                  <button className={`px-4 py-1.5 rounded-lg font-inter font-semibold transition-all duration-200 transform hover:-translate-y-0.5 ${
-                    isForProfessionalsPage 
-                      ? 'bg-white text-black hover:bg-gray-200' 
-                      : 'bg-black text-white hover:bg-gray-500'
-                  }`} style={{ boxShadow: '0 4px 4px rgba(0, 0, 0, 0.25)' }}>
-                    Get Started
-                  </button>
-                </Link> */}
                 <OutlineBtn text="Get Started" link={isForProfessionalsPage ? '/getting-started' :`/join-waiting-list`} isForProfessionalsPage={isForProfessionalsPage} />
               </div>
             </div>

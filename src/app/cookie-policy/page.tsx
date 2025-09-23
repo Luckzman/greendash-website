@@ -88,6 +88,23 @@ export default function CookiePolicy() {
             </section>
 
             <section className="mb-8">
+              <h2 className="text-2xl font-semibold text-gray-900 mb-4">Data Hosting and Cookie Storage</h2>
+              <p className="text-gray-700 mb-4">
+                In compliance with EU data protection policies, all cookie data and associated information is processed and stored 
+                in EU datacenters. This ensures that your browsing data remains within the European Union and is subject to EU data protection laws.
+              </p>
+              <div className="bg-green-50 p-6 rounded-lg mb-6">
+                <h3 className="text-lg font-semibold text-green-900 mb-2">EU Cookie Data Protection</h3>
+                <ul className="list-disc pl-6 text-green-800">
+                  <li>Cookie data is stored exclusively in EU-based datacenters</li>
+                  <li>Compliance with GDPR cookie consent requirements</li>
+                  <li>Enhanced privacy protection for EU users</li>
+                  <li>No cookie data transferred outside the EU without consent</li>
+                </ul>
+              </div>
+            </section>
+
+            <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">Third-Party Cookies</h2>
               <p className="text-gray-700 mb-4">
                 We may use third-party services that set cookies on our website. These include:
@@ -98,6 +115,10 @@ export default function CookiePolicy() {
                 <li><strong>Social Media Platforms:</strong> For social sharing and integration features</li>
                 <li><strong>Payment Processors:</strong> For secure payment processing</li>
               </ul>
+              <p className="text-gray-700 mb-4">
+                All third-party services we use are required to process data exclusively within EU datacenters and in compliance 
+                with EU data protection regulations. We ensure that any third-party cookie data is handled according to EU standards and policies.
+              </p>
               <p className="text-gray-700">
                 These third-party services have their own privacy policies and cookie practices. We recommend reviewing their policies 
                 to understand how they use cookies and your data.
