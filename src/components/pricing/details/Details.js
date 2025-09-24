@@ -40,7 +40,7 @@ const details = [
   {
     title: "Tailored",
     desc: "For SMEs that want a personalized design or integrations ",
-    featuresTitle: "All in Monitoring, plus:",
+    featuresTitle: "All in Reporting, plus:",
     features: ["Report Graphic Design service", "Tailored Integrations"],
     overview:
       "Tailored for SMEs that require full customization of integration and report design",

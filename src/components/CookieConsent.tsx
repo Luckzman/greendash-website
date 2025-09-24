@@ -83,6 +83,11 @@ const CookieConsent = () => {
     updateGoogleAnalyticsConsent(preferences);
   };
 
+  const handleClose = () => {
+    // Close without making a choice - equivalent to rejecting all
+    handleRejectAll();
+  };
+
   const togglePreference = (type: keyof CookiePreferences) => {
     if (type === 'essential') return; // Essential cookies cannot be disabled
     
@@ -103,6 +108,19 @@ const CookieConsent = () => {
       {/* Cookie Consent Modal */}
       <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-lg">
         <div className="max-w-7xl mx-auto px-4 py-6">
+          {/* Close button */}
+          <div className="flex justify-end mb-2">
+            <button
+              onClick={handleClose}
+              className="text-gray-400 hover:text-gray-600 transition-colors"
+              aria-label="Close cookie consent"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
             {/* Content */}
             <div className="flex-1">
