@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { 
   CookiePreferences, 
-  getCookieConsent, 
   getCookiePreferences, 
   setCookieConsent, 
   setCookiePreferences,
@@ -25,7 +24,6 @@ const CookieConsent = () => {
 
   useEffect(() => {
     // Check if user has already made a choice
-    const consent = getCookieConsent();
     if (shouldShowCookieBanner()) {
       setShowConsent(true);
     } else {
@@ -113,7 +111,7 @@ const CookieConsent = () => {
               </h3>
               <p className="text-sm text-gray-600 mb-4">
                 We use cookies to improve your browsing experience, serve personalized content, and analyze our traffic. 
-                By clicking "Accept All", you consent to our use of cookies. You can also customize your preferences 
+                By clicking &quot;Accept All&quot;, you consent to our use of cookies. You can also customize your preferences 
                 or learn more in our{' '}
                 <Link href="/cookie-policy" className="text-[#6FE451] hover:text-green-700 underline">
                   Cookie Policy

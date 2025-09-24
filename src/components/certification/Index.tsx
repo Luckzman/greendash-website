@@ -1,5 +1,4 @@
 import React from "react";
-import Hero from "../common/Hero";
 import Content from "../common/Content";
 import StandardBtn from "../common/link-buttons/StandardBtn";
 import Details from "./details/Details";
