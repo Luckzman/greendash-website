@@ -67,8 +67,9 @@ export default function RootLayout({
         <CookieConsent />
       </body>
       <Script
-        // src={HUBSPOT_TRACKING_URL}
         src="js-eu1.hs-scripts.com/146725220.js"
+        id="hs-script-loader"
+        type="text/javascript"
       />
     </html>
   );
