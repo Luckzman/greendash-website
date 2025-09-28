@@ -135,8 +135,8 @@ export default function JoinWaitingListForm({ essentialKit, esgMaturityCertifica
   const downloadEssentialKitPDF = () => {
     // Create a temporary link element to trigger the download
     const link = document.createElement('a');
-    link.href = '/ESSENTIAL_KIT.pdf';
-    link.download = 'CSRD_VSME_Essentials_Kit.pdf';
+    link.href = '/VSME Essentials Kit for SMEs_GreenDash_2025.pdf';
+    link.download = 'VSME Essentials Kit for SMEs_GreenDash_2025.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

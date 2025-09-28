@@ -26,7 +26,6 @@ const CONTACT_PROPERTIES = {
   // esg_maturity_assessment: 'esg_maturity_assessment',
   // csrd_vsme_assessment: 'csrd_vsme_assessment',
   contact_form_type: 'contact_form_type',
-  lead_source: 'lead_source',
   message: 'question',
   // lead_status: 'lead_status'
 };
@@ -129,7 +128,6 @@ function transformFormDataToHubSpot(formData: FormData, formType: string): Recor
 
   // Add custom properties
   properties[CONTACT_PROPERTIES.contact_form_type] = FORM_TYPES[formType as keyof typeof FORM_TYPES] || formType;
-  properties[CONTACT_PROPERTIES.lead_source] = 'Website Form';
   // if (formData.lead_status) properties[CONTACT_PROPERTIES.lead_status] = String(formData.lead_status);
 
   // Add form-specific properties
@@ -197,7 +195,6 @@ async function submitToHubSpotForm(formData: FormData, formType: string) {
         { name: 'numberofemployees', value: formData.numberofemployees || '' },
         { name: 'question', value: formData.message || '' },
         { name: 'form_type', value: formType },
-        { name: 'lead_source', value: 'Website Form' },
         // { name: 'lead_status', value: formData.lead_status ? String(formData.lead_status) : '' }
       ],
       context: {

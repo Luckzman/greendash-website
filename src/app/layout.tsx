@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import CookieConsent from "@/components/CookieConsent";
+import Script from "next/script";
+
+const HUBSPOT_TRACKING_URL = process.env.HUBSPOT_API_KEY;
 
 export const metadata: Metadata = {
   title: "GreenDash: Simplifying ESG Reporting powered by AI",
@@ -63,6 +66,9 @@ export default function RootLayout({
         {children}
         <CookieConsent />
       </body>
+      <Script
+        src={HUBSPOT_TRACKING_URL}
+      />
     </html>
   );
 }

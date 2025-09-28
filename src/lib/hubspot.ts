@@ -12,8 +12,6 @@ export interface HubSpotContact {
   esg_maturity_assessment?: string;
   csrd_vsme_assessment?: string;
   contact_form_type?: string;
-  lead_source?: string;
-  lead_status?: string;
 }
 
 export interface FormSubmissionData {
@@ -106,7 +104,6 @@ export function formatFormDataForHubSpot(formData: FormData, formType: string): 
 
   // Add form-specific properties
   contact.contact_form_type = getFormTypeLabel(formType);
-  contact.lead_source = 'Website Form';
   // contact.lead_status = 'New';
 
   // Add assessment-specific properties
