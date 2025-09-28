@@ -12,6 +12,10 @@ const CONTACTS_ENDPOINT = `${HUBSPOT_BASE_URL}/crm/v3/objects/contacts`;
 const FORMS_ENDPOINT = `${HUBSPOT_BASE_URL}/forms/v2/forms/${JOIN_WAITING_LIST_FORM_ID}/submissions`;
 const CONTACT_US_FORMS_ENDPOINT = `${HUBSPOT_BASE_URL}/forms/v2/forms/${CONTACT_US_FORM_ID}/submissions`;
 
+// Alternative: Use HubSpot Forms API v3 (more reliable)
+const FORMS_V3_ENDPOINT = `${HUBSPOT_BASE_URL}/forms/v3/forms/${JOIN_WAITING_LIST_FORM_ID}/submissions`;
+const CONTACT_US_FORMS_V3_ENDPOINT = `${HUBSPOT_BASE_URL}/forms/v3/forms/${CONTACT_US_FORM_ID}/submissions`;
+
 // Contact properties mapping
 const CONTACT_PROPERTIES = {
   firstname: 'firstname',
@@ -59,10 +63,78 @@ interface RequestBody {
   formData: FormData;
 }
 
+// Function to list all HubSpot forms (for debugging)
+async function listHubSpotForms() {
+  try {
+    const response = await fetch(`${HUBSPOT_BASE_URL}/forms/v2/forms`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${HUBSPOT_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      console.error('Failed to fetch forms:', response.status, response.statusText);
+      return null;
+    }
+
+    const data = await response.json();
+    console.log('Available HubSpot forms:');
+    data.forEach((form: { name: string; guid: string; published: boolean }) => {
+      console.log(`- Name: "${form.name}", ID: "${form.guid}", Published: ${form.published}`);
+    });
+    
+    return data;
+  } catch (error) {
+    console.error('Error fetching forms:', error);
+    return null;
+  }
+}
+
+// Function to get form field details (for debugging)
+async function getFormFields(formId: string) {
+  try {
+    console.log(`Fetching form details for ${formId}...`);
+    const response = await fetch(`${HUBSPOT_BASE_URL}/forms/v2/forms/${formId}`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${HUBSPOT_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+    });
+
+    console.log(`Form details response status: ${response.status}`);
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('Failed to fetch form details:', response.status, response.statusText, errorText);
+      return null;
+    }
+
+    const data = await response.json();
+    console.log(`Form fields for ${formId}:`);
+    console.log('Full form data:', JSON.stringify(data, null, 2));
+    
+    if (data.fields) {
+      data.fields.forEach((field: { name: string; label: string; required: boolean }) => {
+        console.log(`- Field: "${field.name}", Label: "${field.label}", Required: ${field.required}`);
+      });
+    } else {
+      console.log('No fields found in form data');
+    }
+    
+    return data;
+  } catch (error) {
+    console.error('Error fetching form fields:', error);
+    return null;
+  }
+}
+
 export async function POST(request: NextRequest) {
   try {
     // Validate environment variables
-    if (!HUBSPOT_API_KEY || !HUBSPOT_PORTAL_ID || !JOIN_WAITING_LIST_FORM_ID) {
+    if (!HUBSPOT_API_KEY || !HUBSPOT_PORTAL_ID || !JOIN_WAITING_LIST_FORM_ID || !CONTACT_US_FORM_ID) {
       console.error('Missing HubSpot environment variables');
       return NextResponse.json(
         { error: 'HubSpot configuration missing' },
@@ -179,31 +251,45 @@ async function createHubSpotContact(properties: Record<string, string>) {
   }
 }
 
-// Submit form data to HubSpot form for tracking
+// Submit form data to HubSpot form for tracking using the public form submission endpoint
 async function submitToHubSpotForm(formData: FormData, formType: string) {
   try {
-    // Choose the correct form endpoint based on form type
-    const formEndpoint = formType === 'contact-us' ? CONTACT_US_FORMS_ENDPOINT : FORMS_ENDPOINT;
+    // Use the public form submission endpoint (no authentication required)
+    const formId = formType === 'contact-us' ? CONTACT_US_FORM_ID : JOIN_WAITING_LIST_FORM_ID;
     
+    // Try v1 API first (more compatible)
+    const formEndpoint = `https://api.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL_ID}/${formId}`;
+    
+    // Build form payload for public submission endpoint - using correct object structure
     const formPayload = {
       fields: [
         { name: 'email', value: formData.companyEmail || formData.email || '' },
         { name: 'firstname', value: formData.firstName || '' },
         { name: 'lastname', value: formData.lastName || '' },
-        { name: 'company', value: formData.company || '' },
         { name: 'phone', value: formData.phoneNumber || '' },
         { name: 'numberofemployees', value: formData.numberofemployees || '' },
-        { name: 'question', value: formData.message || '' },
-        { name: 'form_type', value: formType },
-        // { name: 'lead_status', value: formData.lead_status ? String(formData.lead_status) : '' }
+        { name: 'contact_form_type', value: formType },
+        { name: 'industry', value: formData.industry || '' },
+      ],
+      // Company field needs to be in a separate object structure
+      company: [
+        { name: 'name', value: formData.company || '' }
       ],
       context: {
-        pageUri: 'https://yourdomain.com',
+        pageUri: process.env.WEBSITE_DOMAIN || 'https://greendash-website.vercel.app',
         pageName: `${formType} Form`
       }
     };
 
-    console.log('formPayload', formPayload);
+    // Log the actual field values for debugging
+    console.log('Form field values:', formPayload.fields.map(field => ({ name: field.name, value: field.value })));
+    console.log('Company field values:', formPayload.company.map(field => ({ name: field.name, value: field.value })));
+
+    console.log('Submitting form to HubSpot public endpoint:', {
+      endpoint: formEndpoint,
+      formId: formId,
+      payload: formPayload
+    });
 
     const response = await fetch(formEndpoint, {
       method: 'POST',
@@ -213,11 +299,165 @@ async function submitToHubSpotForm(formData: FormData, formType: string) {
       body: JSON.stringify(formPayload)
     });
 
+    const responseData = await response.text();
+    console.log('HubSpot public form submission response:', {
+      status: response.status,
+      statusText: response.statusText,
+      data: responseData
+    });
+
     if (!response.ok) {
-      console.warn('Form submission tracking failed:', response.status);
+      console.error('Public form submission failed:', {
+        status: response.status,
+        statusText: response.statusText,
+        response: responseData,
+        formId: formId
+      });
+      
+      // If field mapping error, get the actual form fields
+      if (response.status === 400 && responseData.includes('REQUIRED_FIELD')) {
+        console.log('Field mapping error detected. Fetching actual form fields...');
+        await getFormFields(formId || '');
+        
+        // Try v1 API as fallback for field mapping issues
+        console.log('Trying v1 API as fallback...');
+        await submitToHubSpotFormV1(formData, formType);
+        return;
+      }
+      
+      // Try the authenticated API as fallback
+      console.log('Trying authenticated API as fallback...');
+      await submitToHubSpotFormAuthenticated(formData, formType);
+      return;
+    }
+
+    console.log('Form submission tracking successful with public endpoint');
+
+  } catch (error) {
+    console.error('Form submission tracking error:', error);
+    // Don't throw the error to prevent breaking the main contact creation flow
+  }
+}
+
+// Fallback function using v1 API
+async function submitToHubSpotFormV1(formData: FormData, formType: string) {
+  try {
+    const formId = formType === 'contact-us' ? CONTACT_US_FORM_ID : JOIN_WAITING_LIST_FORM_ID;
+    const formEndpoint = `https://api.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL_ID}/${formId}`;
+    
+    // Corrected payload for v1 API with proper object structure
+    const formPayload = {
+      fields: [
+        { name: 'email', value: formData.companyEmail || formData.email || '' },
+        { name: 'firstname', value: formData.firstName || '' },
+        { name: 'lastname', value: formData.lastName || '' },
+        { name: 'phone', value: formData.phoneNumber || '' },
+        { name: 'numberofemployees', value: formData.numberofemployees || '' },
+        { name: 'contact_form_type', value: formType },
+        { name: 'industry', value: formData.industry || '' },
+      ],
+      // Company field needs to be in a separate object structure
+      company: [
+        { name: 'name', value: formData.company || '' }
+      ],
+      context: {
+        pageUri: process.env.WEBSITE_DOMAIN || 'https://greendash-website.vercel.app',
+        pageName: `${formType} Form`
+      }
+    };
+
+    console.log('Trying v1 API:', { endpoint: formEndpoint, payload: formPayload });
+
+    const response = await fetch(formEndpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formPayload)
+    });
+
+    const responseData = await response.text();
+    console.log('HubSpot v1 form submission response:', {
+      status: response.status,
+      statusText: response.statusText,
+      data: responseData
+    });
+
+    if (!response.ok) {
+      console.error('v1 API also failed:', {
+        status: response.status,
+        statusText: response.statusText,
+        response: responseData
+      });
+    } else {
+      console.log('Form submission tracking successful with v1 API');
     }
 
   } catch (error) {
-    console.warn('Form submission tracking error:', error);
+    console.error('v1 Form submission tracking error:', error);
+  }
+}
+
+// Fallback function using authenticated API
+async function submitToHubSpotFormAuthenticated(formData: FormData, formType: string) {
+  try {
+    const formEndpoint = formType === 'contact-us' ? CONTACT_US_FORMS_V3_ENDPOINT : FORMS_V3_ENDPOINT;
+    
+    const formPayload = {
+      fields: [
+        { name: 'email', value: formData.companyEmail || formData.email || '' },
+        { name: 'firstname', value: formData.firstName || '' },
+        { name: 'lastname', value: formData.lastName || '' },
+        { name: 'phone', value: formData.phoneNumber || '' },
+        { name: 'numberofemployees', value: formData.numberofemployees || '' },
+        { name: 'contact_form_type', value: formType },
+        { name: 'industry', value: formData.industry || '' },
+      ],
+      // Company field needs to be in a separate object structure
+      company: [
+        { name: 'name', value: formData.company || '' }
+      ],
+      context: {
+        pageUri: process.env.WEBSITE_DOMAIN || 'https://greendash-website.vercel.app',
+        pageName: `${formType} Form`
+      }
+    };
+
+    console.log('Trying authenticated API:', { endpoint: formEndpoint });
+
+    const response = await fetch(formEndpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${HUBSPOT_API_KEY}`,
+      },
+      body: JSON.stringify(formPayload)
+    });
+
+    const responseData = await response.text();
+    console.log('HubSpot authenticated form submission response:', {
+      status: response.status,
+      statusText: response.statusText,
+      data: responseData
+    });
+
+    if (!response.ok) {
+      console.error('Both public and authenticated form submission failed:', {
+        status: response.status,
+        statusText: response.statusText,
+        response: responseData
+      });
+      
+      // If 404, list all available forms to help debug
+      if (response.status === 404) {
+        console.log('Authenticated API also failed. Listing all available forms...');
+        await listHubSpotForms();
+      }
+    } else {
+      console.log('Form submission tracking successful with authenticated API');
+    }
+
+  } catch (error) {
+    console.error('Authenticated form submission tracking error:', error);
   }
 }

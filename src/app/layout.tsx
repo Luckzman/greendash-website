@@ -66,11 +66,11 @@ export default function RootLayout({
         {children}
         <CookieConsent />
       </body>
-      <Script
+      {/* <Script
         src="js-eu1.hs-scripts.com/146725220.js"
         id="hs-script-loader"
         type="text/javascript"
-      />
+      /> */}
     </html>
   );
 }
