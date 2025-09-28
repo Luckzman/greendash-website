@@ -3,8 +3,6 @@ import "./globals.css";
 import CookieConsent from "@/components/CookieConsent";
 import Script from "next/script";
 
-const HUBSPOT_TRACKING_URL = process.env.HUBSPOT_API_KEY;
-
 export const metadata: Metadata = {
   title: "GreenDash: Simplifying ESG Reporting powered by AI",
   description: "Build your Sustainability Report in line with CSRD in a simple and efficient way. Learn about ESG and ESG reporting and start getting certified now!",
@@ -62,15 +60,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* HubSpot Tracking Pixel */}
+        <Script
+          src="//js-eu1.hs-scripts.com/146725220.js"
+          id="hs-script-loader"
+          strategy="afterInteractive"
+        />
+      </head>
       <body>
         {children}
         <CookieConsent />
       </body>
-      {/* <Script
-        src="js-eu1.hs-scripts.com/146725220.js"
-        id="hs-script-loader"
-        type="text/javascript"
-      /> */}
     </html>
   );
 }
