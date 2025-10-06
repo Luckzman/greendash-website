@@ -8,6 +8,7 @@ const CONTACT_US_FORM_ID = process.env.CONTACT_US_FORM_ID;
 const ESSENTIAL_KIT_FORM_ID = process.env.ESSENTIAL_KIT_FORM_ID;
 const ESG_MATURITY_FORM_ID = process.env.ESG_MATURITY_CERTIFICATION_FORM_ID;
 const CSRD_VSME_FORM_ID = process.env.CSRD_VSME_CERTIFICATION_FORM_ID;
+const CSRD_VSME_ASSESSMENT_FORM_ID = process.env.CSRD_VSME_ASSESSMENT_FORM_ID;
 
 // Professional form IDs
 const JOIN_WAITING_LIST_FORM_ID_FOR_PROFESSIONALS = process.env.JOIN_WAITING_LIST_FORM_ID_FOR_PROFESSIONALS;
@@ -23,6 +24,7 @@ const CONTACT_US_FORMS_V3_ENDPOINT = `${HUBSPOT_BASE_URL}/forms/v3/forms/${CONTA
 const ESSENTIAL_KIT_FORMS_V3_ENDPOINT = `${HUBSPOT_BASE_URL}/forms/v3/forms/${ESSENTIAL_KIT_FORM_ID}/submissions`;
 const ESG_MATURITY_FORMS_V3_ENDPOINT = `${HUBSPOT_BASE_URL}/forms/v3/forms/${ESG_MATURITY_FORM_ID}/submissions`;
 const CSRD_VSME_FORMS_V3_ENDPOINT = `${HUBSPOT_BASE_URL}/forms/v3/forms/${CSRD_VSME_FORM_ID}/submissions`;
+const CSRD_VSME_ASSESSMENT_FORMS_V3_ENDPOINT = `${HUBSPOT_BASE_URL}/forms/v3/forms/${CSRD_VSME_ASSESSMENT_FORM_ID}/submissions`;
 
 // Professional form endpoints
 const JOIN_WAITING_LIST_FORMS_V3_ENDPOINT_FOR_PROFESSIONALS = `${HUBSPOT_BASE_URL}/forms/v3/forms/${JOIN_WAITING_LIST_FORM_ID_FOR_PROFESSIONALS}/submissions`;
@@ -45,17 +47,7 @@ const CONTACT_PROPERTIES = {
   // lead_status: 'lead_status'
 };
 
-// Form type mapping
-const FORM_TYPES = {
-  'join-waiting-list': 'Join Waiting List',
-  'contact-us': 'Contact Us',
-  'compliant-assessment': 'CSRD/VSME Assessment',
-  'esg-maturity-certification': 'ESG Maturity Certification',
-  'csrd-vsme-certification': 'CSRD/VSME Certification',
-  'essential-kit': 'Essential Kit',
-  'join-waiting-list-professional': 'Join Waiting List (Professional)',
-  'contact-us-professional': 'Contact Us (Professional)'
-};
+// Contact properties mapping
 
 interface FormData {
   firstName?: string;
@@ -155,6 +147,7 @@ export async function POST(request: NextRequest) {
       || !ESSENTIAL_KIT_FORM_ID 
       || !ESG_MATURITY_FORM_ID 
       || !CSRD_VSME_FORM_ID
+      || !CSRD_VSME_ASSESSMENT_FORM_ID
       || !JOIN_WAITING_LIST_FORM_ID_FOR_PROFESSIONALS
       || !CONTACT_US_FORM_ID_FOR_PROFESSIONALS) {
       console.error('Missing HubSpot environment variables');
@@ -220,6 +213,24 @@ function transformFormDataToHubSpot(formData: FormData, formType: string): Recor
   if (formData.numberofemployees) properties[CONTACT_PROPERTIES.numberofemployees] = formData.numberofemployees;
   if (formData.message) properties[CONTACT_PROPERTIES.message] = formData.message;
 
+  // Add compliant assessment specific fields
+  if (formType === 'compliant-assessment') {
+    if (formData.euBase && typeof formData.euBase === 'string') properties['based_in_eu'] = formData.euBase; // Keep lowercase as HubSpot expects
+    if (formData.largeClients && typeof formData.largeClients === 'string') properties['company_has_large_clients'] = formData.largeClients === 'yes' ? 'Yes' : 'No';
+    if (formData.largeEuClients && typeof formData.largeEuClients === 'string') properties['large_eu_clients'] = formData.largeEuClients;
+    if (formData.companyProfile && typeof formData.companyProfile === 'string') {
+      // Map form values to HubSpot expected values
+      const companyFitMapping: { [key: string]: string } = {
+        'large-eu-pies': 'Large EU PIEs with > 1000 employees',
+        'eu-company-large': 'EU Company with > 1000 employees and Net volume > 50M€ or Balance sheet > 25M€',
+        'listed-smes-eu': 'Listed SMEs in the EU',
+        'non-eu-parents': 'Non-EU Parents with Turnover >450M€ and large EU subsidiary or EU branch with >50M€ turnover',
+        'other': 'Other'
+      };
+      properties['company_fit'] = companyFitMapping[formData.companyProfile] || formData.companyProfile;
+    }
+  }
+
   // Add custom properties
   // properties[CONTACT_PROPERTIES.contact_form_type] = FORM_TYPES[formType as keyof typeof FORM_TYPES] || formType;
   // if (formData.lead_status) properties[CONTACT_PROPERTIES.lead_status] = String(formData.lead_status);
@@ -282,6 +293,7 @@ async function submitToHubSpotForm(formData: FormData, formType: string) {
     : formType === 'essential-kit' ? ESSENTIAL_KIT_FORM_ID 
     : formType === 'esg-maturity-certification' ? ESG_MATURITY_FORM_ID 
     : formType === 'csrd-vsme-certification' ? CSRD_VSME_FORM_ID 
+    : formType === 'compliant-assessment' ? CSRD_VSME_ASSESSMENT_FORM_ID
     : formType === 'join-waiting-list-professional' ? JOIN_WAITING_LIST_FORM_ID_FOR_PROFESSIONALS
     : JOIN_WAITING_LIST_FORM_ID;
     
@@ -297,6 +309,24 @@ async function submitToHubSpotForm(formData: FormData, formType: string) {
         { name: 'phone', value: formData.phoneNumber || '' },
         { name: 'numberofemployees', value: formData.numberofemployees || '' },
         { name: 'industry', value: formData.industry || '' },
+        { name: 'jobtitle', value: formData.jobTitle || '' },
+        // Add compliant assessment specific fields
+        ...(formType === 'compliant-assessment' ? [
+          { name: 'based_in_eu', value: (typeof formData.euBase === 'string' ? formData.euBase : '') || '' }, // Keep lowercase as HubSpot expects
+          { name: 'company_has_large_clients', value: (typeof formData.largeClients === 'string' && formData.largeClients === 'yes') ? 'Yes' : 'No' },
+          { name: 'large_eu_clients', value: (typeof formData.largeEuClients === 'string' ? formData.largeEuClients : '') || '' },
+          { name: 'company_fit', value: (() => {
+            const companyFitMapping: { [key: string]: string } = {
+              'large-eu-pies': 'Large EU PIEs with > 1000 employees',
+              'eu-company-large': 'EU Company with > 1000 employees and Net volume > 50M€ or Balance sheet > 25M€',
+              'listed-smes-eu': 'Listed SMEs in the EU',
+              'non-eu-parents': 'Non-EU Parents with Turnover >450M€ and large EU subsidiary or EU branch with >50M€ turnover',
+              'other': 'Other'
+            };
+            const profileValue = typeof formData.companyProfile === 'string' ? formData.companyProfile : '';
+            return companyFitMapping[profileValue] || profileValue || '';
+          })() },
+        ] : []),
       ],
       // Company field needs to be in a separate object structure
       company: [
@@ -374,6 +404,7 @@ async function submitToHubSpotFormV1(formData: FormData, formType: string) {
     : formType === 'essential-kit' ? ESSENTIAL_KIT_FORM_ID 
     : formType === 'esg-maturity-certification' ? ESG_MATURITY_FORM_ID 
     : formType === 'csrd-vsme-certification' ? CSRD_VSME_FORM_ID 
+    : formType === 'compliant-assessment' ? CSRD_VSME_ASSESSMENT_FORM_ID
     : formType === 'join-waiting-list-professional' ? JOIN_WAITING_LIST_FORM_ID_FOR_PROFESSIONALS
     : JOIN_WAITING_LIST_FORM_ID;
     const formEndpoint = `https://api.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL_ID}/${formId}`;
@@ -387,6 +418,24 @@ async function submitToHubSpotFormV1(formData: FormData, formType: string) {
         { name: 'phone', value: formData.phoneNumber || '' },
         { name: 'numberofemployees', value: formData.numberofemployees || '' },
         { name: 'industry', value: formData.industry || '' },
+        { name: 'jobtitle', value: formData.jobTitle || '' },
+        // Add compliant assessment specific fields
+        ...(formType === 'compliant-assessment' ? [
+          { name: 'based_in_eu', value: (typeof formData.euBase === 'string' ? formData.euBase : '') || '' }, // Keep lowercase as HubSpot expects
+          { name: 'company_has_large_clients', value: (typeof formData.largeClients === 'string' && formData.largeClients === 'yes') ? 'Yes' : 'No' },
+          { name: 'large_eu_clients', value: (typeof formData.largeEuClients === 'string' ? formData.largeEuClients : '') || '' },
+          { name: 'company_fit', value: (() => {
+            const companyFitMapping: { [key: string]: string } = {
+              'large-eu-pies': 'Large EU PIEs with > 1000 employees',
+              'eu-company-large': 'EU Company with > 1000 employees and Net volume > 50M€ or Balance sheet > 25M€',
+              'listed-smes-eu': 'Listed SMEs in the EU',
+              'non-eu-parents': 'Non-EU Parents with Turnover >450M€ and large EU subsidiary or EU branch with >50M€ turnover',
+              'other': 'Other'
+            };
+            const profileValue = typeof formData.companyProfile === 'string' ? formData.companyProfile : '';
+            return companyFitMapping[profileValue] || profileValue || '';
+          })() },
+        ] : []),
       ],
       // Company field needs to be in a separate object structure
       company: [
@@ -438,6 +487,7 @@ async function submitToHubSpotFormAuthenticated(formData: FormData, formType: st
     : formType === 'essential-kit' ? ESSENTIAL_KIT_FORMS_V3_ENDPOINT 
     : formType === 'esg-maturity-certification' ? ESG_MATURITY_FORMS_V3_ENDPOINT 
     : formType === 'csrd-vsme-certification' ? CSRD_VSME_FORMS_V3_ENDPOINT 
+    : formType === 'compliant-assessment' ? CSRD_VSME_ASSESSMENT_FORMS_V3_ENDPOINT
     : formType === 'join-waiting-list-professional' ? JOIN_WAITING_LIST_FORMS_V3_ENDPOINT_FOR_PROFESSIONALS
     : FORMS_V3_ENDPOINT;
     
@@ -449,6 +499,24 @@ async function submitToHubSpotFormAuthenticated(formData: FormData, formType: st
         { name: 'phone', value: formData.phoneNumber || '' },
         { name: 'numberofemployees', value: formData.numberofemployees || '' },
         { name: 'industry', value: formData.industry || '' },
+        { name: 'jobtitle', value: formData.jobTitle || '' },
+        // Add compliant assessment specific fields
+        ...(formType === 'compliant-assessment' ? [
+          { name: 'based_in_eu', value: (typeof formData.euBase === 'string' ? formData.euBase : '') || '' }, // Keep lowercase as HubSpot expects
+          { name: 'company_has_large_clients', value: (typeof formData.largeClients === 'string' && formData.largeClients === 'yes') ? 'Yes' : 'No' },
+          { name: 'large_eu_clients', value: (typeof formData.largeEuClients === 'string' ? formData.largeEuClients : '') || '' },
+          { name: 'company_fit', value: (() => {
+            const companyFitMapping: { [key: string]: string } = {
+              'large-eu-pies': 'Large EU PIEs with > 1000 employees',
+              'eu-company-large': 'EU Company with > 1000 employees and Net volume > 50M€ or Balance sheet > 25M€',
+              'listed-smes-eu': 'Listed SMEs in the EU',
+              'non-eu-parents': 'Non-EU Parents with Turnover >450M€ and large EU subsidiary or EU branch with >50M€ turnover',
+              'other': 'Other'
+            };
+            const profileValue = typeof formData.companyProfile === 'string' ? formData.companyProfile : '';
+            return companyFitMapping[profileValue] || profileValue || '';
+          })() },
+        ] : []),
       ],
       // Company field needs to be in a separate object structure
       company: [

@@ -4,6 +4,8 @@ import { useState } from 'react';
 import PhoneNumberInput from './PhoneNumberInput';
 import Link from 'next/link';
 import Content from './common/Content';
+import Toast from './Toast';
+import { handleFormSubmission } from '../lib/hubspot';
 
 export default function CompliantAssessmentForm() {
   const [formData, setFormData] = useState({
@@ -22,6 +24,20 @@ export default function CompliantAssessmentForm() {
     companyProfile: '',
     consent: false
   });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  const [toast, setToast] = useState<{
+    type: 'success' | 'error';
+    message: string;
+    isVisible: boolean;
+  }>({
+    type: 'success',
+    message: '',
+    isVisible: false
+  });
+
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
@@ -46,10 +62,108 @@ export default function CompliantAssessmentForm() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const showToast = (type: 'success' | 'error', message: string) => {
+    setToast({ type, message, isVisible: true });
+    setTimeout(() => {
+      setToast(prev => ({ ...prev, isVisible: false }));
+    }, 5000);
+  };
+
+  const validateForm = () => {
+    const newErrors: Record<string, string> = {};
+
+    // Required field validation
+    if (!formData.firstName.trim()) {
+      newErrors.firstName = 'First name is required';
+    }
+    if (!formData.lastName.trim()) {
+      newErrors.lastName = 'Last name is required';
+    }
+    if (!formData.company.trim()) {
+      newErrors.company = 'Company is required';
+    }
+    if (!formData.companyEmail.trim()) {
+      newErrors.companyEmail = 'Company email is required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.companyEmail)) {
+      newErrors.companyEmail = 'Please enter a valid email address';
+    }
+    if (!formData.phoneNumber.trim()) {
+      newErrors.phoneNumber = 'Phone number is required';
+    }
+    if (!formData.jobTitle.trim()) {
+      newErrors.jobTitle = 'Job title is required';
+    }
+    if (!formData.industry.trim()) {
+      newErrors.industry = 'Company industry is required';
+    }
+    if (!formData.numberofemployees) {
+      newErrors.numberofemployees = 'Please select number of employees';
+    }
+    if (!formData.euBase) {
+      newErrors.euBase = 'Please select if your company is based in the EU';
+    }
+    if (!formData.largeClients) {
+      newErrors.largeClients = 'Please select if your company has large clients';
+    }
+    if (!formData.largeEuClients) {
+      newErrors.largeEuClients = 'Please select number of large EU clients';
+    }
+    if (!formData.companyProfile) {
+      newErrors.companyProfile = 'Please select which option fits your company';
+    }
+    if (!formData.consent) {
+      newErrors.consent = 'You must agree to the privacy policy';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Assessment form submitted:', formData);
-    // Handle form submission here
+    
+    if (!validateForm()) {
+      showToast('error', 'Please fix the errors in the form');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      await handleFormSubmission(
+        'compliant-assessment',
+        formData,
+        () => {
+          showToast('success', 'Thank you! Your assessment has been submitted successfully. We\'ll get back to you with your results soon.');
+          
+          // Reset form on success
+          setFormData({
+            firstName: '',
+            lastName: '',
+            company: '',
+            companyEmail: '',
+            phoneNumber: '',
+            phoneCountry: '+1',
+            jobTitle: '',
+            industry: '',
+            numberofemployees: '',
+            euBase: '',
+            largeClients: '',
+            largeEuClients: '',
+            companyProfile: '',
+            consent: false
+          });
+        },
+        (error) => {
+          showToast('error', `Submission failed: ${error}`);
+        },
+        setIsSubmitting
+      );
+    } catch (error) {
+      console.error('Form submission error:', error);
+      showToast('error', 'An unexpected error occurred. Please try again.');
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -92,8 +206,13 @@ export default function CompliantAssessmentForm() {
                   value={formData.firstName}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent ${
+                    errors.firstName ? 'border-red-500' : 'border-gray-300'
+                  }`}
                 />
+                {errors.firstName && (
+                  <p className="mt-1 text-sm text-red-600">{errors.firstName}</p>
+                )}
               </div>
               
               <div>
@@ -107,8 +226,13 @@ export default function CompliantAssessmentForm() {
                   value={formData.lastName}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent ${
+                    errors.lastName ? 'border-red-500' : 'border-gray-300'
+                  }`}
                 />
+                {errors.lastName && (
+                  <p className="mt-1 text-sm text-red-600">{errors.lastName}</p>
+                )}
               </div>
             </div>
 
@@ -170,14 +294,16 @@ export default function CompliantAssessmentForm() {
 
             {/* Company Industry */}
             <div>
-              <label htmlFor="companyIndustry" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="industry" className="block text-sm font-medium text-gray-700 mb-2">
                 Company Industry <span className="text-red-500">*</span>
               </label>
               <input
-                id="companyIndustry"
-                name="companyIndustry"
+                type="text"
+                id="industry"
+                name="industry"
                 value={formData.industry}
                 onChange={handleInputChange}
+                required
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
               />
             </div>
@@ -386,12 +512,20 @@ export default function CompliantAssessmentForm() {
                 type="submit"
                 className="bg-[#6FE451] hover:bg-green-600 text-white px-6 py-2 rounded-lg font-semibold text-lg transition-all duration-200 transform hover:-translate-y-0.5"
               >
-                Get your results
+                {isSubmitting ? 'Submitting...' : 'Get your results'}
               </button>
             </div>
           </form>
         </div>
         </div>
+        
+        {/* Toast Component */}
+        <Toast
+          type={toast.type}
+          message={toast.message}
+          isVisible={toast.isVisible}
+          onClose={() => setToast(prev => ({ ...prev, isVisible: false }))}
+        />
       </section>
   );
 }
