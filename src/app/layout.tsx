@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import CookieConsent from "@/components/CookieConsent";
-import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "GreenDash: Simplifying ESG Reporting powered by AI",
@@ -60,14 +59,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        {/* HubSpot Tracking Pixel */}
-        <Script
-          src="//js-eu1.hs-scripts.com/146725220.js"
-          id="hs-script-loader"
-          strategy="afterInteractive"
-        />
-      </head>
       <body>
         {children}
         <CookieConsent />

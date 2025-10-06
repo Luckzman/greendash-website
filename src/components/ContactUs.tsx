@@ -27,6 +27,7 @@ export default function ContactUsForm({ isForProfessionalsPage = false }: Contac
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  
   const [toast, setToast] = useState<{
     type: 'success' | 'error';
     message: string;
@@ -137,17 +138,15 @@ export default function ContactUsForm({ isForProfessionalsPage = false }: Contac
     console.log('Contact form submission intercepted!', { formData, errors });
     
     if (!validateForm()) {
-      console.log('Validation failed, showing error toast');
       showToast('error', 'Please fix the errors in the form');
       return;
     }
 
-    console.log('Validation passed, submitting to HubSpot...');
     setIsSubmitting(true);
 
     try {
       await handleFormSubmission(
-        'contact-us',
+        isForProfessionalsPage ? 'contact-us-professional' : 'contact-us',
         formData,
         () => {
           showToast('success', 'Thank you! Your message has been sent successfully. We\'ll get back to you within 24 hours.');
@@ -172,7 +171,8 @@ export default function ContactUsForm({ isForProfessionalsPage = false }: Contac
         },
         setIsSubmitting
       );
-    } catch {
+    } catch (error) {
+      console.error('Form submission error:', error);
       showToast('error', 'An unexpected error occurred. Please try again.');
       setIsSubmitting(false);
     }
@@ -219,7 +219,7 @@ export default function ContactUsForm({ isForProfessionalsPage = false }: Contac
           
           {/* Form Section */}
           <div className="md:max-w-2xl mx-auto bg-white rounded-xl mt-10 p-14 shadow-lg" style={{ boxShadow: '0 4px 4px rgba(0, 0, 0, 0.25)' }}>
-          <form onSubmit={handleSubmit} method="POST" action="#" className="space-y-6">
+          <form onSubmit={handleSubmit} id="contact-us-form" method="POST" action="#" className="space-y-6">
             {/* First Row - First Name and Last Name */}
             <div className="grid md:grid-cols-2 gap-6">
               <div>
@@ -439,32 +439,6 @@ export default function ContactUsForm({ isForProfessionalsPage = false }: Contac
           </div>
         </div>
       </section>
-
-      {/* <section className={`py-20 ${isForProfessionalsPage ? 'bg-gradient-to-b from-[#131313] via-[#202120] to-[#6FE451]' : ''}`}
-        style={{
-          background: `${isForProfessionalsPage ? '': 'linear-gradient(to bottom, #7FFF6B 0%, #ADFFA0 20%, #ADFFA0 40%, #FFFFFF 60%, #FFFFFF 85%, #7FFF6B 100%)'}`
-        }}
-      >
-        <div className="max-w-5xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <div className="inline-block bg-white rounded-[10px] px-10 py-1 mb-6 border border-[rgba(34, 34, 34, 0.1)] shadow-sm">
-            <span className="text-sm font-medium font-inter text-black">Contact Us</span>
-          </div>
-          
-          <h1 className={`text-4xl lg:text-5xl font-dm-sans font-bold pb-6 leading-[70px]  ${isForProfessionalsPage ? 'text-[#6FE451]' : 'text-black'}`}>
-            Let&apos;s talk!
-          </h1>
-          
-          <p className={`text-xl ${isForProfessionalsPage ? 'text-white' : 'text-[#010D3E]'} font-inter max-w-3xl mx-auto leading-relaxed`}>
-            Still have questions or in need of further help? Send us a message and one of our team members will be in touch with you in the next 24h
-          </p>
-        </div>
-
-        <div className="md:max-w-2xl lg:max-w-xl mx-auto bg-white rounded-xl p-8 shadow-lg" style={{ boxShadow: '0 4px 4px rgba(0, 0, 0, 0.25)' }}>
-
-        </div>
-      </div>
-    </section> */}
     </>
   );
 }

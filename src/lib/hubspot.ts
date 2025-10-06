@@ -125,7 +125,9 @@ function getFormTypeLabel(formType: string): string {
     'compliant-assessment': 'CSRD/VSME Assessment',
     'esg-maturity-certification': 'ESG Maturity Certification',
     'csrd-vsme-certification': 'CSRD/VSME Certification',
-    'essential-kit': 'Essential Kit'
+    'essential-kit': 'Essential Kit',
+    'join-waiting-list-professional': 'Join Waiting List (Professional)',
+    'contact-us-professional': 'Contact Us (Professional)'
   };
 
   return formTypes[formType] || formType;

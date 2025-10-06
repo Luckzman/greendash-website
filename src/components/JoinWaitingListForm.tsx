@@ -31,6 +31,7 @@ export default function JoinWaitingListForm({ essentialKit, esgMaturityCertifica
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  
   const [toast, setToast] = useState<{
     type: 'success' | 'error';
     message: string;
@@ -90,7 +91,6 @@ export default function JoinWaitingListForm({ essentialKit, esgMaturityCertifica
         }
       }
       
-      console.log('Phone validation - Full number:', phoneNumber, 'Country code:', formData.phoneCountry, 'Number part:', numberPart, 'Length:', numberPart.length);
       if (numberPart.length < 7) {
         newErrors.phoneNumber = 'Phone number must be at least 7 digits';
         console.log('Phone number length validation failed');
@@ -173,12 +173,11 @@ export default function JoinWaitingListForm({ essentialKit, esgMaturityCertifica
       return;
     }
 
-    console.log('Validation passed, submitting to HubSpot...');
-    setIsSubmitting(true);
-
+    console.log('Validation passed, starting email verification...');
+    // setIsSubmitting(true);
     try {
       await handleFormSubmission(
-        essentialKit ? 'essential-kit' : esgMaturityCertification ? 'esg-maturity-certification' : csrdVsmeCertification ? 'csrd-vsme-certification' : 'join-waiting-list',
+        essentialKit ? 'essential-kit' : esgMaturityCertification ? 'esg-maturity-certification' : csrdVsmeCertification ? 'csrd-vsme-certification' : isForProfessionalsPage ? 'join-waiting-list-professional' : 'join-waiting-list',
         formData,
         () => {
           showToast('success', essentialKit 
@@ -215,13 +214,26 @@ export default function JoinWaitingListForm({ essentialKit, esgMaturityCertifica
               consent: false
             });
           }
+          setFormData({
+            firstName: '',
+            lastName: '',
+            company: '',
+            companyEmail: '',
+            phoneNumber: '',
+            phoneCountry: '+1',
+            jobTitle: '',
+            industry: '',
+            numberofemployees: '',
+            consent: false
+          });
         },
         (error) => {
           showToast('error', `Submission failed: ${error}`);
         },
         setIsSubmitting
       );
-    } catch {
+    } catch (error) {
+      console.error('Form submission error:', error);
       showToast('error', 'An unexpected error occurred. Please try again.');
       setIsSubmitting(false);
     }
@@ -274,7 +286,7 @@ export default function JoinWaitingListForm({ essentialKit, esgMaturityCertifica
           
           {/* Form Section */}
           <div className="md:max-w-2xl mx-auto bg-white rounded-xl mt-10 p-14 shadow-lg" style={{ boxShadow: '0 4px 4px rgba(0, 0, 0, 0.25)' }}>
-            <form onSubmit={handleSubmit} method="POST" action="#" className="space-y-6">
+            <form onSubmit={handleSubmit} id="joinWaitingListForm" method="POST" action="#" className="space-y-6">
               {/* First Row - First Name and Last Name */}
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
@@ -493,38 +505,6 @@ export default function JoinWaitingListForm({ essentialKit, esgMaturityCertifica
           </div>
         </div>
       </section>
-
-      {/* <section className={`py-20 ${isForProfessionalsPage ? 'bg-gradient-to-b from-[#131313] via-[#202120] to-[#6FE451]' : ''}`}
-        style={{
-          background: `${isForProfessionalsPage ? '': 'linear-gradient(to bottom, #7FFF6B 0%, #ADFFA0 20%, #ADFFA0 40%, #FFFFFF 60%, #FFFFFF 85%, #7FFF6B 100%)'}`
-        }}
-      >
-        <div className="max-w-5xl mx-auto px-6">
-
-          <div className="text-center mb-12">
-
-            <div className="inline-block bg-white rounded-[10px] px-10 py-1 mb-6 border border-[rgba(34, 34, 34, 0.1)] shadow-sm">
-              <span className="text-sm font-medium text-black">{essentialKit ? 'CSRD/VSME Essentials Kit' : esgMaturityCertification ? 'Certification' : csrdVsmeCertification ? 'Certification' : 'Join the Waiting List'}</span>
-            </div>
-            
-            <h1 className={`text-4xl lg:text-5xl font-dm-sans font-bold pb-6 leading-[70px]  
-              ${isForProfessionalsPage ? 'text-[#6FE451]' : 'text-black'}`}
-            >
-              {essentialKit ? 'Get your free CSRD/VSME Essentials Now!' : 
-              esgMaturityCertification ? 'Let\'s start your ESG Maturity Certification journey' :
-              csrdVsmeCertification ? 'Let\'s start your CSRD/VSME Certification journey' :
-              'Hold Tight, GreenDash is Coming Soon'}
-            </h1>
-            
-            <p className={`text-xl ${isForProfessionalsPage ? 'text-white' : 'text-[#010D3E]'} font-inter  max-w-2xl mx-auto leading-relaxed`}>
-              {essentialKit ? 
-              'Answer to the questions below and download your FREE CSRD/VSME Essentials Kit, so you can start your reporting journey!' : 
-              esgMaturityCertification || csrdVsmeCertification ? 'Please provide us some initial information and book your first call with us!' :
-              "We're preparing for a launch that will make a real impact. By joining the waiting list, you'll secure your spot, receive early updates, and be the first to experience our platform"}
-            </p>
-          </div>
-        </div>
-      </section> */}
     </>
   );
 }
