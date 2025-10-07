@@ -1,28 +1,31 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import "aos/dist/aos.css";
 import Aos from "aos";
 
-const isVideoLoaded = () => {
-  const video = document.querySelector(".hero-video"); // Select the video in the header
+const isVideoLoaded = (): boolean => {
+  // const video = document.querySelector(".hero-video"); // Select the video in the header
   // return video && video.readyState >= 4; // Check if the video is ready to play
   return true;
 };
 
-function areAllAssetsLoaded() {
+function areAllAssetsLoaded(): boolean {
   // Check if all fonts are loaded
   const fontsLoaded = document.fonts.status === "loaded";
 
   // Check if all images are loaded
   const heroImg = document.querySelectorAll(".heroImg");
   const imagesLoaded = Array.from(heroImg).every(
-    (img) => img.complete && img.naturalHeight !== 0
+    (img) => {
+      const htmlImg = img as HTMLImageElement;
+      return htmlImg.complete && htmlImg.naturalHeight !== 0;
+    }
   );
 
   // return fontsLoaded && imagesLoaded;
   return isVideoLoaded() && fontsLoaded && imagesLoaded;
 }
 
-const loadAOS = () => {
+const loadAOS = (): void => {
   // setTimeout(() => {
   Aos.init({
     duration: 800,
@@ -31,14 +34,14 @@ const loadAOS = () => {
   // }, 200);
 };
 
-const showUI = () => {
+const showUI = (): void => {
   const loader = document.getElementById("loader");
   if (loader) {
     loader.style.display = "none";
   }
 };
 
-const onAllAssetsLoaded = () => {
+const onAllAssetsLoaded = (): void => {
   // if (isSafari()) {
   //   document.body.classList.add("safari");
   // }
@@ -46,7 +49,7 @@ const onAllAssetsLoaded = () => {
   showUI();
 };
 
-function checkAssetsPeriodically() {
+function checkAssetsPeriodically(): void {
   const intervalId = setInterval(() => {
     if (areAllAssetsLoaded()) {
       clearInterval(intervalId); // Stop the interval when everything is loaded
@@ -54,11 +57,8 @@ function checkAssetsPeriodically() {
     }
   }, 100); // Check every 100 milliseconds
 }
-function isSafari() {
-  return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-}
 
-const useAos = () => {
+const useAos = (): null => {
   useEffect(() => {
     // Immediately check assets
     if (areAllAssetsLoaded()) {

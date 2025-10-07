@@ -3,7 +3,7 @@ import Lenis from "@studio-freight/lenis";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-const useLenisScroll = () => {
+const useLenisScroll = (): void => {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
@@ -13,7 +13,7 @@ const useLenisScroll = () => {
       lerp: 0.1, // Adjust for smoothness (default is 0.1)
     });
 
-    function raf(time) {
+    function raf(time: number): void {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }

@@ -6,8 +6,10 @@ import Link from 'next/link';
 import Content from './common/Content';
 import Toast from './Toast';
 import { handleFormSubmission } from '../lib/hubspot';
+import { useThankYouState } from '../hooks/useThankYouState';
 
 export default function CompliantAssessmentForm() {
+  const { navigateToThankYou } = useThankYouState();
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -136,6 +138,15 @@ export default function CompliantAssessmentForm() {
         () => {
           showToast('success', 'Thank you! Your assessment has been submitted successfully. We\'ll get back to you with your results soon.');
           
+
+          const thankYouData = {
+            tag: 'CSRD/VSME Assessment',
+            heading: 'Thanks for Completing the Assessment!',
+            desc: 'Your responses have been received, and we’ve sent you an overview to help you understand your current reporting obligations and identify next steps toward compliance.',
+            desc2: 'You’ll receive it soon by email.  Great job taking the initiative toward more transparent and efficient sustainability reporting with GreenDash!',
+          };
+          
+          navigateToThankYou(thankYouData);
           // Reset form on success
           setFormData({
             firstName: '',

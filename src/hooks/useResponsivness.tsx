@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from "react";
 
-const useResponsivness = () => {
-  const [isDesktop, setIsDesktop] = useState(false);
-  const [isTablet, setIsTablet] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+interface ResponsivenessState {
+  isDesktop: boolean;
+  isTablet: boolean;
+  isMobile: boolean;
+}
+
+const useResponsivness = (): ResponsivenessState => {
+  const [isDesktop, setIsDesktop] = useState<boolean>(false);
+  const [isTablet, setIsTablet] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
 
   useEffect(() => {
-    const handleResize = () => {
+    const handleResize = (): void => {
       setIsDesktop(window.innerWidth >= 1081);
       setIsTablet(window.innerWidth < 1081 && window.innerWidth > 600);
       setIsMobile(window.innerWidth <= 600);

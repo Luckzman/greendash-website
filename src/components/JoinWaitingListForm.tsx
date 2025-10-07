@@ -7,6 +7,7 @@ import Toast from './Toast';
 import { handleFormSubmission } from '../lib/hubspot';
 import Link from 'next/link';
 import Content from './common/Content';
+import { useThankYouState } from '../hooks/useThankYouState';
 
 interface JoinWaitingListFormProps {
   essentialKit?: boolean;
@@ -17,6 +18,7 @@ interface JoinWaitingListFormProps {
 
 export default function JoinWaitingListForm({ essentialKit, esgMaturityCertification, csrdVsmeCertification, isForProfessionalsPage = false }: JoinWaitingListFormProps) {
   const router = useRouter();
+  const { navigateToThankYou } = useThankYouState();
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -197,6 +199,23 @@ export default function JoinWaitingListForm({ essentialKit, esgMaturityCertifica
             setTimeout(() => {
               router.push('/esg-maturity-certification/booking');
             }, 2000);
+          } else {
+            // Redirect to thank you page with content data
+            // setTimeout(() => {
+              const thankYouData = {
+                tag: essentialKit ? 'CSRD/VSME Essentials Kit' : 'Waiting List',
+                heading: essentialKit ? 'You\'re All Set!' : "You're on the Waiting List!",
+                desc: essentialKit ? 
+                  'Thanks for requesting the CSRD/VSME Essentials Kit — it\'s on its way to your inbox. If you don’t see it soon, please check your spam or promotions folder.' :
+                  'Thanks for signing up — we\'re excited to have you join the GreenDash community! You\'re now one step closer to simplifying your sustainability reporting.',
+                desc2: essentialKit ?
+                  'Inside, you\'ll find practical tools and insights to help your SME get started with CSRD compliance and simplify your sustainability reporting journey' :
+                  'We sent you an email with your waiting list confirmation. Stay tuned — we\'ll be in touch soon with early access updates and sneak peeks of what\'s coming.',
+                desc3: essentialKit ? 'We\'re glad to support you in making sustainability reporting easier and smarter!' : ''
+              };
+              
+              navigateToThankYou(thankYouData);
+            // }, 2000);
           }
           
           // Reset form on success (only if not redirecting)

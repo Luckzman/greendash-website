@@ -6,12 +6,14 @@ import Toast from './Toast';
 import { handleFormSubmission } from '../lib/hubspot';
 import Link from 'next/link';
 import Content from './common/Content';
+import { useThankYouState } from '../hooks/useThankYouState';
 
 interface ContactUsFormProps {
   isForProfessionalsPage?: boolean;
 }
 
 export default function ContactUsForm({ isForProfessionalsPage = false }: ContactUsFormProps) {
+  const { navigateToThankYou } = useThankYouState();
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -151,6 +153,15 @@ export default function ContactUsForm({ isForProfessionalsPage = false }: Contac
         () => {
           showToast('success', 'Thank you! Your message has been sent successfully. We\'ll get back to you within 24 hours.');
           
+          const thankYouData = {
+            tag: 'Contact Us',
+            heading: 'Thanks for Reaching Out!',
+            desc: 'We’ve received your message — thanks for getting in touch with the GreenDash team!',
+            desc2: 'One of our team members will get back to you shortly to learn more about your needs and how GreenDash can support your business',
+          };
+          
+          navigateToThankYou(thankYouData);
+
           // Reset form on success
           setFormData({
             firstName: '',

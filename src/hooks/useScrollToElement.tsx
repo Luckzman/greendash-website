@@ -1,12 +1,18 @@
+"use client";
+
 import { useEffect } from 'react';
 
 /**
  * Custom hook to scroll to an element by ID
- * @param {string} elementId - The ID of the element to scroll to
- * @param {number} delay - Delay in milliseconds before scrolling (default: 100)
- * @param {boolean} enabled - Whether the scroll should be enabled (default: true)
+ * @param elementId - The ID of the element to scroll to
+ * @param delay - Delay in milliseconds before scrolling (default: 100)
+ * @param enabled - Whether the scroll should be enabled (default: true)
  */
-const useScrollToElement = (elementId, delay = 100, enabled = true) => {
+const useScrollToElement = (
+  elementId: string, 
+  delay: number = 100, 
+  enabled: boolean = true
+): void => {
   useEffect(() => {
     if (!enabled || !elementId) return;
 

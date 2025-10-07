@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import PairedButtons from "./PairedButtons";
 import Image from "next/image";
@@ -12,7 +14,7 @@ const Hero = ({ isForProfessionalsPage = false, isForCertificationPage = false }
   const pathname = usePathname();
   
   // Determine the correct link for the "Learn more" button
-  const getLearnMoreLink = () => {
+  const getLearnMoreLink = (): string => {
     if (isForProfessionalsPage && (isForCertificationPage || pathname === '/for-professionals')) {
       return "#pro-features";
     } else if (isForProfessionalsPage) {
