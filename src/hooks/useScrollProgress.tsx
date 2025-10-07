@@ -9,11 +9,11 @@ const useScrollProgress = (): void => {
     if (!circleContainer || !circlePath) return;
     
     const pathLength = circlePath.getTotalLength();
-    circlePath.style.transition = circlePath.style.WebkitTransition = "none";
+    circlePath.style.transition = circlePath.style.webkitTransition = "none";
     circlePath.style.strokeDasharray = pathLength.toString();
     circlePath.style.strokeDashoffset = pathLength.toString();
     circlePath.getBoundingClientRect();
-    circlePath.style.transition = circlePath.style.WebkitTransition =
+    circlePath.style.transition = circlePath.style.webkitTransition =
       "stroke-dashoffset 10ms linear";
 
     const updateLoader = (): void => {
