@@ -9,7 +9,7 @@ const useLenisScroll = (): void => {
 
     // Initialize Lenis
     const lenis = new Lenis({
-      smooth: true,
+      smoothWheel: true,
       lerp: 0.1, // Adjust for smoothness (default is 0.1)
     });
 
