@@ -22,13 +22,13 @@ interface PhoneNumberInputProps {
 }
 
 const countries: CountryCode[] = [
+  { code: 'PT', flag: '🇵🇹', name: 'Portugal', dialCode: '+351', maxLength: 9 },
   { code: 'US', flag: '🇺🇸', name: 'United States', dialCode: '+1', maxLength: 10 },
   { code: 'UK', flag: '🇬🇧', name: 'United Kingdom', dialCode: '+44', maxLength: 10 },
   { code: 'CA', flag: '🇨🇦', name: 'Canada', dialCode: '+1', maxLength: 10 },
   { code: 'AU', flag: '🇦🇺', name: 'Australia', dialCode: '+61', maxLength: 9 },
   { code: 'DE', flag: '🇩🇪', name: 'Germany', dialCode: '+49', maxLength: 11 },
   { code: 'FR', flag: '🇫🇷', name: 'France', dialCode: '+33', maxLength: 9 },
-  { code: 'PT', flag: '🇵🇹', name: 'Portugal', dialCode: '+351', maxLength: 9 },
   { code: 'ES', flag: '🇪🇸', name: 'Spain', dialCode: '+34', maxLength: 9 },
   { code: 'IT', flag: '🇮🇹', name: 'Italy', dialCode: '+39', maxLength: 9 },
   { code: 'NL', flag: '🇳🇱', name: 'Netherlands', dialCode: '+31', maxLength: 9 },
@@ -54,10 +54,24 @@ export default function PhoneNumberInput({
   label = 'Phone number',
   error
 }: PhoneNumberInputProps) {
-  const [localValue, setLocalValue] = useState(value);
+  // Initialize with Portugal as default if no country code is provided
+  const defaultCountryCode = countryCode || 'PT';
+  const defaultCountry = countries.find(c => c.code === defaultCountryCode) || countries[0];
+  
+  // Initialize with Portugal's dial code if no value is provided
+  const initialValue = value || defaultCountry.dialCode;
+  const [localValue, setLocalValue] = useState(initialValue);
 
   // Get current country info
-  const currentCountry = countries.find(c => c.code === countryCode) || countries[0];
+  const currentCountry = countries.find(c => c.code === defaultCountryCode) || countries[0];
+
+  // Notify parent component of default country on mount if no country code was provided
+  useEffect(() => {
+    if (!countryCode) {
+      onCountryChange(defaultCountryCode);
+      onChange(initialValue);
+    }
+  }, [countryCode, defaultCountryCode, initialValue, onChange, onCountryChange]);
 
   // Update local value when country changes (but not when value changes from user input)
   useEffect(() => {
@@ -151,7 +165,7 @@ export default function PhoneNumberInput({
       <div className="flex flex-col sm:flex-row gap-3">
         <select
           name="phoneCountry"
-          value={countryCode}
+          value={defaultCountryCode}
           onChange={handleCountryChange}
           className="w-full sm:w-auto sm:min-w-[200px] px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm sm:text-base"
         >
