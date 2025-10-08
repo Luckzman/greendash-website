@@ -59,6 +59,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* HubSpot Tracking Script */}
+        <script
+          type="text/javascript"
+          id="hs-script-loader"
+          async
+          defer
+          src={`//js.hs-scripts.com/${process.env.HUBSPOT_PORTAL_ID}.js`}
+        />
+      </head>
       <body>
         {children}
         <CookieConsent />

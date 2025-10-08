@@ -98,6 +98,30 @@ async function listHubSpotForms() {
   }
 }
 
+// Function to get client IP address
+function getClientIP(request: NextRequest): string {
+  // Check various headers for the real IP address
+  const forwarded = request.headers.get('x-forwarded-for');
+  const realIP = request.headers.get('x-real-ip');
+  const cfConnectingIP = request.headers.get('cf-connecting-ip');
+  
+  if (forwarded) {
+    // x-forwarded-for can contain multiple IPs, take the first one
+    return forwarded.split(',')[0].trim();
+  }
+  
+  if (realIP) {
+    return realIP;
+  }
+  
+  if (cfConnectingIP) {
+    return cfConnectingIP;
+  }
+  
+  // Fallback to localhost
+  return '127.0.0.1';
+}
+
 // Function to get form field details (for debugging)
 async function getFormFields(formId: string) {
   try {
@@ -168,6 +192,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Get client IP address and HubSpot tracking cookie
+    const clientIP = getClientIP(request);
+    const hubspotCookie = request.cookies.get('hubspotutk')?.value;
+
+    console.log('Client IP:', clientIP);
+    console.log('HubSpot Cookie:', hubspotCookie);
+
     // Transform and map form data to HubSpot properties
     const hubspotContactData = transformFormDataToHubSpot(formData, formType);
 
@@ -175,8 +206,8 @@ export async function POST(request: NextRequest) {
     const contactResponse = await createHubSpotContact(hubspotContactData);
 
     if (contactResponse.success) {
-      // Submit form data to HubSpot form (for tracking)
-      await submitToHubSpotForm(formData, formType);
+      // Submit form data to HubSpot form (for tracking) with IP and cookie
+      await submitToHubSpotForm(formData, formType, clientIP, hubspotCookie);
 
       return NextResponse.json({
         success: true,
@@ -285,7 +316,7 @@ async function createHubSpotContact(properties: Record<string, string>) {
 }
 
 // Submit form data to HubSpot form for tracking using the public form submission endpoint
-async function submitToHubSpotForm(formData: FormData, formType: string) {
+async function submitToHubSpotForm(formData: FormData, formType: string, clientIP?: string, hubspotCookie?: string) {
   try {
     // Use the public form submission endpoint (no authentication required)
     const formId = formType === 'contact-us' ? CONTACT_US_FORM_ID 
@@ -334,7 +365,10 @@ async function submitToHubSpotForm(formData: FormData, formType: string) {
       ],
       context: {
         pageUri: process.env.WEBSITE_DOMAIN || 'https://greendash-website.vercel.app',
-        pageName: `${formType} Form`
+        pageName: `${formType} Form`,
+        // Add IP address and HubSpot cookie for proper tracking
+        ...(clientIP && { ipAddress: clientIP }),
+        ...(hubspotCookie && { hutk: hubspotCookie })
       }
     };
 
@@ -378,13 +412,13 @@ async function submitToHubSpotForm(formData: FormData, formType: string) {
         
         // Try v1 API as fallback for field mapping issues
         console.log('Trying v1 API as fallback...');
-        await submitToHubSpotFormV1(formData, formType);
+        await submitToHubSpotFormV1(formData, formType, clientIP, hubspotCookie);
         return;
       }
       
       // Try the authenticated API as fallback
       console.log('Trying authenticated API as fallback...');
-      await submitToHubSpotFormAuthenticated(formData, formType);
+      await submitToHubSpotFormAuthenticated(formData, formType, clientIP, hubspotCookie);
       return;
     }
 
@@ -397,7 +431,7 @@ async function submitToHubSpotForm(formData: FormData, formType: string) {
 }
 
 // Fallback function using v1 API
-async function submitToHubSpotFormV1(formData: FormData, formType: string) {
+async function submitToHubSpotFormV1(formData: FormData, formType: string, clientIP?: string, hubspotCookie?: string) {
   try {
     const formId = formType === 'contact-us' ? CONTACT_US_FORM_ID 
     : formType === 'contact-us-professional' ? CONTACT_US_FORM_ID_FOR_PROFESSIONALS
@@ -443,7 +477,10 @@ async function submitToHubSpotFormV1(formData: FormData, formType: string) {
       ],
       context: {
         pageUri: process.env.WEBSITE_DOMAIN || 'https://greendash-website.vercel.app',
-        pageName: `${formType} Form`
+        pageName: `${formType} Form`,
+        // Add IP address and HubSpot cookie for proper tracking
+        ...(clientIP && { ipAddress: clientIP }),
+        ...(hubspotCookie && { hutk: hubspotCookie })
       }
     };
 
@@ -480,7 +517,7 @@ async function submitToHubSpotFormV1(formData: FormData, formType: string) {
 }
 
 // Fallback function using authenticated API
-async function submitToHubSpotFormAuthenticated(formData: FormData, formType: string) {
+async function submitToHubSpotFormAuthenticated(formData: FormData, formType: string, clientIP?: string, hubspotCookie?: string) {
   try {
     const formEndpoint = formType === 'contact-us' ? CONTACT_US_FORMS_V3_ENDPOINT 
     : formType === 'contact-us-professional' ? CONTACT_US_FORMS_V3_ENDPOINT_FOR_PROFESSIONALS
@@ -524,7 +561,10 @@ async function submitToHubSpotFormAuthenticated(formData: FormData, formType: st
       ],
       context: {
         pageUri: process.env.WEBSITE_DOMAIN || 'https://greendash-website.vercel.app',
-        pageName: `${formType} Form`
+        pageName: `${formType} Form`,
+        // Add IP address and HubSpot cookie for proper tracking
+        ...(clientIP && { ipAddress: clientIP }),
+        ...(hubspotCookie && { hutk: hubspotCookie })
       }
     };
 
