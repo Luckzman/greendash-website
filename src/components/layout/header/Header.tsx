@@ -3,7 +3,7 @@ import StandardBtn from "@/components/common/link-buttons/StandardBtn";
 import useAos from "@/hooks/useAos";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import OutlineBtn from "@/components/common/link-buttons/OutlineBtn";
 
@@ -11,10 +11,28 @@ const Header = () => {
   const dropDown = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const [isThankYouProfessionals, setIsThankYouProfessionals] = useState(false);
+
+  // Check if we're on thank-you page with professionals data
+  useEffect(() => {
+    if (pathname === '/thank-you') {
+      try {
+        const storedData = sessionStorage.getItem('thankYouData');
+        if (storedData) {
+          const data = JSON.parse(storedData);
+          setIsThankYouProfessionals(data.isForProfessionalsPage || false);
+        }
+      } catch (error) {
+        console.error('Error parsing thank you data:', error);
+      }
+    } else {
+      setIsThankYouProfessionals(false);
+    }
+  }, [pathname]);
 
   // Determine if we're on the for-professionals page
-  const isForProfessionalsPage = pathname === '/for-professionals' || pathname === '/professional-contact-us' || pathname === '/getting-started';
-  
+  const isForProfessionalsPage = pathname === '/for-professionals' || pathname === '/professional-contact-us' || pathname === '/getting-started' || (pathname === '/thank-you' && isThankYouProfessionals);
+  console.log(pathname)
   // Determine if we're on the pricing page
   const isPricingPage = pathname === '/pricing';
   

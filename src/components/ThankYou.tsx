@@ -11,13 +11,13 @@ interface ThankYouProps {
   desc3?: string | React.ReactNode;
 }
 
-const ThankYou = ({ wrapperWidth, isForProfessionalsPage, tag, headingClasses, heading, desc, desc2, desc3 }: ThankYouProps) => {
+const ThankYou = ({ wrapperWidth, isForProfessionalsPage = false, tag, headingClasses, heading, desc, desc2, desc3 }: ThankYouProps) => {
   return (
-    <section className="relative lg:pt-vw44 lg:pb-vw200 py-[60px] sm:py-[120px]">
+    <section className="relative lg:pt-vw44 lg:pb-vw200 py-[80px] sm:py-[120px]">
         <span
           style={{
             background: isForProfessionalsPage
-            ? 'linear-gradient(to bottom, #131313 5%, #202120 10%, #2C2D2B 35%, #6FE451 80%, #6FE451 100%)'
+            ? 'linear-gradient(to bottom, #131313 5%, #202120 10%, #2C2D2B 35%, #6FE451 65%, #6FE451 80%)'
             : "linear-gradient(180deg, #7FFF6B 3.25%, rgba(173, 255, 160, 0.80) 30.18%, rgba(239, 255, 236, 0.50) 66.1%, rgba(241, 255, 238, 0.10) 96.62%)",
           }}
           className="atlwh_Full pointer-events-none"
@@ -50,7 +50,8 @@ const ThankYou = ({ wrapperWidth, isForProfessionalsPage, tag, headingClasses, h
             data-aos="fade-up"
             className={`${
               headingClasses ? headingClasses : "text-black"
-            } text54 `}          >
+            } text54 `}
+          >
             {heading}
           </h2>
 
@@ -58,7 +59,7 @@ const ThankYou = ({ wrapperWidth, isForProfessionalsPage, tag, headingClasses, h
           <p 
             data-aos="fade-up"
             data-aos-delay="100"
-            className="text-black text-xl lg:text-2xl inter leading-relaxed max-w-4xl tracking-tight"
+            className={`${isForProfessionalsPage ? 'text-white' : 'text-black'} text-xl lg:text-2xl inter leading-relaxed max-w-4xl tracking-tight`}
           >
             {desc}
           </p>
@@ -67,7 +68,7 @@ const ThankYou = ({ wrapperWidth, isForProfessionalsPage, tag, headingClasses, h
           <p 
             data-aos="fade-up"
             data-aos-delay="200"
-            className="text-black text-lg lg:text-xl inter leading-relaxed max-w-5xl tracking-tight"
+            className={`${isForProfessionalsPage ? 'text-white' : 'text-black'} text-lg lg:text-xl inter leading-relaxed max-w-5xl tracking-tight`}
           >
             {desc2}
           </p>
@@ -76,7 +77,7 @@ const ThankYou = ({ wrapperWidth, isForProfessionalsPage, tag, headingClasses, h
           <p 
             data-aos="fade-up"
             data-aos-delay="200"
-            className="text-black text-lg lg:text-xl inter leading-relaxed max-w-5xl tracking-tight"
+            className={`${isForProfessionalsPage ? 'text-white' : 'text-black'} text-lg lg:text-xl inter leading-relaxed max-w-5xl tracking-tight`}
           >
             {desc3}
           </p>

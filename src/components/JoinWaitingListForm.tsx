@@ -211,7 +211,8 @@ export default function JoinWaitingListForm({ essentialKit, esgMaturityCertifica
                 desc2: essentialKit ?
                   'Inside, you\'ll find practical tools and insights to help your SME get started with CSRD compliance and simplify your sustainability reporting journey' :
                   'We sent you an email with your waiting list confirmation. Stay tuned — we\'ll be in touch soon with early access updates and sneak peeks of what\'s coming.',
-                desc3: essentialKit ? 'We\'re glad to support you in making sustainability reporting easier and smarter!' : ''
+                desc3: essentialKit ? 'We\'re glad to support you in making sustainability reporting easier and smarter!' : '',
+                isForProfessionalsPage: isForProfessionalsPage,
               };
               
               navigateToThankYou(thankYouData);

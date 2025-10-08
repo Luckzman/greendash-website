@@ -158,6 +158,7 @@ export default function ContactUsForm({ isForProfessionalsPage = false }: Contac
             heading: 'Thanks for Reaching Out!',
             desc: 'We’ve received your message — thanks for getting in touch with the GreenDash team!',
             desc2: 'One of our team members will get back to you shortly to learn more about your needs and how GreenDash can support your business',
+            isForProfessionalsPage: isForProfessionalsPage,
           };
           
           navigateToThankYou(thankYouData);
